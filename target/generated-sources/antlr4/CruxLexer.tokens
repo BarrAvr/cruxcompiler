@@ -1,0 +1,10 @@
+SemiColon=1
+Integer=2
+True=3
+False=4
+Identifier=5
+WhiteSpaces=6
+Comment=7
+';'=1
+'true'=3
+'false'=4
