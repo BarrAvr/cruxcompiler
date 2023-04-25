@@ -52,12 +52,12 @@ public final class ParseTreeLower {
 
   public DeclarationList lower(CruxParser.ProgramContext program) {
     ArrayList<Declaration> list = new ArrayList<Declaration>();
-    Position position = new Position(program.depth());
+    Position position = makePosition(program);
 
-//    for(CruxParser.ProgramContext context: program.declList()){
-//      Declaration node = context.accept(declVisitor);
-//      list.add(node);
-//    }
+    for(CruxParser.ProgramContext context: program.declList()){
+      Declaration node = context.accept(declVisitor);
+      list.add(node);
+    }
 
     return new DeclarationList(position, list);
   }
@@ -71,7 +71,7 @@ public final class ParseTreeLower {
   
    private StatementList lower(CruxParser.StmtListContext stmtList) {
      ArrayList<Statement> list = new ArrayList<Statement>();
-     Position position = new Position(stmtList.depth());
+     Position position = makePosition(stmtList);
 
      for(CruxParser.StmtContext context: stmtList.stmt()){
        Statement node = context.accept(stmtVisitor);
@@ -89,7 +89,13 @@ public final class ParseTreeLower {
    */
 
   
-  // private StatementList lower(CruxParser.StmtBlockContext stmtBlock) { }
+   private StatementList lower(CruxParser.StmtBlockContext stmtBlock) {
+     ArrayList<Statement> list = new ArrayList<Statement>();
+     Position position = makePosition(stmtBlock);
+
+
+     return new StatementList(position, list);
+   }
    
 
   /**
@@ -161,7 +167,7 @@ public final class ParseTreeLower {
 
     @Override
     public Statement visitAssignStmt(CruxParser.AssignStmtContext ctx) {
-      Position position = new Position(ctx.depth());
+      Position position = makePosition(ctx);
       Type type = null;
       Symbol symbol  = symTab.add(position, ctx.designator().getText(), type);
       Expression rhs = ctx.expr0().accept(exprVisitor);
@@ -240,8 +246,70 @@ public final class ParseTreeLower {
     /**
      * Parse Expr0 to OpExpr Node Parsing the expr should be exactly as described in the grammer
      */
-    // @Override
-    // public Expression visitExpr0(CruxParser.Expr0Context ctx) { }
+     @Override
+     public Expression visitExpr0(CruxParser.Expr0Context ctx) {
+       Position position = makePosition(ctx);
+       CruxParser.Expr1Context lhsCtx = ctx.expr1(0);
+       CruxParser.Op0Context op = ctx.op0(); //can be null
+       CruxParser.Expr1Context rhsCtx = ctx.expr1(1); //can be null
+
+       Expression lhsExpr = lhsCtx.accept(exprVisitor);
+
+       if(op == null){
+         return lhsExpr;
+       }
+
+       if(rhsCtx == null){
+
+       }
+       Expression rhsExpr = rhsCtx.accept(exprVisitor);
+       String opStr = op.getText();
+       Operation operation = null;
+       switch (opStr) {
+         case "+":
+           operation = Operation.ADD;
+           break;
+         case "-":
+           operation = Operation.SUB;
+           break;
+         case "*":
+           operation = Operation.MULT;
+           break;
+         case "/":
+           operation = Operation.DIV;
+           break;
+         case "==":
+           operation = Operation.EQ;
+           break;
+         case ">=":
+           operation = Operation.GE;
+           break;
+         case ">":
+           operation = Operation.GT;
+           break;
+         case "<=":
+           operation = Operation.LE;
+           break;
+         case "<":
+           operation = Operation.LT;
+           break;
+         case "&&":
+           operation = Operation.LOGIC_AND;
+           break;
+         case "!":
+           operation = Operation.LOGIC_NOT;
+           break;
+         case "||":
+           operation = Operation.LOGIC_OR;
+           break;
+         case "!=":
+           operation = Operation.NE;
+           break;
+       }
+
+
+       return new OpExpr(position, operation, lhsExpr, rhsExpr);
+     }
 
     /**
      * Parse Expr1 to OpExpr Node Parsing the expr should be exactly as described in the grammer
