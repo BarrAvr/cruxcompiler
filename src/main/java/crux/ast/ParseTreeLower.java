@@ -314,14 +314,140 @@ public final class ParseTreeLower {
     /**
      * Parse Expr1 to OpExpr Node Parsing the expr should be exactly as described in the grammer
      */
-    // @Override
-    // public Expression visitExpr1(CruxParser.Expr1Context ctx) { }
+     @Override
+     public Expression visitExpr1(CruxParser.Expr1Context ctx) {
+       Position position = makePosition(ctx);
+       CruxParser.Expr1Context lhsCtx = ctx.expr1();
+       CruxParser.Op1Context op = ctx.op1();
+       CruxParser.Expr2Context rhsCtx = ctx.expr2();
+
+       Expression lhsExpr = lhsCtx.accept(exprVisitor);
+
+       if(op == null){
+         return lhsExpr;
+       }
+
+       if(rhsCtx == null){
+
+       }
+       Expression rhsExpr = rhsCtx.accept(exprVisitor);
+       String opStr = op.getText();
+       Operation operation = null;
+       switch (opStr) {
+         case "+":
+           operation = Operation.ADD;
+           break;
+         case "-":
+           operation = Operation.SUB;
+           break;
+         case "*":
+           operation = Operation.MULT;
+           break;
+         case "/":
+           operation = Operation.DIV;
+           break;
+         case "==":
+           operation = Operation.EQ;
+           break;
+         case ">=":
+           operation = Operation.GE;
+           break;
+         case ">":
+           operation = Operation.GT;
+           break;
+         case "<=":
+           operation = Operation.LE;
+           break;
+         case "<":
+           operation = Operation.LT;
+           break;
+         case "&&":
+           operation = Operation.LOGIC_AND;
+           break;
+         case "!":
+           operation = Operation.LOGIC_NOT;
+           break;
+         case "||":
+           operation = Operation.LOGIC_OR;
+           break;
+         case "!=":
+           operation = Operation.NE;
+           break;
+       }
+
+       Expression expression = new OpExpr(position, operation, lhsExpr, rhsExpr);
+
+       return new OpExpr(position, Operation.LOGIC_OR, rhsExpr, expression);
+     }
 
     /**
      * Parse Expr2 to OpExpr Node Parsing the expr should be exactly as described in the grammer
      */
-    // @Override
-    // public Expression visitExpr2(CruxParser.Expr2Context ctx) { }
+     @Override
+     public Expression visitExpr2(CruxParser.Expr2Context ctx) {
+       Position position = makePosition(ctx);
+       CruxParser.Expr2Context lhsCtx = ctx.expr2();
+       CruxParser.Op2Context op = ctx.op2();
+       CruxParser.Expr3Context rhsCtx = ctx.expr3();
+
+       Expression lhsExpr = lhsCtx.accept(exprVisitor);
+
+       if(op == null){
+         return lhsExpr;
+       }
+
+       if(rhsCtx == null){
+
+       }
+       Expression rhsExpr = rhsCtx.accept(exprVisitor);
+       String opStr = op.getText();
+       Operation operation = null;
+       switch (opStr) {
+         case "+":
+           operation = Operation.ADD;
+           break;
+         case "-":
+           operation = Operation.SUB;
+           break;
+         case "*":
+           operation = Operation.MULT;
+           break;
+         case "/":
+           operation = Operation.DIV;
+           break;
+         case "==":
+           operation = Operation.EQ;
+           break;
+         case ">=":
+           operation = Operation.GE;
+           break;
+         case ">":
+           operation = Operation.GT;
+           break;
+         case "<=":
+           operation = Operation.LE;
+           break;
+         case "<":
+           operation = Operation.LT;
+           break;
+         case "&&":
+           operation = Operation.LOGIC_AND;
+           break;
+         case "!":
+           operation = Operation.LOGIC_NOT;
+           break;
+         case "||":
+           operation = Operation.LOGIC_OR;
+           break;
+         case "!=":
+           operation = Operation.NE;
+           break;
+       }
+
+       Expression expression = new OpExpr(position, operation, lhsExpr, rhsExpr);
+
+       return new OpExpr(position, Operation.LOGIC_OR, rhsExpr, expression);
+     }
 
     /**
      * Parse Expr3 to OpExpr Node Parsing the expr should be exactly as described in the grammer
