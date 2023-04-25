@@ -51,7 +51,15 @@ public final class ParseTreeLower {
    */
 
   public DeclarationList lower(CruxParser.ProgramContext program) {
-    return null;
+    ArrayList<Declaration> list = new ArrayList<Declaration>();
+    Position position = new Position(program.depth());
+
+//    for(CruxParser.ProgramContext context: program.declList()){
+//      Declaration node = context.accept(declVisitor);
+//      list.add(node);
+//    }
+
+    return new DeclarationList(position, list);
   }
 
   /**
@@ -61,7 +69,17 @@ public final class ParseTreeLower {
    */
 
   
-  // private StatementList lower(CruxParser.StmtListContext stmtList) { }
+   private StatementList lower(CruxParser.StmtListContext stmtList) {
+     ArrayList<Statement> list = new ArrayList<Statement>();
+     Position position = new Position(stmtList.depth());
+
+     for(CruxParser.StmtContext context: stmtList.stmt()){
+       Statement node = context.accept(stmtVisitor);
+       list.add(node);
+     }
+
+     return new StatementList(position, list);
+   }
    
 
   /**
@@ -124,21 +142,32 @@ public final class ParseTreeLower {
      *
      * @return an AST {@link VariableDeclaration}
      */
+    @Override
+    public Statement visitVarDecl(CruxParser.VarDeclContext ctx) {
+      //ctx.
+//      Type type = null;
+//      VariableDeclaration varDecl = ctx.accept(declVisitor);
+//      return varDecl;
 
-    /*
-     * @Override
-     * public Statement visitVarDecl(CruxParser.VarDeclContext ctx) { }
-     */
+      return null;
+    }
+
     
     /**
      * Visit a parse tree assignment stmt and create an AST {@link Assignment}
      *
      * @return an AST {@link Assignment}
      */
-    /*
-     * @Override
-     * public Statement visitAssignStmt(CruxParser.AssignStmtContext ctx) { }
-     */
+
+    @Override
+    public Statement visitAssignStmt(CruxParser.AssignStmtContext ctx) {
+      Position position = new Position(ctx.depth());
+      Type type = null;
+      Symbol symbol  = symTab.add(position, ctx.designator().getText(), type);
+      Expression rhs = ctx.expr0().accept(exprVisitor);
+      VarAccess lhs = new VarAccess(position, symbol);
+      return new Assignment(position, lhs, rhs);
+    }
     
     /**
      * Visit a parse tree assignment nosemi stmt and create an AST {@link Assignment}
