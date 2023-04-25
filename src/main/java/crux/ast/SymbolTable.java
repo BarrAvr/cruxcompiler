@@ -91,9 +91,9 @@ public final class SymbolTable {
     //add built in functions to the global scope
     add(new Position(0), "readInt", new FuncType(new TypeList(), new IntType()));
     add(new Position(0), "readChar", new FuncType(new TypeList(), new IntType()));
-    add(new Position(0), "printBool", new FuncType(new TypeList(), new VoidType())); 
-    add(new Position(0), "printInt", new FuncType(new TypeList(), new VoidType()));
-    add(new Position(0), "printChar", new FuncType(new TypeList(), new VoidType()));
+    add(new Position(0), "printBool", new FuncType(TypeList.of(new BoolType()), new VoidType())); 
+    add(new Position(0), "printInt", new FuncType(TypeList.of(new IntType()), new VoidType()));
+    add(new Position(0), "printChar", new FuncType(TypeList.of(new IntType()), new VoidType()));
     add(new Position(0), "println", new FuncType(new TypeList(), new VoidType()));
   }
 
