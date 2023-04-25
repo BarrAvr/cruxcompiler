@@ -126,6 +126,23 @@ public final class SymbolTable {
   Symbol add(Position pos, String name, Type type) {
     //add symol to current scope. Return error if already exists.
     
+    //make sure sybmol scope exists and size > 0
+    if(symbolScopes != null && symbolScopes.size() != 0){
+
+      Map<String, Symbol> currentScope = symbolScopes.get(symbolScopes.size() - 1);
+
+      //check if name already exists in current scope
+      if(currentScope.containsKey(name)){
+        err.println("DeclarationError" + pos + "Variable " + name + " already declared in this scope.");
+        encounteredError = true;
+        return new Symbol(name, "DeclarationError");
+      }
+      //in the case that we do not find an existing name in the current scope, add the new symbol to the current scope
+      else{
+        currentScope.put(name, new Symbol(name, type));
+        return new Symbol(name, type);
+      } 
+    }
 
     return null;
   }
@@ -149,7 +166,15 @@ public final class SymbolTable {
    * Try to find a symbol in the table starting form the most recent scope.
    */
   private Symbol find(String name) {
-    //TODO
+    // Looks up and returns the symbol with matching name. Return null if doesn’t exist. Private.
+
+    if(name != null){
+      for(int i = symbolScopes.size() - 1; i >= 0; i--){
+        if(symbolScopes.get(i).containsKey(name)){
+          return symbolScopes.get(i).get(name);
+        }
+      }
+    }
     return null;
   }
 }
