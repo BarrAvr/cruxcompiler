@@ -125,6 +125,8 @@ public final class SymbolTable {
    */
   Symbol add(Position pos, String name, Type type) {
     //add symol to current scope. Return error if already exists.
+    
+
     return null;
   }
 
