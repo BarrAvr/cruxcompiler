@@ -6,6 +6,7 @@ import crux.ast.types.*;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,7 +85,16 @@ public final class SymbolTable {
 
   SymbolTable(PrintStream err) {
     this.err = err;
-    //TODO
+    //initialize the global scope
+    enter();
+
+    //add built in functions to the global scope
+    add(new Position(0), "readInt", new FuncType(new TypeList(), new IntType()));
+    add(new Position(0), "readChar", new FuncType(new TypeList(), new IntType()));
+    add(new Position(0), "printBool", new FuncType(new TypeList(), new VoidType())); 
+    add(new Position(0), "printInt", new FuncType(new TypeList(), new VoidType()));
+    add(new Position(0), "printChar", new FuncType(new TypeList(), new VoidType()));
+    add(new Position(0), "println", new FuncType(new TypeList(), new VoidType()));
   }
 
   boolean hasEncounteredError() {
@@ -96,7 +106,8 @@ public final class SymbolTable {
    */
 
   void enter() {
-    //TODO
+    //add new hash map to the symbol table
+    symbolScopes.add(new HashMap<>());
   }
 
   /**
@@ -104,7 +115,8 @@ public final class SymbolTable {
    */
 
   void exit() {
-    //TODO
+    //pop last hash map from the symbol table
+    symbolScopes.remove(symbolScopes.size() - 1);
   }
 
   /**
@@ -112,7 +124,7 @@ public final class SymbolTable {
    * current scope that's a declareation error.
    */
   Symbol add(Position pos, String name, Type type) {
-    //TODO
+    //add symol to current scope. Return error if already exists.
     return null;
   }
 
