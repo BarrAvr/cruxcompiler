@@ -4,7 +4,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\ast\BaseNode.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\TypeChecker.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\ArrayDeclaration.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\VoidType.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxBaseVisitor.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\NopInst.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\Instruction.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\Emulator.java
@@ -15,7 +14,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\ast\Statement.java
 c:\Users\nickc\desktop\crux\target\generated-sources\antlr4\crux\pt\CruxBaseListener.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\ASTLower.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\CopyInst.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxBaseListener.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\Expression.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\ReturnInst.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\Declaration.java
@@ -25,7 +23,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\ast\VariableDeclaration.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\printing\IRValueFormatter.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\SymbolTable.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\traversal\DefaultNodeVisitor.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxVisitor.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\Authors.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\traversal\NodeVisitor.java
 c:\Users\nickc\desktop\crux\target\generated-sources\antlr4\crux\pt\CruxBaseVisitor.java
@@ -33,7 +30,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\ast\FunctionDefinition.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\Position.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\ArrayType.java
 c:\Users\nickc\desktop\crux\target\generated-sources\antlr4\crux\pt\CruxParser.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxLexer.java
 c:\Users\nickc\desktop\crux\target\generated-sources\antlr4\crux\pt\CruxVisitor.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\Variable.java
 c:\Users\nickc\desktop\crux\target\generated-sources\antlr4\crux\pt\CruxListener.java
@@ -47,7 +43,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\printing\ParseTreePrinter.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\Function.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\Return.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\Program.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxListener.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\printing\IRPrinter.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\TypeList.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\DeclarationList.java
@@ -61,7 +56,6 @@ c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\FuncType.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\types\ErrorType.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\AddressAt.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\StoreInst.java
-c:\Users\nickc\desktop\crux\src\main\java\crux\pt\CruxParser.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ir\insts\CompareInst.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\ANTLRErrorRecorder.java
 c:\Users\nickc\desktop\crux\src\main\java\crux\ast\ArrayAccess.java
