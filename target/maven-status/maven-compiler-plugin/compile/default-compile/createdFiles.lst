@@ -69,7 +69,6 @@ crux\backend\CodeGen.class
 crux\pt\CruxParser$StmtBlockContext.class
 crux\ast\Statement.class
 crux\ast\SymbolTable$Symbol.class
-Crux.tokens
 crux\ir\insts\BinaryOperator.class
 crux\pt\CruxLexer.interp
 crux\Compiler.class
@@ -93,7 +92,6 @@ crux\printing\IRPrinter.class
 crux\ast\types\IntType.class
 crux\ast\types\ErrorType.class
 crux\ast\FunctionDefinition.class
-CruxLexer.tokens
 crux\ir\Formattable.class
 crux\ast\ParseTreeLower$ExprVisitor.class
 crux\ir\insts\BinaryOperator$Op.class

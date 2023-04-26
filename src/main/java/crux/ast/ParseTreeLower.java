@@ -124,7 +124,11 @@ public final class ParseTreeLower {
      */
     @Override
     public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      Type type = null;
+      String name = ctx.Identifier().accept(declVisitor).toString();
+      Symbol symbol  = symTab.add(position, name, type);
+      return new ArrayDeclaration(position, symbol);
     }
 
     /**
@@ -135,7 +139,17 @@ public final class ParseTreeLower {
 
     @Override
     public Declaration visitFunctionDefn(CruxParser.FunctionDefnContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      TypeList params = null;
+      String name = ctx.Identifier().accept(declVisitor).toString();
+      Symbol symbol  = symTab.add(position, name, params);
+      symTab.enter();
+      StatementList sList = lower(ctx.stmtBlock().stmtList());
+      List <Symbol> list = null;
+      symTab.exit();
+      return new FunctionDefinition(position, symbol, list, sList);
+      
+      
     }
   }
 
