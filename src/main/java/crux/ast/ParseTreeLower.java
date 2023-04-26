@@ -47,7 +47,7 @@ public final class ParseTreeLower {
   /**
    * Lower top-level parse tree to AST
    *
-   * @return a {@link DeclList} object representing the top-level AST.
+   * @return a {@link DeclarationList} object representing the top-level AST.
    */
 
   public DeclarationList lower(CruxParser.ProgramContext program) {
@@ -64,7 +64,7 @@ public final class ParseTreeLower {
   /**
    * Lower stmt list by lower individual stmt into AST.
    *
-   * @return a {@link StmtList} AST object.
+   * @return a {@link StatementList} AST object.
    */
 
   
@@ -84,7 +84,7 @@ public final class ParseTreeLower {
   /**
    * Similar to {@link #lower(CruxParser.StmtListContext)}, but handles symbol table as well.
    *
-   * @return a {@link StmtList} AST object.
+   * @return a {@link StatementList} AST object.
    */
 
   
@@ -101,25 +101,31 @@ public final class ParseTreeLower {
    */
   private final class DeclVisitor extends CruxBaseVisitor<Declaration> {
     /**
-     * Visit a parse tree var decl and create an AST {@link VarariableDeclaration}
+     * Visit a parse tree var decl and create an AST {@link VariableDeclaration}
      *
      * @return an AST {@link VariableDeclaration}
      */
 
-    /*
-     * @Override
-     * public VariableDeclaration visitVarDecl(CruxParser.VarDeclContext ctx) { }
-     */
+    @Override
+    public VariableDeclaration visitVarDecl(CruxParser.VarDeclContext ctx) {
+      Position position = makePosition(ctx);
+      Type type = null;
+      //ctx.type().Identifier().getSymbol();
+      String name = ctx.Identifier().accept(declVisitor).toString();
+      Symbol symbol  = symTab.add(position, name, type);
+      return new VariableDeclaration(position, symbol);
+    }
+
 
     /**
      * Visit a parse tree array decl and creates an AST {@link ArrayDeclaration}
      *
      * @return an AST {@link ArrayDeclaration}
      */
-    /*
-     *    @Override
-     * public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) { }
-     */
+    @Override
+    public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
+      return null;
+    }
 
     /**
      * Visit a parse tree function definition and create an AST {@link FunctionDefinition}
@@ -127,14 +133,15 @@ public final class ParseTreeLower {
      * @return an AST {@link FunctionDefinition}
      */
 
-    /* @Override
-     * public Declaration visitFunctionDefn(CruxParser.FunctionDefnContext ctx) { }
-     */
+    @Override
+    public Declaration visitFunctionDefn(CruxParser.FunctionDefnContext ctx) {
+      return null;
+    }
   }
 
 
   /**
-   * A parse tree visitor to create AST nodes derived from {@link Stmt}
+   * A parse tree visitor to create AST nodes derived from {@link Statement}
    */
 
   private final class StmtVisitor extends CruxBaseVisitor<Statement> {
@@ -148,12 +155,7 @@ public final class ParseTreeLower {
      */
     @Override
     public Statement visitVarDecl(CruxParser.VarDeclContext ctx) {
-      //ctx.
-//      Type type = null;
-//      VariableDeclaration varDecl = ctx.accept(declVisitor);
-//      return varDecl;
-
-      return null;
+      return declVisitor.visitVarDecl(ctx);
     }
 
     
@@ -178,22 +180,24 @@ public final class ParseTreeLower {
      *
      * @return an AST {@link Assignment}
      */
-    /*
-     *    @Override
-     *public Statement visitAssignStmtNoSemi(CruxParser.AssignStmtNoSemiContext ctx) { }
-     */
+    @Override
+    public Statement visitAssignStmtNoSemi(CruxParser.AssignStmtNoSemiContext ctx) {
+      return null;
+    }
 
     /**
      * Visit a parse tree call stmt and create an AST {@link Call}. Since {@link Call} is both
-     * {@link Expression} and {@link Statementt}, we simply delegate this to
+     * {@link Expression} and {@link Statement}, we simply delegate this to
      * {@link ExprVisitor#visitCallExpr(CruxParser.CallExprContext)} that we will implement later.
      *
      * @return an AST {@link Call}
      */
 
     
-    // @Override
-    // public Statement visitCallStmt(CruxParser.CallStmtContext ctx) { }
+    @Override
+    public Statement visitCallStmt(CruxParser.CallStmtContext ctx) {
+      return (Statement) exprVisitor.visitCallStmt(ctx);
+    }
      
     
     /**
@@ -204,19 +208,23 @@ public final class ParseTreeLower {
      * @return an AST {@link IfElseBranch}
      */
     
-    // @Override
-    // public Statement visitIfStmt(CruxParser.IfStmtContext ctx) { }
+    @Override
+    public Statement visitIfStmt(CruxParser.IfStmtContext ctx) {
+      return null;
+    }
      
     
-    /**
-     * Visit a parse tree for loop and create an AST {@link For}. You'll going to use a similar
-     * techniques as {@link #visitIfStmt(CruxParser.IfStmtContext)} to decompose this construction.
-     *
-     * @return an AST {@link Loop}
-     */
-    
-    // @Override
-    // public Statement visitForStmt(CruxParser.ForStmtContext ctx) { }
+//    /**
+//     * Visit a parse tree for loop and create an AST {@link For}. You'll going to use a similar
+//     * techniques as {@link #visitIfStmt(CruxParser.IfStmtContext)} to decompose this construction.
+//     *
+//     * @return an AST {@link Loop}
+//     */
+
+    @Override
+    public Statement visitForStmt(CruxParser.ForStmtContext ctx) {
+      return null;
+    }
      
 
     /**
@@ -227,16 +235,20 @@ public final class ParseTreeLower {
      */
 
     
-    // @Override
-    // public Statement visitReturnStmt(CruxParser.ReturnStmtContext ctx) {}
+    @Override
+    public Statement visitReturnStmt(CruxParser.ReturnStmtContext ctx) {
+      return null;
+    }
      
     
     /**
      * Creates a Break node
      */
     
-    // @Override
-    // public Statement visitBreakStmt(CruxParser.BreakStmtContext ctx) { }
+    @Override
+    public Statement visitBreakStmt(CruxParser.BreakStmtContext ctx) {
+      return null;
+    }
     
   }
 
@@ -378,20 +390,21 @@ public final class ParseTreeLower {
     /**
      * Create an Call Node
      */
-    // @Override
-    // public Call visitCallExpr(CruxParser.CallExprContext ctx) {
-    // }
+    @Override
+    public Call visitCallExpr(CruxParser.CallExprContext ctx) {
+      return null;
+    }
 
     /**
      * visitDesignator will check for a name or ArrayAccess FYI it should account for the case when
      * the designator was dereferenced
      */
-//     @Override
-//     public Expression visitDesignator(CruxParser.DesignatorContext ctx) {
-//       ctx.expr0();
-//       ctx.Identifier();
-//       return null;
-//     }
+    @Override
+    public Expression visitDesignator(CruxParser.DesignatorContext ctx) {
+      ctx.expr0();
+      ctx.Identifier();
+      return null;
+    }
 
     /**
      * Create an Literal Node
