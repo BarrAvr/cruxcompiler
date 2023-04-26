@@ -201,7 +201,7 @@ public final class ParseTreeLower {
     
     @Override
     public Statement visitCallStmt(CruxParser.CallStmtContext ctx) {
-      return (Statement) exprVisitor.visitCallStmt(ctx);
+      return (Statement) exprVisitor.visitCallExpr(ctx.callExpr());
     }
      
     
