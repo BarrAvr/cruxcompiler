@@ -228,7 +228,12 @@ public final class ParseTreeLower {
 
     @Override
     public Statement visitForStmt(CruxParser.ForStmtContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      Assignment i = (Assignment) ctx.assignStmt().accept(stmtVisitor);
+      Expression condition = ctx.expr0().accept(exprVisitor);
+      Assignment inc = (Assignment) ctx.assignStmtNoSemi().accept(stmtVisitor);
+      StatementList body = lower(ctx.stmtBlock());
+      return new For(position, i, condition, inc, body);
     }
      
 
