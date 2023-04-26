@@ -259,25 +259,10 @@ public final class ParseTreeLower {
          return lhsExpr;
        }
 
-       if(rhsCtx == null){
-
-       }
        Expression rhsExpr = rhsCtx.accept(exprVisitor);
        String opStr = op.getText();
        Operation operation = null;
        switch (opStr) {
-         case "+":
-           operation = Operation.ADD;
-           break;
-         case "-":
-           operation = Operation.SUB;
-           break;
-         case "*":
-           operation = Operation.MULT;
-           break;
-         case "/":
-           operation = Operation.DIV;
-           break;
          case "==":
            operation = Operation.EQ;
            break;
@@ -292,15 +277,6 @@ public final class ParseTreeLower {
            break;
          case "<":
            operation = Operation.LT;
-           break;
-         case "&&":
-           operation = Operation.LOGIC_AND;
-           break;
-         case "!":
-           operation = Operation.LOGIC_NOT;
-           break;
-         case "||":
-           operation = Operation.LOGIC_OR;
            break;
          case "!=":
            operation = Operation.NE;
@@ -318,20 +294,17 @@ public final class ParseTreeLower {
      public Expression visitExpr1(CruxParser.Expr1Context ctx) {
        Position position = makePosition(ctx);
        CruxParser.Expr1Context lhsCtx = ctx.expr1();
-       CruxParser.Op1Context op = ctx.op1();
+       CruxParser.Op1Context op1 = ctx.op1();
        CruxParser.Expr2Context rhsCtx = ctx.expr2();
 
        Expression lhsExpr = lhsCtx.accept(exprVisitor);
 
-       if(op == null){
+       if(op1 == null){
          return lhsExpr;
        }
 
-       if(rhsCtx == null){
-
-       }
        Expression rhsExpr = rhsCtx.accept(exprVisitor);
-       String opStr = op.getText();
+       String opStr = op1.getText();
        Operation operation = null;
        switch (opStr) {
          case "+":
@@ -340,44 +313,12 @@ public final class ParseTreeLower {
          case "-":
            operation = Operation.SUB;
            break;
-         case "*":
-           operation = Operation.MULT;
-           break;
-         case "/":
-           operation = Operation.DIV;
-           break;
-         case "==":
-           operation = Operation.EQ;
-           break;
-         case ">=":
-           operation = Operation.GE;
-           break;
-         case ">":
-           operation = Operation.GT;
-           break;
-         case "<=":
-           operation = Operation.LE;
-           break;
-         case "<":
-           operation = Operation.LT;
-           break;
-         case "&&":
-           operation = Operation.LOGIC_AND;
-           break;
-         case "!":
-           operation = Operation.LOGIC_NOT;
-           break;
          case "||":
            operation = Operation.LOGIC_OR;
            break;
-         case "!=":
-           operation = Operation.NE;
-           break;
        }
 
-       Expression expression = new OpExpr(position, operation, lhsExpr, rhsExpr);
-
-       return new OpExpr(position, Operation.LOGIC_OR, rhsExpr, expression);
+       return new OpExpr(position, operation, lhsExpr, rhsExpr);
      }
 
     /**
@@ -403,58 +344,38 @@ public final class ParseTreeLower {
        String opStr = op.getText();
        Operation operation = null;
        switch (opStr) {
-         case "+":
-           operation = Operation.ADD;
-           break;
-         case "-":
-           operation = Operation.SUB;
-           break;
          case "*":
            operation = Operation.MULT;
            break;
          case "/":
            operation = Operation.DIV;
            break;
-         case "==":
-           operation = Operation.EQ;
-           break;
-         case ">=":
-           operation = Operation.GE;
-           break;
-         case ">":
-           operation = Operation.GT;
-           break;
-         case "<=":
-           operation = Operation.LE;
-           break;
-         case "<":
-           operation = Operation.LT;
-           break;
          case "&&":
            operation = Operation.LOGIC_AND;
            break;
-         case "!":
-           operation = Operation.LOGIC_NOT;
-           break;
-         case "||":
-           operation = Operation.LOGIC_OR;
-           break;
-         case "!=":
-           operation = Operation.NE;
-           break;
        }
 
-       Expression expression = new OpExpr(position, operation, lhsExpr, rhsExpr);
-
-       return new OpExpr(position, Operation.LOGIC_OR, rhsExpr, expression);
+       return new OpExpr(position, operation, lhsExpr, rhsExpr);
      }
 
     /**
      * Parse Expr3 to OpExpr Node Parsing the expr should be exactly as described in the grammer
      */
-    // @Override
-    // public Expression visitExpr3(CruxParser.Expr3Context ctx) {
-    // }
+     @Override
+     public Expression visitExpr3(CruxParser.Expr3Context ctx) {
+       if(ctx.designator() != null){
+         return ctx.designator().accept(exprVisitor);
+       }else if(ctx.callExpr() != null){
+         return ctx.callExpr().accept(exprVisitor);
+       }else if(ctx.literal() != null){
+         return ctx.literal().accept(exprVisitor);
+       }else if(ctx.expr0() != null){
+         return ctx.expr0().accept(exprVisitor);
+       }else{
+         return ctx.expr3().accept(exprVisitor); //Not sure how to return "Not expr3"
+       }
+
+     }
 
     /**
      * Create an Call Node
@@ -467,15 +388,28 @@ public final class ParseTreeLower {
      * visitDesignator will check for a name or ArrayAccess FYI it should account for the case when
      * the designator was dereferenced
      */
-    // @Override
-    // public Expression visitDesignator(CruxParser.DesignatorContext ctx) {
-    // }
+//     @Override
+//     public Expression visitDesignator(CruxParser.DesignatorContext ctx) {
+//       ctx.expr0();
+//       ctx.Identifier();
+//       return null;
+//     }
 
     /**
      * Create an Literal Node
      */
-    // @Override
-    // public Expression visitLiteral(CruxParser.LiteralContext ctx) {
-    // }
+     @Override
+     public Expression visitLiteral(CruxParser.LiteralContext ctx) {
+       Position position = makePosition(ctx);
+       if(ctx.True() != null){
+         return new LiteralBool(position, true);
+       }else if(ctx.False() != null){
+         return new LiteralBool(position, false);
+       }else{
+         String number = ctx.getText();
+         Integer integer = Integer.valueOf(number);
+         return new LiteralInt(position, integer);
+       }
+     }
   }
 }
