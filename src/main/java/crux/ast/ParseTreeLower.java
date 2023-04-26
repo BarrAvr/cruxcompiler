@@ -252,7 +252,6 @@ public final class ParseTreeLower {
     
     @Override
     public Statement visitBreakStmt(CruxParser.BreakStmtContext ctx) {
-      symTab.exit();
       Position position = makePosition(ctx);
       return new Break(position);
     }
