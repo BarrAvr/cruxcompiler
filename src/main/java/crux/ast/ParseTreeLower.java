@@ -51,15 +51,14 @@ public final class ParseTreeLower {
    */
 
   public DeclarationList lower(CruxParser.ProgramContext program) {
-//    ArrayList<Declaration> list = new ArrayList<Declaration>();
+    ArrayList<Declaration> list = new ArrayList<Declaration>();
 //    Position position = makePosition(program);
 //
-//    for(CruxParser.ProgramContext context: program.declList()){
-//      Declaration node = context.accept(declVisitor);
-//      list.add(node);
-//    }
-//
-//    return new DeclarationList(position, list);
+    for(CruxParser.DeclContext context: program.declList().decl()){
+      Declaration node = context.accept(declVisitor);
+      list.add(node);
+    }
+    return new DeclarationList(makePosition(program), list);
   }
 
   /**
