@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="0.253" tests="50" errors="50" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="0.298" tests="50" errors="50" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
-    <property name="sun.java.command" value="C:\Users\nickc\AppData\Local\Temp\surefire4528885291301657619\surefirebooter6249088422470856059.jar C:\Users\nickc\AppData\Local\Temp\surefire4528885291301657619 2023-04-25T22-05-54_079-jvmRun1 surefire16534134097948698024tmp surefire_010197553610779865466tmp"/>
+    <property name="sun.java.command" value="C:\Users\nickc\AppData\Local\Temp\surefire8776744298241334515\surefirebooter575045289827026151.jar C:\Users\nickc\AppData\Local\Temp\surefire8776744298241334515 2023-04-25T23-46-44_370-jvmRun1 surefire5299780162993173809tmp surefire_02986157612450954287tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="c:\Users\nickc\desktop\crux\target\test-classes;c:\Users\nickc\desktop\crux\target\classes;C:\Users\nickc\.m2\repository\org\antlr\antlr4-runtime\4.7.2\antlr4-runtime-4.7.2.jar;C:\Users\nickc\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\nickc\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\nickc\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\nickc\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\nickc\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\nickc\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\nickc\AppData\Local\Temp\surefire4528885291301657619\surefirebooter6249088422470856059.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nickc\AppData\Local\Temp\surefire8776744298241334515\surefirebooter575045289827026151.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20+36-2344"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.102">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.137">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
@@ -82,7 +82,73 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.004">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.003">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
@@ -112,19 +178,7 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
@@ -140,42 +194,6 @@ Caused by: java.lang.NullPointerException
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
   <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
@@ -196,22 +214,10 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 ]]></error>
   </testcase>
   <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
@@ -227,18 +233,12 @@ Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
   <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
@@ -262,6 +262,24 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
+Caused by: java.lang.NullPointerException
+]]></error>
+  </testcase>
   <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
@@ -274,25 +292,7 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
   <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException
-]]></error>
-  </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
@@ -328,7 +328,7 @@ Caused by: java.lang.NullPointerException
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
@@ -346,13 +346,13 @@ Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.t
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException
 ]]></error>
   </testcase>
-  <testcase name="ast" classname="crux.CompilerStageTests" time="0.001">
+  <testcase name="ast" classname="crux.CompilerStageTests" time="0.002">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
 Caused by: java.lang.NullPointerException

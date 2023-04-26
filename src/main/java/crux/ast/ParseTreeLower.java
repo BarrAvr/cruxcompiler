@@ -410,7 +410,15 @@ public final class ParseTreeLower {
      */
     @Override
     public Call visitCallExpr(CruxParser.CallExprContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      String name = ctx.Identifier().getText();
+      Symbol symbol = symTab.lookup(position, name);
+      List<Expression> args = new ArrayList<Expression>();
+      for(CruxParser.Expr0Context exprList : ctx.exprList().expr0()){
+        Expression node = exprVisitor.visit(exprList);
+        args.add(node);
+      }
+      return new Call(position, symbol, args);
     }
 
     /**
@@ -419,9 +427,15 @@ public final class ParseTreeLower {
      */
     @Override
     public Expression visitDesignator(CruxParser.DesignatorContext ctx) {
-      ctx.expr0();
-      ctx.Identifier();
-      return null;
+      Position position = makePosition(ctx);
+      String name = ctx.Identifier().getText();
+      Symbol symbol = symTab.lookup(position, name);
+      if(ctx.expr0() != null){
+        Expression index = ctx.expr0().accept(exprVisitor);
+        return new ArrayAccess(position, symbol, index);
+      }else{
+        return new VarAccess(position, symbol);
+      }
     }
 
     /**
