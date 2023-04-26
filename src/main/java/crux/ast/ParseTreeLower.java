@@ -52,13 +52,13 @@ public final class ParseTreeLower {
 
   public DeclarationList lower(CruxParser.ProgramContext program) {
     ArrayList<Declaration> list = new ArrayList<Declaration>();
-//    Position position = makePosition(program);
-//
+    Position position = makePosition(program);
+
     for(CruxParser.DeclContext context: program.declList().decl()){
       Declaration node = context.accept(declVisitor);
       list.add(node);
     }
-    return new DeclarationList(makePosition(program), list);
+    return new DeclarationList(position, list);
   }
 
   /**
@@ -89,11 +89,10 @@ public final class ParseTreeLower {
 
   
    private StatementList lower(CruxParser.StmtBlockContext stmtBlock) {
-//     ArrayList<Statement> list = new ArrayList<Statement>();
-//     Position position = makePosition(stmtBlock);
-//
-//
-//     return new StatementList(position, list);
+      symTab.enter();
+      StatementList list = lower(stmtBlock.stmtList());
+      symTab.exit();
+      return list;
    }
    
 
