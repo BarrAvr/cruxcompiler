@@ -182,7 +182,12 @@ public final class ParseTreeLower {
      */
     @Override
     public Statement visitAssignStmtNoSemi(CruxParser.AssignStmtNoSemiContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      Type type = null;
+      Symbol symbol  = symTab.add(position, ctx.designator().getText(), type);
+      Expression rhs = ctx.expr0().accept(exprVisitor);
+      VarAccess lhs = new VarAccess(position, symbol);
+      return new Assignment(position, lhs, rhs);
     }
 
     /**
