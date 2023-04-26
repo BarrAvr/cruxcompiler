@@ -242,7 +242,9 @@ public final class ParseTreeLower {
     
     @Override
     public Statement visitReturnStmt(CruxParser.ReturnStmtContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      Expression expr = ctx.expr0().accept(exprVisitor);
+      return new Return(position, expr);
     }
      
     
