@@ -215,7 +215,12 @@ public final class ParseTreeLower {
     
     @Override
     public Statement visitIfStmt(CruxParser.IfStmtContext ctx) {
-      return null;
+      Position position = makePosition(ctx);
+      Expression condition = ctx.expr0().accept(exprVisitor);
+      StatementList thenBlock = lower(ctx.stmtBlock(0));
+      StatementList elseBlock = lower(ctx.stmtBlock(1));
+      return new IfElseBranch(position, condition, thenBlock, elseBlock);
+
     }
      
     
