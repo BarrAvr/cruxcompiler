@@ -86,7 +86,7 @@ public final class SymbolTable {
   SymbolTable(PrintStream err) {
     this.err = err;
     //initialize the global scope
-    enter();
+    symbolScopes.add(new HashMap<String, Symbol>());
 
     //add built in functions to the global scope
     add(new Position(0), "readInt", new FuncType(new TypeList(), new IntType()));
@@ -107,7 +107,7 @@ public final class SymbolTable {
 
   void enter() {
     //add new hash map to the symbol table
-    symbolScopes.add(new HashMap<>());
+    symbolScopes.add(new HashMap<String, Symbol>());
   }
 
   /**
@@ -124,7 +124,7 @@ public final class SymbolTable {
    * current scope that's a declareation error.
    */
   Symbol add(Position pos, String name, Type type) {
-    //add symol to current scope. Return error if already exists.
+    //add symbol to current scope. Return error if already exists.
     
     //make sure sybmol scope exists and size > 0
     if(symbolScopes != null && symbolScopes.size() != 0){
