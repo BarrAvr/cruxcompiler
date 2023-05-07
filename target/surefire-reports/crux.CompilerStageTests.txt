@@ -1,254 +1,254 @@
 -------------------------------------------------------------------------------
 Test set: crux.CompilerStageTests
 -------------------------------------------------------------------------------
-Tests run: 50, Failures: 0, Errors: 50, Skipped: 0, Time elapsed: 0.243 s <<< FAILURE! - in crux.CompilerStageTests
-crux.CompilerStageTests.ast  Time elapsed: 0.073 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Tests run: 50, Failures: 0, Errors: 50, Skipped: 0, Time elapsed: 1.428 s <<< FAILURE! - in crux.CompilerStageTests
+crux.CompilerStageTests.ast  Time elapsed: 0.592 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.004 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.012 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.006 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.011 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.016 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.012 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.017 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.019 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.03 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.024 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.018 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.014 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.014 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.015 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.018 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.016 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.008 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.008 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.008 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.008 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.01 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.01 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.008 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.011 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.018 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.012 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.011 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.012 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.011 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.001 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.012 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.009 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.013 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.029 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.021 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 
-crux.CompilerStageTests.ast  Time elapsed: 0.002 s  <<< ERROR!
-java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+crux.CompilerStageTests.ast  Time elapsed: 0.015 s  <<< ERROR!
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 	at crux.CompilerStageTests.lambda$ast$3(CompilerStageTests.java:124)
-Caused by: java.lang.NullPointerException: Cannot invoke "crux.ast.Declaration.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
+Caused by: java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "org.antlr.v4.runtime.tree.TerminalNode.accept(org.antlr.v4.runtime.tree.ParseTreeVisitor)" is null
 

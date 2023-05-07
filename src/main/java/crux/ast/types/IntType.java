@@ -11,4 +11,9 @@ public final class IntType extends Type implements java.io.Serializable {
   public String toString() {
     return "int";
   }
+
+  @Override
+  public boolean equivalent(Type that) {
+    return that.getClass() == IntType.class;
+  }
 }
