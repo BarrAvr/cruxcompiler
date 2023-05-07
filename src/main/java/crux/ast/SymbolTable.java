@@ -169,7 +169,7 @@ public final class SymbolTable {
     // Looks up and returns the symbol with matching name. Return null if doesn’t exist. Private.
 
     if(name != null){
-      for(int i = symbolScopes.size() - 1; i >= 0; i--){
+      for(int i = 0; i < symbolScopes.size(); i++){
         if(symbolScopes.get(i).containsKey(name)){
           return symbolScopes.get(i).get(name);
         }

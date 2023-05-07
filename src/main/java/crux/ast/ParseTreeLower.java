@@ -9,6 +9,7 @@ import crux.ast.SymbolTable.Symbol;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,11 +54,14 @@ public final class ParseTreeLower {
   public DeclarationList lower(CruxParser.ProgramContext program) {
     ArrayList<Declaration> list = new ArrayList<Declaration>();
     Position position = makePosition(program);
+    symTab.enter();
 
     for(CruxParser.DeclContext context: program.declList().decl()){
       Declaration node = context.accept(declVisitor);
       list.add(node);
     }
+
+    symTab.exit();
     return new DeclarationList(position, list);
   }
 
@@ -89,6 +93,7 @@ public final class ParseTreeLower {
 
   
    private StatementList lower(CruxParser.StmtBlockContext stmtBlock) {
+
       symTab.enter();
       StatementList list = lower(stmtBlock.stmtList());
       symTab.exit();
@@ -113,6 +118,7 @@ public final class ParseTreeLower {
       //ctx.type().Identifier().getSymbol();
       String name = ctx.Identifier().accept(declVisitor).toString();
       Symbol symbol  = symTab.add(position, name, type);
+
       return new VariableDeclaration(position, symbol);
     }
 
@@ -140,12 +146,51 @@ public final class ParseTreeLower {
     @Override
     public Declaration visitFunctionDefn(CruxParser.FunctionDefnContext ctx) {
       Position position = makePosition(ctx);
-      TypeList params = null;
+      
+      Type type;
+      if(ctx.type() == null){
+        type = null;
+      }else if(ctx.type().getText().equals("int")){
+        type = new IntType();
+      }else if(ctx.type().getText().equals("bool")){
+        type = new BoolType();
+      }else{
+        type = new VoidType();
+      }
+
+      TypeList params = new TypeList();
+
+      for(CruxParser.ParamContext context: ctx.paramList().param()){
+        if(context.type().getText().equals("int")){
+          params.append(new IntType());
+        }else if(context.type().getText().equals("bool")){
+          params.append(new BoolType());
+        }else{
+          params.append(new VoidType());
+        }
+      }
+
       String name = ctx.Identifier().accept(declVisitor).toString();
       Symbol symbol  = symTab.add(position, name, params);
       symTab.enter();
+      ArrayList<Symbol> list = new ArrayList<Symbol>(); 
+
+      for(CruxParser.ParamContext context: ctx.paramList().param()){
+
+        if(context.type().getText().equals("int")){
+          type = new IntType();
+        }else if(context.type().getText().equals("bool")){
+          type = new BoolType();
+        }else{
+          type = new VoidType();
+        }
+      
+        String paramName = context.Identifier().accept(declVisitor).toString();
+        Symbol paramSymbol = symTab.add(position, paramName, type );
+        list.add(paramSymbol);
+      }
+
       StatementList sList = lower(ctx.stmtBlock().stmtList());
-      List <Symbol> list = null;
       symTab.exit();
       return new FunctionDefinition(position, symbol, list, sList);
       
@@ -182,11 +227,9 @@ public final class ParseTreeLower {
     @Override
     public Statement visitAssignStmt(CruxParser.AssignStmtContext ctx) {
       Position position = makePosition(ctx);
-      Type type = null;
-      Symbol symbol  = symTab.add(position, ctx.designator().getText(), type);
-      Expression rhs = ctx.expr0().accept(exprVisitor);
-      VarAccess lhs = new VarAccess(position, symbol);
-      return new Assignment(position, lhs, rhs);
+      Expression location = ctx.designator().accept(exprVisitor);
+      Expression value = ctx.expr0().accept(exprVisitor);
+      return new Assignment(position, location, value);
     }
     
     /**
@@ -197,11 +240,9 @@ public final class ParseTreeLower {
     @Override
     public Statement visitAssignStmtNoSemi(CruxParser.AssignStmtNoSemiContext ctx) {
       Position position = makePosition(ctx);
-      Type type = null;
-      Symbol symbol  = symTab.add(position, ctx.designator().getText(), type);
-      Expression rhs = ctx.expr0().accept(exprVisitor);
-      VarAccess lhs = new VarAccess(position, symbol);
-      return new Assignment(position, lhs, rhs);
+      Expression location = ctx.designator().accept(exprVisitor);
+      Expression value = ctx.expr0().accept(exprVisitor);
+      return new Assignment(position, location, value);
     }
 
     /**
@@ -248,11 +289,11 @@ public final class ParseTreeLower {
     @Override
     public Statement visitForStmt(CruxParser.ForStmtContext ctx) {
       Position position = makePosition(ctx);
-      Assignment i = (Assignment) ctx.assignStmt().accept(stmtVisitor);
-      Expression condition = ctx.expr0().accept(exprVisitor);
-      Assignment inc = (Assignment) ctx.assignStmtNoSemi().accept(stmtVisitor);
+      Assignment init = (Assignment) ctx.assignStmt().accept(stmtVisitor);
+      Expression cond = ctx.expr0().accept(exprVisitor);
+      Assignment increment = (Assignment) ctx.assignStmtNoSemi().accept(stmtVisitor);
       StatementList body = lower(ctx.stmtBlock());
-      return new For(position, i, condition, inc, body);
+      return new For(position, init, cond, increment, body);
     }
      
 
@@ -267,8 +308,8 @@ public final class ParseTreeLower {
     @Override
     public Statement visitReturnStmt(CruxParser.ReturnStmtContext ctx) {
       Position position = makePosition(ctx);
-      Expression expr = ctx.expr0().accept(exprVisitor);
-      return new Return(position, expr);
+      Expression value = ctx.expr0().accept(exprVisitor);
+      return new Return(position, value);
     }
      
     
@@ -278,6 +319,7 @@ public final class ParseTreeLower {
     
     @Override
     public Statement visitBreakStmt(CruxParser.BreakStmtContext ctx) {
+      
       Position position = makePosition(ctx);
       return new Break(position);
     }
