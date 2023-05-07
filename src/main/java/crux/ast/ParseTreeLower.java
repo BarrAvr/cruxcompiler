@@ -115,8 +115,7 @@ public final class ParseTreeLower {
     public VariableDeclaration visitVarDecl(CruxParser.VarDeclContext ctx) {
       Position position = makePosition(ctx);
       Type type = null;
-      //ctx.type().Identifier().getSymbol();
-      String name = ctx.Identifier().accept(declVisitor).toString();
+      String name = ctx.Identifier().getText();
       Symbol symbol  = symTab.add(position, name, type);
 
       return new VariableDeclaration(position, symbol);
@@ -132,7 +131,7 @@ public final class ParseTreeLower {
     public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
       Position position = makePosition(ctx);
       Type type = null;
-      String name = ctx.Identifier().accept(declVisitor).toString();
+      String name = ctx.Identifier().getText();
       Symbol symbol  = symTab.add(position, name, type);
       return new ArrayDeclaration(position, symbol);
     }
@@ -170,7 +169,7 @@ public final class ParseTreeLower {
         }
       }
 
-      String name = ctx.Identifier().accept(declVisitor).toString();
+      String name = ctx.Identifier().getText();
       Symbol symbol  = symTab.add(position, name, params);
       symTab.enter();
       ArrayList<Symbol> list = new ArrayList<Symbol>(); 
@@ -185,7 +184,7 @@ public final class ParseTreeLower {
           type = new VoidType();
         }
       
-        String paramName = context.Identifier().accept(declVisitor).toString();
+        String paramName = context.Identifier().getText();
         Symbol paramSymbol = symTab.add(position, paramName, type );
         list.add(paramSymbol);
       }
