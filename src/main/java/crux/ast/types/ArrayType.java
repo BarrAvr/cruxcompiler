@@ -27,4 +27,12 @@ public final class ArrayType extends Type implements java.io.Serializable {
   public String toString() {
     return String.format("array[%d,%s]", extent, base);
   }
+
+  @Override
+  public boolean equivalent(Type that) {
+    if(that.getClass() == ArrayType.class) {
+      return ((ArrayType) that).getBase().getClass() == base.getClass();
+    }
+    return false;
+  }
 }
