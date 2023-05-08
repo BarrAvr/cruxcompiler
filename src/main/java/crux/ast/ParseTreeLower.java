@@ -95,7 +95,12 @@ public final class ParseTreeLower {
    private StatementList lower(CruxParser.StmtBlockContext stmtBlock) {
 
       symTab.enter();
-      StatementList list = lower(stmtBlock.stmtList());
+      if(stmtBlock == null){
+          return new StatementList(null, new ArrayList<Statement>());
+        }
+        StatementList list = lower(stmtBlock.stmtList());
+
+
       symTab.exit();
       return list;
    }
@@ -331,16 +336,16 @@ public final class ParseTreeLower {
      */
      @Override
      public Expression visitExpr0(CruxParser.Expr0Context ctx) {
+
+      CruxParser.Op0Context op = ctx.op0(); //can be null
+      if(op == null){
+        return ctx.expr1(0).accept(exprVisitor);
+      }
        Position position = makePosition(ctx);
        CruxParser.Expr1Context lhsCtx = ctx.expr1(0);
-       CruxParser.Op0Context op = ctx.op0(); //can be null
        CruxParser.Expr1Context rhsCtx = ctx.expr1(1); //can be null
 
        Expression lhsExpr = lhsCtx.accept(exprVisitor);
-
-       if(op == null){
-         return lhsExpr;
-       }
 
        Expression rhsExpr = rhsCtx.accept(exprVisitor);
        String opStr = op.getText();
@@ -375,16 +380,18 @@ public final class ParseTreeLower {
      */
      @Override
      public Expression visitExpr1(CruxParser.Expr1Context ctx) {
+
+      CruxParser.Op1Context op1 = ctx.op1(); //can be null
+      if(op1 == null){
+        return ctx.expr2().accept(exprVisitor);
+      }
+
        Position position = makePosition(ctx);
        CruxParser.Expr1Context lhsCtx = ctx.expr1();
-       CruxParser.Op1Context op1 = ctx.op1();
        CruxParser.Expr2Context rhsCtx = ctx.expr2();
 
        Expression lhsExpr = lhsCtx.accept(exprVisitor);
 
-       if(op1 == null){
-         return lhsExpr;
-       }
 
        Expression rhsExpr = rhsCtx.accept(exprVisitor);
        String opStr = op1.getText();
@@ -409,20 +416,17 @@ public final class ParseTreeLower {
      */
      @Override
      public Expression visitExpr2(CruxParser.Expr2Context ctx) {
-       Position position = makePosition(ctx);
+
+      CruxParser.Op2Context op = ctx.op2();
+      if(op == null){
+        return ctx.expr3().accept(exprVisitor);
+      }
+      Position position = makePosition(ctx);
        CruxParser.Expr2Context lhsCtx = ctx.expr2();
-       CruxParser.Op2Context op = ctx.op2();
        CruxParser.Expr3Context rhsCtx = ctx.expr3();
 
        Expression lhsExpr = lhsCtx.accept(exprVisitor);
 
-       if(op == null){
-         return lhsExpr;
-       }
-
-       if(rhsCtx == null){
-
-       }
        Expression rhsExpr = rhsCtx.accept(exprVisitor);
        String opStr = op.getText();
        Operation operation = null;
