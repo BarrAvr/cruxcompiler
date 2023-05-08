@@ -42,7 +42,6 @@ crux\printing\ASTPrinter$PrinterVisitor.class
 crux\pt\CruxParser$TypeContext.class
 crux\pt\CruxLexer.class
 crux\pt\CruxParser$StmtBlockContext.class
-Crux.tokens
 crux\ir\insts\BinaryOperator.class
 crux\pt\CruxParser$CallStmtContext.class
 crux\ir\insts\LoadInst.class
