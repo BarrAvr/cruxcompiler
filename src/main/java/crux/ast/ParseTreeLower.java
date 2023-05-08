@@ -459,7 +459,7 @@ public final class ParseTreeLower {
        }else if(ctx.expr0() != null){
          return ctx.expr0().accept(exprVisitor);
        }else{
-         return ctx.expr3().accept(exprVisitor); //Not sure how to return "Not expr3"
+         return new OpExpr(makePosition(ctx), Operation.LOGIC_NOT, ctx.expr3().accept(exprVisitor), null);
        }
 
      }
