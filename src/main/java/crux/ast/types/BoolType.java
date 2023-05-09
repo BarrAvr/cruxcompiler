@@ -35,7 +35,10 @@ public final class BoolType extends Type implements java.io.Serializable {
 
   @Override
   Type not() {
-    return new BoolType();
+    if(this.equivalent(new BoolType())){
+      return new BoolType();
+    }
+    return super.not();
   }
 
   @Override
