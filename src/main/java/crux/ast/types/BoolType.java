@@ -43,7 +43,7 @@ public final class BoolType extends Type implements java.io.Serializable {
     if (equivalent(source)){
       return new BoolType();
     }
-    return super.or(source);
+    return super.assign(source);
   }
 
 }

@@ -62,6 +62,6 @@ public final class IntType extends Type implements java.io.Serializable {
     if (equivalent(source)){
       return new BoolType();
     }
-    return super.or(source);
+    return super.assign(source);
   }
 }
