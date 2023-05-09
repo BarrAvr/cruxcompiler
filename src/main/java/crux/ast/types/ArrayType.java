@@ -40,7 +40,7 @@ public final class ArrayType extends Type implements java.io.Serializable {
   @Override
   public Type index(Type that) {
     if (equivalent(that)){
-      return new ArrayType(((ArrayType) that).getExtent(), ((ArrayType) that).getBase());
+      return new ArrayType(((ArrayType) that).getExtent(), ((ArrayType) that).getBase()); // return int???
     }
     return super.index(that);
   }

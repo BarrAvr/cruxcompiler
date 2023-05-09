@@ -20,7 +20,7 @@ public final class IntType extends Type implements java.io.Serializable {
   @Override
   public Type compare(Type that) {
     if (equivalent(that)){
-      return new BoolType();
+      return new IntType();
     }
     return super.compare(that);
   }
@@ -60,7 +60,7 @@ public final class IntType extends Type implements java.io.Serializable {
   @Override
   Type assign(Type source) {
     if (equivalent(source)){
-      return new BoolType();
+      return new IntType();
     }
     return super.assign(source);
   }
