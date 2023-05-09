@@ -58,12 +58,21 @@ public final class TypeChecker {
   private final class TypeInferenceVisitor extends NullNodeVisitor<Void> {
     @Override
     public Void visit(VarAccess vaccess) {
+
+      Type type = vaccess.getSymbol().getType();
+      setNodeType(vaccess, type);
       return null;
     }
 
     @Override
     public Void visit(ArrayDeclaration arrayDeclaration) {
-      return null;
+      if(arrayDeclaration.getSymbol().getType().equivalent(new IntType()) || arrayDeclaration.getSymbol().getType().equivalent(new BoolType())){
+        return null;
+      }
+      else{
+        addTypeError(arrayDeclaration, "Array size must be an integer or bool");
+        return null;
+      }
     }
 
     @Override

@@ -1,4 +1,1619 @@
 -------------------------------------------------------------------------------
 Test set: crux.CompilerStageTests
 -------------------------------------------------------------------------------
-Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.27 s - in crux.CompilerStageTests
+Tests run: 50, Failures: 47, Errors: 0, Skipped: 0, Time elapsed: 0.409 s <<< FAILURE! - in crux.CompilerStageTests
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.01 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test02.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printInt(/*int*/ 42);
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printInt(42);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test03.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printBool(/*bool*/ true);
+  printBool(/*bool*/ false);
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printBool(true);
+  printBool(false);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test04.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printInt(/*int*/ (/*int*/ 1 + /*int*/ 1));
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printInt((1 + 1));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test06.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int i;
+main() {
+  /*int*/ i = /*int*/ 10;
+  printInt(/*int*/ i);
+}> but was: <Crux Program has no type errors.
+
+int i;
+main() {
+  i = 10;
+  printInt(i);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test07.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int a;
+  /*int*/ a = /*int*/ 42;
+  printInt(/*int*/ a);
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int a;
+  a = 42;
+  printInt(a);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test08.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+foo() {
+  printInt(/*int*/ 5);
+}
+main() {
+  foo();
+}> but was: <Crux Program has no type errors.
+
+foo() {
+  printInt(5);
+}
+main() {
+  foo();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test09.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+rec(int a) {
+  printInt(/*int*/ a);
+}
+main() {
+  rec(/*int*/ 41);
+}> but was: <Crux Program has no type errors.
+
+rec(int a) {
+  printInt(a);
+}
+main() {
+  rec(41);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test10.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[3,int] x;
+main() {
+  /*int*/ (/*array[3,int]*/ x)[/*int*/ 1] = /*int*/ 42;
+  printInt(/*int*/ (/*array[3,int]*/ x)[/*int*/ 1]);
+}> but was: <Crux Program has no type errors.
+
+array[3,int] x;
+main() {
+  (/*array[3,int]*/ x)[1] = 42;
+  printInt((/*array[3,int]*/ x)[1]);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test11.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printInt(/*int*/ 7);
+  printBool(/*bool*/ true);
+  println();
+  readInt();
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printInt(7);
+  printBool(true);
+  println();
+  readInt();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.006 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test12.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  if (/*bool*/ true) {
+    printInt(/*int*/ 1);
+  } else {
+  }
+  printInt(/*int*/ (/*int*/ 0 - /*int*/ 1));
+}> but was: <Crux Program has no type errors.
+
+main() {
+  if (true) {
+    printInt(1);
+  } else {
+  }
+  printInt((0 - 1));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test14.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int addi;
+main() {
+  /*int*/ addi = readInt();
+  printInt(/*int*/ addi);
+}> but was: <Crux Program has no type errors.
+
+int addi;
+main() {
+  addi = readInt();
+  printInt(addi);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test15.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  if (/*bool*/ false) {
+    printInt(/*int*/ 1);
+  } else {
+  }
+  printInt(/*int*/ (/*int*/ 0 - /*int*/ 1));
+}> but was: <Crux Program has no type errors.
+
+main() {
+  if (false) {
+    printInt(1);
+  } else {
+  }
+  printInt((0 - 1));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test16.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+main() {
+  /*int*/ a = /*int*/ 1;
+  int a;
+  /*int*/ a = /*int*/ 2;
+  printInt(/*int*/ a);
+}> but was: <Crux Program has no type errors.
+
+int a;
+main() {
+  a = 1;
+  int a;
+  a = 2;
+  printInt(a);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test17.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+main() {
+  for(/*int*/ a = /*int*/ 20;/*bool*/ (/*int*/ a > /*int*/ 5);/*int*/ a = /*int*/ (/*int*/ a - /*int*/ 4)) {
+    if (/*bool*/ (/*int*/ a > /*int*/ 10)) {
+      if (/*bool*/ (/*int*/ a < /*int*/ 5)) {
+        break;
+      } else {
+      }
+      /*int*/ a = /*int*/ (/*int*/ a / /*int*/ 2);
+    } else {
+    }
+  }
+}> but was: <Crux Program has no type errors.
+
+int a;
+main() {
+  for(a = 20;(a > 5);a = (a - 4)) {
+    if ((a > 10)) {
+      if ((a < 5)) {
+        break;
+      } else {
+      }
+      a = (a / 2);
+    } else {
+    }
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test18.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int a;
+  for(/*int*/ a = /*int*/ 0;/*bool*/ (/*int*/ a < /*int*/ 3);/*int*/ a = /*int*/ (/*int*/ a + /*int*/ 1)) {
+    printInt(/*int*/ a);
+    println();
+  }
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int a;
+  for(a = 0;(a < 3);a = (a + 1)) {
+    printInt(a);
+    println();
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test19.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+rec(int a) {
+  if (/*bool*/ (/*int*/ a > /*int*/ 0)) {
+    rec(/*int*/ (/*int*/ a - /*int*/ 1));
+  } else {
+  }
+  printInt(/*int*/ a);
+  println();
+}
+main() {
+  rec(/*int*/ 5);
+}> but was: <Crux Program has no type errors.
+
+rec(int a) {
+  if ((a > 0)) {
+    rec((a - 1));
+  } else {
+  }
+  printInt(a);
+  println();
+}
+main() {
+  rec(5);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test20.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int five;
+  int sum;
+  /*int*/ five = /*int*/ (/*int*/ 100 - /*int*/ 600);
+  /*int*/ sum = /*int*/ (/*int*/ five / /*int*/ 100);
+  printInt(/*int*/ sum);
+  println();
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int five;
+  int sum;
+  five = (100 - 600);
+  sum = (five / 100);
+  printInt(sum);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test21.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printChar(/*int*/ 72);
+  printChar(/*int*/ 101);
+  printChar(/*int*/ 108);
+  printChar(/*int*/ 108);
+  printChar(/*int*/ 111);
+  println();
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printChar(72);
+  printChar(101);
+  printChar(108);
+  printChar(108);
+  printChar(111);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test22.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[3,int] a;
+array[10,int] b;
+main() {
+  /*int*/ (/*array[10,int]*/ b)[/*int*/ 5] = /*int*/ 2;
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ (/*int*/ 1 + /*int*/ 1)] = /*int*/ 100;
+  printInt(/*int*/ (/*array[3,int]*/ a)[/*int*/ 2]);
+}> but was: <Crux Program has no type errors.
+
+array[3,int] a;
+array[10,int] b;
+main() {
+  (/*array[10,int]*/ b)[5] = 2;
+  (/*array[3,int]*/ a)[(1 + 1)] = 100;
+  printInt((/*array[3,int]*/ a)[2]);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test23.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+bool b;
+array[1,int] c;
+main() {
+  /*int*/ a = /*int*/ 0;
+  /*bool*/ b = /*bool*/ false;
+  /*int*/ (/*array[1,int]*/ c)[/*int*/ 0] = /*int*/ 0;
+}> but was: <Crux Program has no type errors.
+
+int a;
+bool b;
+array[1,int] c;
+main() {
+  a = 0;
+  b = false;
+  (/*array[1,int]*/ c)[0] = 0;
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test24.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[3,int] a;
+array[10,int] b;
+main() {
+  /*int*/ (/*array[10,int]*/ b)[/*int*/ 5] = /*int*/ 2;
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ (/*array[10,int]*/ b)[/*int*/ 5]] = /*int*/ 100;
+  printInt(/*int*/ (/*array[3,int]*/ a)[/*int*/ 2]);
+}> but was: <Crux Program has no type errors.
+
+array[3,int] a;
+array[10,int] b;
+main() {
+  (/*array[10,int]*/ b)[5] = 2;
+  (/*array[3,int]*/ a)[(/*array[10,int]*/ b)[5]] = 100;
+  printInt((/*array[3,int]*/ a)[2]);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test25.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  if (/*bool*/ false) {
+    printInt(/*int*/ 1);
+  } else {
+    printInt(/*int*/ 0);
+  }
+  printInt(/*int*/ (/*int*/ 0 - /*int*/ 1));
+}> but was: <Crux Program has no type errors.
+
+main() {
+  if (false) {
+    printInt(1);
+  } else {
+    printInt(0);
+  }
+  printInt((0 - 1));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test26.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+main() {
+  for(/*int*/ a = /*int*/ 9;/*bool*/ (/*int*/ a > /*int*/ 0);/*int*/ a = /*int*/ (/*int*/ a - /*int*/ 1)) {
+    printInt(/*int*/ a);
+    println();
+  }
+  printInt(/*int*/ (/*int*/ 0 - /*int*/ 5));
+  printInt(/*int*/ a);
+}> but was: <Crux Program has no type errors.
+
+int a;
+main() {
+  for(a = 9;(a > 0);a = (a - 1)) {
+    printInt(a);
+    println();
+  }
+  printInt((0 - 5));
+  printInt(a);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test27.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+fib(int a) {
+  if (/*bool*/ (/*int*/ a <= /*int*/ 0)) {
+    return /*int*/ 1;
+  } else {
+  }
+  return /*int*/ (fib(/*int*/ (/*int*/ a - /*int*/ 1)) + fib(/*int*/ (/*int*/ a - /*int*/ 2)));
+}
+main() {
+  printInt(fib(/*int*/ 5));
+}> but was: <Crux Program has no type errors.
+
+fib(int a) {
+  if ((a <= 0)) {
+    return 1;
+  } else {
+  }
+  return (fib((a - 1)) + fib((a - 2)));
+}
+main() {
+  printInt(fib(5));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test28.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+myInt(int a) {
+  printInt(/*int*/ a);
+  return /*int*/ a;
+}
+myPrint() {
+  myInt(/*int*/ 7);
+  myInt(/*int*/ 8);
+  myInt(/*int*/ 9);
+}
+main() {
+  myPrint();
+}> but was: <Crux Program has no type errors.
+
+myInt(int a) {
+  printInt(a);
+  return a;
+}
+myPrint() {
+  myInt(7);
+  myInt(8);
+  myInt(9);
+}
+main() {
+  myPrint();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test29.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+blt(int a, int b) {
+  return /*bool*/ (/*int*/ a < /*int*/ b);
+}
+main() {
+  printBool(blt(/*int*/ 1, /*int*/ 2));
+  println();
+  printBool(blt(/*int*/ 2, /*int*/ 1));
+  println();
+  printBool(blt(/*int*/ 1, /*int*/ 1));
+}> but was: <Crux Program has no type errors.
+
+blt(int a, int b) {
+  return (a < b);
+}
+main() {
+  printBool(blt(1, 2));
+  println();
+  printBool(blt(2, 1));
+  println();
+  printBool(blt(1, 1));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test30.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int canary_begin;
+array[3,int] x;
+int canary_end;
+main() {
+  /*int*/ canary_begin = /*int*/ 0;
+  /*int*/ canary_end = /*int*/ 0;
+  /*int*/ (/*array[3,int]*/ x)[/*int*/ 0] = /*int*/ 222;
+  /*int*/ (/*array[3,int]*/ x)[/*int*/ 1] = /*int*/ 333;
+  /*int*/ (/*array[3,int]*/ x)[/*int*/ 2] = /*int*/ 444;
+  printInt(/*int*/ canary_begin);
+  printInt(/*int*/ (/*array[3,int]*/ x)[/*int*/ 0]);
+  printInt(/*int*/ (/*array[3,int]*/ x)[/*int*/ 1]);
+  printInt(/*int*/ (/*array[3,int]*/ x)[/*int*/ 2]);
+  printInt(/*int*/ canary_end);
+}> but was: <Crux Program has no type errors.
+
+int canary_begin;
+array[3,int] x;
+int canary_end;
+main() {
+  canary_begin = 0;
+  canary_end = 0;
+  (/*array[3,int]*/ x)[0] = 222;
+  (/*array[3,int]*/ x)[1] = 333;
+  (/*array[3,int]*/ x)[2] = 444;
+  printInt(canary_begin);
+  printInt((/*array[3,int]*/ x)[0]);
+  printInt((/*array[3,int]*/ x)[1]);
+  printInt((/*array[3,int]*/ x)[2]);
+  printInt(canary_end);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test31.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+shadowWithParam(int a) {
+  /*int*/ a = /*int*/ 7;
+  printInt(/*int*/ a);
+  println();
+}
+shadowWithLocal() {
+  int a;
+  /*int*/ a = /*int*/ 9;
+  printInt(/*int*/ a);
+  println();
+}
+main() {
+  /*int*/ a = /*int*/ 5;
+  printInt(/*int*/ a);
+  println();
+  shadowWithParam(/*int*/ 8);
+  printInt(/*int*/ a);
+  println();
+  shadowWithLocal();
+  printInt(/*int*/ a);
+  println();
+}> but was: <Crux Program has no type errors.
+
+int a;
+shadowWithParam(int a) {
+  a = 7;
+  printInt(a);
+  println();
+}
+shadowWithLocal() {
+  int a;
+  a = 9;
+  printInt(a);
+  println();
+}
+main() {
+  a = 5;
+  printInt(a);
+  println();
+  shadowWithParam(8);
+  printInt(a);
+  println();
+  shadowWithLocal();
+  printInt(a);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test32.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+myTrue() {
+  printInt(/*int*/ 1);
+  println();
+  return /*bool*/ true;
+}
+myFalse() {
+  printInt(/*int*/ 0);
+  println();
+  return /*bool*/ false;
+}
+main() {
+  printBool(/*bool*/ (myTrue() || myTrue()));
+  println();
+  printBool(/*bool*/ (myFalse() || myTrue()));
+  println();
+  printBool(/*bool*/ (myTrue() || myFalse()));
+  println();
+  printBool(/*bool*/ (myFalse() || myFalse()));
+  println();
+}> but was: <Crux Program has no type errors.
+
+myTrue() {
+  printInt(1);
+  println();
+  return true;
+}
+myFalse() {
+  printInt(0);
+  println();
+  return false;
+}
+main() {
+  printBool((myTrue() || myTrue()));
+  println();
+  printBool((myFalse() || myTrue()));
+  println();
+  printBool((myTrue() || myFalse()));
+  println();
+  printBool((myFalse() || myFalse()));
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test33.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+myTrue() {
+  printInt(/*int*/ 1);
+  println();
+  return /*bool*/ true;
+}
+myFalse() {
+  printInt(/*int*/ 0);
+  println();
+  return /*bool*/ false;
+}
+main() {
+  printBool(/*bool*/ (myTrue() && myTrue()));
+  println();
+  printBool(/*bool*/ (myFalse() && myTrue()));
+  println();
+  printBool(/*bool*/ (myTrue() && myFalse()));
+  println();
+  printBool(/*bool*/ (myFalse() && myFalse()));
+  println();
+}> but was: <Crux Program has no type errors.
+
+myTrue() {
+  printInt(1);
+  println();
+  return true;
+}
+myFalse() {
+  printInt(0);
+  println();
+  return false;
+}
+main() {
+  printBool((myTrue() && myTrue()));
+  println();
+  printBool((myFalse() && myTrue()));
+  println();
+  printBool((myTrue() && myFalse()));
+  println();
+  printBool((myFalse() && myFalse()));
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test34.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 * /*int*/ 5) + /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ 3 + /*int*/ (/*int*/ 5 * /*int*/ 7)));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 + /*int*/ 5) - /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 - /*int*/ 5) + /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 / /*int*/ 5) + /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 / /*int*/ 5) * /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ 3 + /*int*/ (/*int*/ 5 / /*int*/ 7)));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 + /*int*/ 5) * /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 3 - /*int*/ 5) + /*int*/ 7));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 2 * /*int*/ 3) + /*int*/ (/*int*/ 10 / /*int*/ 2)));
+  println();
+  printInt(/*int*/ (/*int*/ (/*int*/ 5 - /*int*/ 3) + /*int*/ 2));
+  println();
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printInt(((3 * 5) + 7));
+  println();
+  printInt((3 + (5 * 7)));
+  println();
+  printInt(((3 + 5) - 7));
+  println();
+  printInt(((3 - 5) + 7));
+  println();
+  printInt(((3 / 5) + 7));
+  println();
+  printInt(((3 / 5) * 7));
+  println();
+  printInt((3 + (5 / 7)));
+  println();
+  printInt(((3 + 5) * 7));
+  println();
+  printInt(((3 - 5) + 7));
+  println();
+  printInt(((2 * 3) + (10 / 2)));
+  println();
+  printInt(((5 - 3) + 2));
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test35.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+myPrintZero() {
+  printInt(/*int*/ 0);
+}
+myPrintOne(int a) {
+  printInt(/*int*/ a);
+}
+myPrintTwo(int a, int b) {
+  printInt(/*int*/ a);
+  printInt(/*int*/ b);
+}
+myPrintThree(int a, int b, int c) {
+  printInt(/*int*/ a);
+  printInt(/*int*/ b);
+  printInt(/*int*/ c);
+}
+main() {
+  myPrintZero();
+  println();
+  myPrintOne(/*int*/ 1);
+  println();
+  myPrintTwo(/*int*/ 1, /*int*/ 2);
+  println();
+  myPrintThree(/*int*/ 1, /*int*/ 2, /*int*/ 3);
+  println();
+}> but was: <Crux Program has no type errors.
+
+myPrintZero() {
+  printInt(0);
+}
+myPrintOne(int a) {
+  printInt(a);
+}
+myPrintTwo(int a, int b) {
+  printInt(a);
+  printInt(b);
+}
+myPrintThree(int a, int b, int c) {
+  printInt(a);
+  printInt(b);
+  printInt(c);
+}
+main() {
+  myPrintZero();
+  println();
+  myPrintOne(1);
+  println();
+  myPrintTwo(1, 2);
+  println();
+  myPrintThree(1, 2, 3);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test36.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int i;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 11);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    printChar(readChar());
+  }
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int i;
+  for(i = 0;(i < 11);i = (i + 1)) {
+    printChar(readChar());
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test37.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[4,int] x;
+array[5,int] y;
+main() {
+  /*int*/ (/*array[4,int]*/ x)[/*int*/ 0] = /*int*/ 0;
+  /*int*/ (/*array[4,int]*/ x)[/*int*/ 1] = /*int*/ 1;
+  /*int*/ (/*array[4,int]*/ x)[/*int*/ 2] = /*int*/ 2;
+  /*int*/ (/*array[4,int]*/ x)[/*int*/ 3] = /*int*/ 3;
+  /*int*/ (/*array[5,int]*/ y)[/*int*/ 0] = /*int*/ 0;
+  /*int*/ (/*array[5,int]*/ y)[/*int*/ 1] = /*int*/ 1;
+  /*int*/ (/*array[5,int]*/ y)[/*int*/ 2] = /*int*/ 2;
+  /*int*/ (/*array[5,int]*/ y)[/*int*/ 3] = /*int*/ 3;
+  /*int*/ (/*array[5,int]*/ y)[/*int*/ 4] = /*int*/ 4;
+  /*int*/ (/*array[4,int]*/ x)[/*int*/ (/*array[5,int]*/ y)[/*int*/ 2]] = /*int*/ (/*array[4,int]*/ x)[/*int*/ (/*array[5,int]*/ y)[/*int*/ 1]];
+  printInt(/*int*/ (/*array[4,int]*/ x)[/*int*/ 2]);
+}> but was: <Crux Program has no type errors.
+
+array[4,int] x;
+array[5,int] y;
+main() {
+  (/*array[4,int]*/ x)[0] = 0;
+  (/*array[4,int]*/ x)[1] = 1;
+  (/*array[4,int]*/ x)[2] = 2;
+  (/*array[4,int]*/ x)[3] = 3;
+  (/*array[5,int]*/ y)[0] = 0;
+  (/*array[5,int]*/ y)[1] = 1;
+  (/*array[5,int]*/ y)[2] = 2;
+  (/*array[5,int]*/ y)[3] = 3;
+  (/*array[5,int]*/ y)[4] = 4;
+  (/*array[4,int]*/ x)[(/*array[5,int]*/ y)[2]] = (/*array[4,int]*/ x)[(/*array[5,int]*/ y)[1]];
+  printInt((/*array[4,int]*/ x)[2]);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.006 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test38.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  printBool(/*bool*/ (/*bool*/ (/*int*/ 3 < /*int*/ 5) && /*bool*/ (/*int*/ 4 > /*int*/ 2)));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ (/*int*/ 3 < /*int*/ 5) && /*bool*/ (/*int*/ 2 < /*int*/ 1)) || /*bool*/ (/*int*/ 1 < /*int*/ 2)));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*int*/ (/*int*/ 1 + /*int*/ 2) < /*int*/ 4) && /*bool*/ (/*int*/ 2 > /*int*/ 1)));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ false && /*bool*/ false) || /*bool*/ false));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ false && /*bool*/ false) || /*bool*/ true));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ false && /*bool*/ true) || /*bool*/ false));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ false && /*bool*/ true) || /*bool*/ true));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ true && /*bool*/ false) || /*bool*/ false));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ true && /*bool*/ false) || /*bool*/ true));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ true && /*bool*/ true) || /*bool*/ false));
+  println();
+  printBool(/*bool*/ (/*bool*/ (/*bool*/ true && /*bool*/ true) || /*bool*/ true));
+  println();
+  printBool(/*bool*/ (/*bool*/ false || /*bool*/ (/*bool*/ false && /*bool*/ false)));
+  println();
+  printBool(/*bool*/ (/*bool*/ false || /*bool*/ (/*bool*/ false && /*bool*/ true)));
+  println();
+  printBool(/*bool*/ (/*bool*/ false || /*bool*/ (/*bool*/ true && /*bool*/ false)));
+  println();
+  printBool(/*bool*/ (/*bool*/ false || /*bool*/ (/*bool*/ true && /*bool*/ true)));
+  println();
+  printBool(/*bool*/ (/*bool*/ true || /*bool*/ (/*bool*/ false && /*bool*/ false)));
+  println();
+  printBool(/*bool*/ (/*bool*/ true || /*bool*/ (/*bool*/ false && /*bool*/ true)));
+  println();
+  printBool(/*bool*/ (/*bool*/ true || /*bool*/ (/*bool*/ true && /*bool*/ false)));
+  println();
+  printBool(/*bool*/ (/*bool*/ true || /*bool*/ (/*bool*/ true && /*bool*/ true)));
+  println();
+}> but was: <Crux Program has no type errors.
+
+main() {
+  printBool(((3 < 5) && (4 > 2)));
+  println();
+  printBool((((3 < 5) && (2 < 1)) || (1 < 2)));
+  println();
+  printBool((((1 + 2) < 4) && (2 > 1)));
+  println();
+  printBool(((false && false) || false));
+  println();
+  printBool(((false && false) || true));
+  println();
+  printBool(((false && true) || false));
+  println();
+  printBool(((false && true) || true));
+  println();
+  printBool(((true && false) || false));
+  println();
+  printBool(((true && false) || true));
+  println();
+  printBool(((true && true) || false));
+  println();
+  printBool(((true && true) || true));
+  println();
+  printBool((false || (false && false)));
+  println();
+  printBool((false || (false && true)));
+  println();
+  printBool((false || (true && false)));
+  println();
+  printBool((false || (true && true)));
+  println();
+  printBool((true || (false && false)));
+  println();
+  printBool((true || (false && true)));
+  println();
+  printBool((true || (true && false)));
+  println();
+  printBool((true || (true && true)));
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test39.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+test(int a, int b) {
+  printInt(/*int*/ (/*int*/ a + /*int*/ b));
+  println();
+  printInt(/*int*/ (/*int*/ a - /*int*/ b));
+  println();
+  printInt(/*int*/ (/*int*/ a * /*int*/ b));
+  println();
+  if (/*bool*/ (/*int*/ b != /*int*/ 0)) {
+    printInt(/*int*/ (/*int*/ a / /*int*/ b));
+    println();
+  } else {
+    println();
+  }
+}
+main() {
+  int i;
+  int j;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i <= /*int*/ 10);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    for(/*int*/ j = /*int*/ 0;/*bool*/ (/*int*/ j <= /*int*/ 10);/*int*/ j = /*int*/ (/*int*/ j + /*int*/ 1)) {
+      test(/*int*/ i, /*int*/ j);
+    }
+  }
+}> but was: <Crux Program has no type errors.
+
+test(int a, int b) {
+  printInt((a + b));
+  println();
+  printInt((a - b));
+  println();
+  printInt((a * b));
+  println();
+  if ((b != 0)) {
+    printInt((a / b));
+    println();
+  } else {
+    println();
+  }
+}
+main() {
+  int i;
+  int j;
+  for(i = 0;(i <= 10);i = (i + 1)) {
+    for(j = 0;(j <= 10);j = (j + 1)) {
+      test(i, j);
+    }
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test40.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+test(int a, int b) {
+  printBool(/*bool*/ (/*int*/ a >= /*int*/ b));
+  println();
+  printBool(/*bool*/ (/*int*/ a <= /*int*/ b));
+  println();
+  printBool(/*bool*/ (/*int*/ a != /*int*/ b));
+  println();
+  printBool(/*bool*/ (/*int*/ a == /*int*/ b));
+  println();
+  printBool(/*bool*/ (/*int*/ a < /*int*/ b));
+  println();
+  printBool(/*bool*/ (/*int*/ a > /*int*/ b));
+  println();
+}
+main() {
+  int i;
+  int j;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i <= /*int*/ 4);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    for(/*int*/ j = /*int*/ 0;/*bool*/ (/*int*/ j <= /*int*/ 4);/*int*/ j = /*int*/ (/*int*/ j + /*int*/ 1)) {
+      test(/*int*/ i, /*int*/ j);
+    }
+  }
+}> but was: <Crux Program has no type errors.
+
+test(int a, int b) {
+  printBool((a >= b));
+  println();
+  printBool((a <= b));
+  println();
+  printBool((a != b));
+  println();
+  printBool((a == b));
+  println();
+  printBool((a < b));
+  println();
+  printBool((a > b));
+  println();
+}
+main() {
+  int i;
+  int j;
+  for(i = 0;(i <= 4);i = (i + 1)) {
+    for(j = 0;(j <= 4);j = (j + 1)) {
+      test(i, j);
+    }
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test41.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+array[1,int] b;
+foo() {
+  return /*bool*/ false;
+}
+main() {
+  /*int*/ a = /*int*/ 0;
+  /*int*/ (/*array[1,int]*/ b)[/*int*/ 0] = /*int*/ 1;
+  bool c;
+  if (/*bool*/ true) {
+    /*bool*/ c = /*bool*/ (/*bool*/ (/*int*/ 1 > /*int*/ (/*int*/ (/*array[1,int]*/ b)[/*int*/ 0] - /*int*/ a)) || /*bool*/ (foo() || /*bool*/ true));
+  } else {
+  }
+}> but was: <Crux Program has no type errors.
+
+int a;
+array[1,int] b;
+foo() {
+  return false;
+}
+main() {
+  a = 0;
+  (/*array[1,int]*/ b)[0] = 1;
+  bool c;
+  if (true) {
+    c = ((1 > ((/*array[1,int]*/ b)[0] - a)) || (foo() || true));
+  } else {
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test42.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[3,int] a;
+test() {
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ 1] = /*int*/ 0;
+  return /*int*/ 2;
+}
+main() {
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ 0] = /*int*/ 1;
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ 1] = /*int*/ 2;
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ 2] = /*int*/ 3;
+  /*int*/ (/*array[3,int]*/ a)[/*int*/ (/*array[3,int]*/ a)[/*int*/ 1]] = /*int*/ (/*int*/ (/*array[3,int]*/ a)[/*int*/ 1] + test());
+  printInt(/*int*/ (/*array[3,int]*/ a)[/*int*/ 0]);
+  println();
+  printInt(/*int*/ (/*array[3,int]*/ a)[/*int*/ 1]);
+  println();
+  printInt(/*int*/ (/*array[3,int]*/ a)[/*int*/ 2]);
+  println();
+}> but was: <Crux Program has no type errors.
+
+array[3,int] a;
+test() {
+  (/*array[3,int]*/ a)[1] = 0;
+  return 2;
+}
+main() {
+  (/*array[3,int]*/ a)[0] = 1;
+  (/*array[3,int]*/ a)[1] = 2;
+  (/*array[3,int]*/ a)[2] = 3;
+  (/*array[3,int]*/ a)[(/*array[3,int]*/ a)[1]] = ((/*array[3,int]*/ a)[1] + test());
+  printInt((/*array[3,int]*/ a)[0]);
+  println();
+  printInt((/*array[3,int]*/ a)[1]);
+  println();
+  printInt((/*array[3,int]*/ a)[2]);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test43.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+validReturn1(int a) {
+  if (/*bool*/ true) {
+    if (/*bool*/ false) {
+      /*int*/ a = /*int*/ 3;
+    } else {
+      int z;
+      for(/*int*/ z = /*int*/ 0;/*bool*/ (/*int*/ z < /*int*/ 10);/*int*/ z = /*int*/ (/*int*/ z + /*int*/ 1)) {
+        return /*int*/ a;
+      }
+    }
+    return /*int*/ 4;
+  } else {
+    return /*int*/ a;
+  }
+}
+main() {
+  printInt(/*int*/ 3);
+  printInt(validReturn1(/*int*/ 6));
+}> but was: <Crux Program has no type errors.
+
+validReturn1(int a) {
+  if (true) {
+    if (false) {
+      a = 3;
+    } else {
+      int z;
+      for(z = 0;(z < 10);z = (z + 1)) {
+        return a;
+      }
+    }
+    return 4;
+  } else {
+    return a;
+  }
+}
+main() {
+  printInt(3);
+  printInt(validReturn1(6));
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test44.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int a;
+  int b;
+  for(/*int*/ a = /*int*/ 0;/*bool*/ (/*int*/ a < /*int*/ 3);/*int*/ a = /*int*/ (/*int*/ a + /*int*/ 1)) {
+    if (/*bool*/ true) {
+      if (/*bool*/ true) {
+        for(/*int*/ b = /*int*/ 0;/*bool*/ (/*int*/ b < /*int*/ 3);/*int*/ b = /*int*/ (/*int*/ b + /*int*/ 1)) {
+          printInt(/*int*/ 5);
+        }
+      } else {
+        printInt(/*int*/ 5);
+      }
+    } else {
+    }
+    printInt(/*int*/ 5);
+  }
+  printInt(/*int*/ 5);
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int a;
+  int b;
+  for(a = 0;(a < 3);a = (a + 1)) {
+    if (true) {
+      if (true) {
+        for(b = 0;(b < 3);b = (b + 1)) {
+          printInt(5);
+        }
+      } else {
+        printInt(5);
+      }
+    } else {
+    }
+    printInt(5);
+  }
+  printInt(5);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.007 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test45.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+paramtest(int a, int b, int c, int d, int e, int f, int g, int h, int i) {
+  printInt(/*int*/ a);
+  println();
+  printInt(/*int*/ b);
+  println();
+  printInt(/*int*/ c);
+  println();
+  printInt(/*int*/ d);
+  println();
+  printInt(/*int*/ e);
+  println();
+  printInt(/*int*/ f);
+  println();
+  printInt(/*int*/ g);
+  println();
+  printInt(/*int*/ h);
+  println();
+  printInt(/*int*/ i);
+  println();
+}
+main() {
+  paramtest(/*int*/ 1, /*int*/ 2, /*int*/ 3, /*int*/ 4, /*int*/ 5, /*int*/ 6, /*int*/ 7, /*int*/ 8, /*int*/ 9);
+}> but was: <Crux Program has no type errors.
+
+paramtest(int a, int b, int c, int d, int e, int f, int g, int h, int i) {
+  printInt(a);
+  println();
+  printInt(b);
+  println();
+  printInt(c);
+  println();
+  printInt(d);
+  println();
+  printInt(e);
+  println();
+  printInt(f);
+  println();
+  printInt(g);
+  println();
+  printInt(h);
+  println();
+  printInt(i);
+  println();
+}
+main() {
+  paramtest(1, 2, 3, 4, 5, 6, 7, 8, 9);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test46.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[5,int] x;
+main() {
+  int canary_begin;
+  int canary_end;
+  int outer;
+  int inner;
+  /*int*/ canary_begin = /*int*/ 0;
+  /*int*/ canary_end = /*int*/ 0;
+  for(/*int*/ outer = /*int*/ 4;/*bool*/ (/*int*/ outer >= /*int*/ 0);/*int*/ outer = /*int*/ (/*int*/ outer - /*int*/ 1)) {
+    for(/*int*/ inner = /*int*/ 2;/*bool*/ (/*int*/ inner >= /*int*/ 0);/*int*/ inner = /*int*/ (/*int*/ inner - /*int*/ 1)) {
+      /*int*/ (/*array[5,int]*/ x)[/*int*/ outer] = /*int*/ (/*int*/ (/*int*/ (/*int*/ inner * /*int*/ 1000) + /*int*/ (/*int*/ outer * /*int*/ 100)) + /*int*/ 99);
+    }
+  }
+  for(/*int*/ outer = /*int*/ 0;/*bool*/ (/*int*/ outer < /*int*/ 5);/*int*/ outer = /*int*/ (/*int*/ outer + /*int*/ 1)) {
+    for(/*int*/ inner = /*int*/ 0;/*bool*/ (/*int*/ inner < /*int*/ 3);/*int*/ inner = /*int*/ (/*int*/ inner + /*int*/ 1)) {
+      printInt(/*int*/ (/*array[5,int]*/ x)[/*int*/ outer]);
+    }
+    println();
+  }
+  printInt(/*int*/ canary_begin);
+  printInt(/*int*/ canary_end);
+}> but was: <Crux Program has no type errors.
+
+array[5,int] x;
+main() {
+  int canary_begin;
+  int canary_end;
+  int outer;
+  int inner;
+  canary_begin = 0;
+  canary_end = 0;
+  for(outer = 4;(outer >= 0);outer = (outer - 1)) {
+    for(inner = 2;(inner >= 0);inner = (inner - 1)) {
+      (/*array[5,int]*/ x)[outer] = (((inner * 1000) + (outer * 100)) + 99);
+    }
+  }
+  for(outer = 0;(outer < 5);outer = (outer + 1)) {
+    for(inner = 0;(inner < 3);inner = (inner + 1)) {
+      printInt((/*array[5,int]*/ x)[outer]);
+    }
+    println();
+  }
+  printInt(canary_begin);
+  printInt(canary_end);
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test47.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+int a;
+main() {
+  /*int*/ a = /*int*/ 1;
+  if (/*bool*/ true) {
+    int a;
+    /*int*/ a = /*int*/ 2;
+    if (/*bool*/ true) {
+      /*int*/ a = /*int*/ (/*int*/ a * /*int*/ 10);
+      int a;
+      /*int*/ a = /*int*/ 3;
+      if (/*bool*/ true) {
+        bool a;
+        /*bool*/ a = /*bool*/ true;
+        printBool(/*bool*/ a);
+        println();
+      } else {
+      }
+      printInt(/*int*/ a);
+      println();
+    } else {
+    }
+    printInt(/*int*/ a);
+    println();
+  } else {
+  }
+  printInt(/*int*/ a);
+  println();
+}> but was: <Crux Program has no type errors.
+
+int a;
+main() {
+  a = 1;
+  if (true) {
+    int a;
+    a = 2;
+    if (true) {
+      a = (a * 10);
+      int a;
+      a = 3;
+      if (true) {
+        bool a;
+        a = true;
+        printBool(a);
+        println();
+      } else {
+      }
+      printInt(a);
+      println();
+    } else {
+    }
+    printInt(a);
+    println();
+  } else {
+  }
+  printInt(a);
+  println();
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test48.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+main() {
+  int i;
+  int a;
+  int b;
+  /*int*/ a = /*int*/ 0;
+  /*int*/ b = /*int*/ 1;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 10);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    printInt(/*int*/ b);
+    println();
+    int c;
+    /*int*/ c = /*int*/ (/*int*/ a + /*int*/ b);
+    /*int*/ a = /*int*/ b;
+    /*int*/ b = /*int*/ c;
+  }
+}> but was: <Crux Program has no type errors.
+
+main() {
+  int i;
+  int a;
+  int b;
+  a = 0;
+  b = 1;
+  for(i = 0;(i < 10);i = (i + 1)) {
+    printInt(b);
+    println();
+    int c;
+    c = (a + b);
+    a = b;
+    b = c;
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test49.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+array[14,int] a;
+bubblesort() {
+  bool swapped;
+  for(/*bool*/ swapped = /*bool*/ true;/*bool*/ swapped;/*bool*/ swapped = /*bool*/ swapped) {
+    int i;
+    /*bool*/ swapped = /*bool*/ false;
+    for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 13);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+      if (/*bool*/ (/*int*/ (/*array[14,int]*/ a)[/*int*/ i] > /*int*/ (/*array[14,int]*/ a)[/*int*/ (/*int*/ i + /*int*/ 1)])) {
+        int tmp;
+        /*int*/ tmp = /*int*/ (/*array[14,int]*/ a)[/*int*/ i];
+        /*int*/ (/*array[14,int]*/ a)[/*int*/ i] = /*int*/ (/*array[14,int]*/ a)[/*int*/ (/*int*/ i + /*int*/ 1)];
+        /*int*/ (/*array[14,int]*/ a)[/*int*/ (/*int*/ i + /*int*/ 1)] = /*int*/ tmp;
+        /*bool*/ swapped = /*bool*/ true;
+      } else {
+      }
+    }
+  }
+}
+main() {
+  int i;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 14);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    /*int*/ (/*array[14,int]*/ a)[/*int*/ i] = /*int*/ (/*int*/ 14 - /*int*/ i);
+  }
+  bubblesort();
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 14);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    printInt(/*int*/ (/*array[14,int]*/ a)[/*int*/ i]);
+    println();
+  }
+}> but was: <Crux Program has no type errors.
+
+array[14,int] a;
+bubblesort() {
+  bool swapped;
+  for(swapped = true;swapped;swapped = swapped) {
+    int i;
+    swapped = false;
+    for(i = 0;(i < 13);i = (i + 1)) {
+      if (((/*array[14,int]*/ a)[i] > (/*array[14,int]*/ a)[(i + 1)])) {
+        int tmp;
+        tmp = (/*array[14,int]*/ a)[i];
+        (/*array[14,int]*/ a)[i] = (/*array[14,int]*/ a)[(i + 1)];
+        (/*array[14,int]*/ a)[(i + 1)] = tmp;
+        swapped = true;
+      } else {
+      }
+    }
+  }
+}
+main() {
+  int i;
+  for(i = 0;(i < 14);i = (i + 1)) {
+    (/*array[14,int]*/ a)[i] = (14 - i);
+  }
+  bubblesort();
+  for(i = 0;(i < 14);i = (i + 1)) {
+    printInt((/*array[14,int]*/ a)[i]);
+    println();
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Type check for program crux/stages/type-check/test50.crx differs from expected output. ==> expected: <Crux Program has no type errors.
+
+garble(int in, int in2) {
+  int tmp;
+  /*int*/ tmp = /*int*/ 0;
+  int count;
+  /*int*/ count = /*int*/ 0;
+  for(/*int*/ count = /*int*/ 0;/*bool*/ (!/*bool*/ (/*bool*/ (/*int*/ in == /*int*/ 0) && /*bool*/ (/*int*/ in2 == /*int*/ 0)));/*int*/ count = /*int*/ (/*int*/ count + /*int*/ 1)) {
+    int a;
+    int b;
+    /*int*/ a = /*int*/ (/*int*/ in - /*int*/ (/*int*/ (/*int*/ in / /*int*/ 2) * /*int*/ 2));
+    /*int*/ b = /*int*/ (/*int*/ in2 - /*int*/ (/*int*/ (/*int*/ in2 / /*int*/ 2) * /*int*/ 2));
+    if (/*bool*/ (/*bool*/ (/*int*/ a == /*int*/ 1) && /*bool*/ (/*int*/ b == /*int*/ 0))) {
+      /*int*/ tmp = /*int*/ (/*int*/ (/*int*/ tmp * /*int*/ 2) + /*int*/ 1);
+    } else {
+      if (/*bool*/ (/*bool*/ (/*int*/ a == /*int*/ 0) && /*bool*/ (/*int*/ b == /*int*/ 1))) {
+        /*int*/ tmp = /*int*/ (/*int*/ (/*int*/ tmp * /*int*/ 2) + /*int*/ 1);
+      } else {
+        /*int*/ tmp = /*int*/ (/*int*/ tmp * /*int*/ 2);
+      }
+    }
+    /*int*/ in = /*int*/ (/*int*/ in / /*int*/ 2);
+    /*int*/ in2 = /*int*/ (/*int*/ in2 / /*int*/ 2);
+  }
+  int out;
+  for(/*int*/ out = /*int*/ 0;/*bool*/ (/*int*/ count != /*int*/ 0);/*int*/ count = /*int*/ (/*int*/ count - /*int*/ 1)) {
+    /*int*/ out = /*int*/ (/*int*/ (/*int*/ out * /*int*/ 2) + /*int*/ (/*int*/ tmp - /*int*/ (/*int*/ (/*int*/ tmp / /*int*/ 2) * /*int*/ 2)));
+    /*int*/ tmp = /*int*/ (/*int*/ tmp / /*int*/ 2);
+  }
+  return /*int*/ out;
+}
+main() {
+  int i;
+  for(/*int*/ i = /*int*/ 0;/*bool*/ (/*int*/ i < /*int*/ 40);/*int*/ i = /*int*/ (/*int*/ i + /*int*/ 1)) {
+    int tmp;
+    /*int*/ tmp = readChar();
+    printChar(garble(/*int*/ tmp, /*int*/ (/*int*/ 7 + /*int*/ i)));
+  }
+}> but was: <Crux Program has no type errors.
+
+garble(int in, int in2) {
+  int tmp;
+  tmp = 0;
+  int count;
+  count = 0;
+  for(count = 0;(!((in == 0) && (in2 == 0)));count = (count + 1)) {
+    int a;
+    int b;
+    a = (in - ((in / 2) * 2));
+    b = (in2 - ((in2 / 2) * 2));
+    if (((a == 1) && (b == 0))) {
+      tmp = ((tmp * 2) + 1);
+    } else {
+      if (((a == 0) && (b == 1))) {
+        tmp = ((tmp * 2) + 1);
+      } else {
+        tmp = (tmp * 2);
+      }
+    }
+    in = (in / 2);
+    in2 = (in2 / 2);
+  }
+  int out;
+  for(out = 0;(count != 0);count = (count - 1)) {
+    out = ((out * 2) + (tmp - ((tmp / 2) * 2)));
+    tmp = (tmp / 2);
+  }
+  return out;
+}
+main() {
+  int i;
+  for(i = 0;(i < 40);i = (i + 1)) {
+    int tmp;
+    tmp = readChar();
+    printChar(garble(tmp, (7 + i)));
+  }
+}>
+	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
+
