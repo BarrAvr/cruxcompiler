@@ -119,7 +119,7 @@ public final class ParseTreeLower {
     @Override
     public VariableDeclaration visitVarDecl(CruxParser.VarDeclContext ctx) {
       Position position = makePosition(ctx);
-      Type type;
+      Type type;//might need to fix
       if(ctx.type() == null){
         type = null;
       }else if(ctx.type().getText().equals("int")){
@@ -144,7 +144,7 @@ public final class ParseTreeLower {
     @Override
     public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
       Position position = makePosition(ctx);
-      Type type;
+      Type type; ///might need to fix
       if(ctx.type() == null){
         type = null;
       }else if(ctx.type().getText().equals("int")){
