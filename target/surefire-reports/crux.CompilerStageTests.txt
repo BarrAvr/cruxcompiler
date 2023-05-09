@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: crux.CompilerStageTests
 -------------------------------------------------------------------------------
-Tests run: 50, Failures: 47, Errors: 0, Skipped: 0, Time elapsed: 0.409 s <<< FAILURE! - in crux.CompilerStageTests
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.01 s  <<< FAILURE!
+Tests run: 50, Failures: 47, Errors: 0, Skipped: 0, Time elapsed: 0.43 s <<< FAILURE! - in crux.CompilerStageTests
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.014 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test02.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -15,7 +15,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test03.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -77,7 +77,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.001 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test08.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -151,7 +151,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.006 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test12.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -172,7 +172,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.001 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test14.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -210,7 +210,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test16.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -264,7 +264,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test18.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -285,7 +285,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test19.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -314,7 +314,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test20.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -360,7 +360,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.001 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test22.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -381,7 +381,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test23.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -473,7 +473,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test27.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -742,7 +742,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test34.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -797,7 +797,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.005 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test35.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -873,7 +873,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test37.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -997,7 +997,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test39.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1138,7 +1138,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test42.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1267,7 +1267,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.007 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test45.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1320,7 +1320,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test46.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1371,7 +1371,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test47.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1434,7 +1434,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.002 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test48.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1471,7 +1471,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test49.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1536,7 +1536,7 @@ main() {
 }>
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 
-crux.CompilerStageTests.typeCheck  Time elapsed: 0.003 s  <<< FAILURE!
+crux.CompilerStageTests.typeCheck  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test50.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 

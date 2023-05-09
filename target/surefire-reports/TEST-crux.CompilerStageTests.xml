@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="0.409" tests="50" errors="0" skipped="0" failures="47">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="0.43" tests="50" errors="0" skipped="0" failures="47">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/20/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/nick/Desktop/crux/target/surefire/surefirebooter8494464312498941601.jar /Users/nick/Desktop/crux/target/surefire 2023-05-08T21-54-10_101-jvmRun1 surefire5528876525759812825tmp surefire_06718205024506523144tmp"/>
+    <property name="sun.java.command" value="/Users/nick/Desktop/crux/target/surefire/surefirebooter18376666401698324617.jar /Users/nick/Desktop/crux/target/surefire 2023-05-08T23-08-30_999-jvmRun1 surefire11098609349330044968tmp surefire_03183443203247274728tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/nick/Desktop/crux/target/test-classes:/Users/nick/Desktop/crux/target/classes:/Users/nick/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar:/Users/nick/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/Users/nick/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/nick/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/nick/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/Users/nick/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/Users/nick/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/nick/Desktop/crux/target/surefire/surefirebooter8494464312498941601.jar"/>
+    <property name="surefire.real.class.path" value="/Users/nick/Desktop/crux/target/surefire/surefirebooter18376666401698324617.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="20"/>
@@ -58,8 +58,8 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.076"/>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.01">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.089"/>
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.014">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test02.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -73,7 +73,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test03.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -103,7 +103,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.011"/>
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.012"/>
   <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test06.crx differs from expected output. ==> expected: <Crux Program has no type errors.
@@ -140,7 +140,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.001">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test08.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -218,7 +218,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.006">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test12.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -240,8 +240,8 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003"/>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002"/>
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.001">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test14.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -281,7 +281,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test16.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -337,7 +337,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test18.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -359,7 +359,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test19.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -389,7 +389,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test20.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -437,7 +437,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.001">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test22.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -459,7 +459,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test23.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -555,7 +555,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test27.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -831,7 +831,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test34.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -887,7 +887,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.005">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test35.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -965,7 +965,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test37.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1091,7 +1091,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test39.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1235,7 +1235,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test42.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1367,7 +1367,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.007">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test45.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1421,7 +1421,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test46.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1473,7 +1473,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test47.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1537,7 +1537,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.002">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test48.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1575,7 +1575,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test49.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
@@ -1641,7 +1641,7 @@ main() {
 	at crux.CompilerStageTests.lambda$typeCheck$5(CompilerStageTests.java:179)
 ]]></failure>
   </testcase>
-  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.003">
+  <testcase name="typeCheck" classname="crux.CompilerStageTests" time="0.004">
     <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 Type check for program crux/stages/type-check/test50.crx differs from expected output. ==> expected: <Crux Program has no type errors.
 
