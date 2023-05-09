@@ -120,14 +120,12 @@ public final class ParseTreeLower {
     public VariableDeclaration visitVarDecl(CruxParser.VarDeclContext ctx) {
       Position position = makePosition(ctx);
       Type type;//might need to fix
-      if(ctx.type() == null){
-        type = null;
-      }else if(ctx.type().getText().equals("int")){
+      if(ctx.type().getText().equals("int")){
         type = new IntType();
       }else if(ctx.type().getText().equals("bool")){
         type = new BoolType();
       }else{
-        type = new VoidType();
+        type = null;
       }
       String name = ctx.Identifier().getText();
       Symbol symbol  = symTab.add(position, name, type);
@@ -145,14 +143,12 @@ public final class ParseTreeLower {
     public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
       Position position = makePosition(ctx);
       Type type; ///might need to fix
-      if(ctx.type() == null){
-        type = null;
-      }else if(ctx.type().getText().equals("int")){
+      if(ctx.type().getText().equals("int")){
         type = new ArrayType(Integer.parseInt(ctx.Integer().getText()), new IntType());
       }else if(ctx.type().getText().equals("bool")){
         type = new ArrayType(Integer.parseInt(ctx.Integer().getText()), new BoolType());
       }else{
-        type = new ArrayType(Integer.parseInt(ctx.Integer().getText()), new VoidType());
+        type = null;
       }
       String name = ctx.Identifier().getText();
       Symbol symbol  = symTab.add(position, name, type);
