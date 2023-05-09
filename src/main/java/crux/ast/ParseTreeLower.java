@@ -150,8 +150,10 @@ public final class ParseTreeLower {
       }else{
         type = null;
       }
+      int size = Integer.parseInt(ctx.Integer().getText());
+      Type array = new ArrayType(size, type);
       String name = ctx.Identifier().getText();
-      Symbol symbol  = symTab.add(position, name, type);
+      Symbol symbol  = symTab.add(position, name, array);
       return new ArrayDeclaration(position, symbol);
     }
 
