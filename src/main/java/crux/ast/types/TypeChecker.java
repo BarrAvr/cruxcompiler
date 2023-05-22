@@ -67,6 +67,7 @@ public final class TypeChecker {
     @Override
     public Void visit(ArrayDeclaration arrayDeclaration) {
       if(arrayDeclaration.getSymbol().getType().equivalent(new IntType()) || arrayDeclaration.getSymbol().getType().equivalent(new BoolType())){
+        setNodeType(arrayDeclaration, arrayDeclaration.getSymbol().getType());
         return null;
       }
       else{
@@ -77,18 +78,50 @@ public final class TypeChecker {
 
     @Override
     public Void visit(Assignment assignment) {
+      var child = assignment.getChildren();
+
+      var lhs = child.get(0);
+      var rhs = child.get(1);
+
+      var lhsType = getType(lhs);
+      var rhsType = getType(rhs);
+
+      if (lhsType.getClass() == ErrorType.class) {
+        setNodeType(assignment, lhsType);
+        return null;
+      }
+
+      if (rhsType.getClass() == ErrorType.class) {
+        setNodeType(assignment, rhsType);
+        return null;
+      }
+
+      //not sure if this is correct
+
+
+
       return null;
     }
 
     @Override
     public Void visit(Break brk) {
+
       return null;
     }
 
-    @Override
-    public Void visit(Call call) {
+    @Override 
+    public Void visit(Call call) {  //not done
+      var check = call.getCallee().getType();
+      TypeList typeList = new TypeList();
+
+      for (var child : call.getArguments()) {
+        child.accept(this);
+        typeList.append(getType(child));
+      }
+
       return null;
     }
+
 
     @Override
     public Void visit(DeclarationList declarationList) {
@@ -97,6 +130,29 @@ public final class TypeChecker {
 
     @Override
     public Void visit(FunctionDefinition functionDefinition) {
+      //check the type
+      var symbol = functionDefinition.getSymbol();
+      
+      if(symbol.getName().equals("main")){
+        if(symbol.getType().getClass() != VoidType.class){
+          addTypeError(functionDefinition, "main function must be void");
+        }
+      }
+
+      //check the return type
+      var returnType = ((FuncType) symbol.getType()).getRet();
+      if(returnType.getClass() == ErrorType.class){
+        addTypeError(functionDefinition, "return type is not valid");
+      }
+      
+      //check the parameters
+      var parameters = ((FuncType) symbol.getType()).getArgs();
+
+      var statementList = functionDefinition.getStatements();
+
+      //check the statements
+      statementList.accept(this);
+
       return null;
     }
 
@@ -107,6 +163,14 @@ public final class TypeChecker {
 
     @Override
     public Void visit(ArrayAccess access) {
+      var base = access.getBase().getType();
+      Node node = access.getIndex();
+      node.accept(this);
+      var index = ((BaseNode) node).getType();
+      var indexType = base.index(index);
+      
+      setNodeType(access, indexType);
+
       return null;
     }
 
@@ -127,6 +191,9 @@ public final class TypeChecker {
 
     @Override
     public Void visit(OpExpr op) {
+      var left = op.getChildren().get(0);
+      var right = op.getChildren().get(1);
+
       return null;
     }
 
