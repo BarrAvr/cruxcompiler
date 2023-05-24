@@ -6,6 +6,7 @@ import crux.ast.traversal.NullNodeVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -64,7 +65,7 @@ public final class TypeChecker {
       return null;
     }
 
-    @Override
+    @Override //done -- not completely sure about the setNodeType for this one
     public Void visit(ArrayDeclaration arrayDeclaration) {
       if(arrayDeclaration.getSymbol().getType().equivalent(new IntType()) || arrayDeclaration.getSymbol().getType().equivalent(new BoolType())){
         setNodeType(arrayDeclaration, arrayDeclaration.getSymbol().getType());
@@ -76,7 +77,7 @@ public final class TypeChecker {
       }
     }
 
-    @Override
+    @Override //
     public Void visit(Assignment assignment) {
       var child = assignment.getChildren();
 
@@ -103,28 +104,64 @@ public final class TypeChecker {
       return null;
     }
 
-    @Override
+    @Override //done
     public Void visit(Break brk) {
-
       return null;
     }
 
-    @Override 
-    public Void visit(Call call) {  //not done
-      var check = call.getCallee().getType();
+    @Override //done
+    public Void visit(Call call) {  
+
+      //type check children
+      var children = call.getChildren();
+
+      //typelist to keep track of types of children
       TypeList typeList = new TypeList();
 
-      for (var child : call.getArguments()) {
+      for(var child : children){
         child.accept(this);
-        typeList.append(getType(child));
+
+        //check to see if the child is a call
+        if(child.getClass() != Call.class){
+          typeList.append(getType(child));
+        }
+        else{
+          //get the return type of the call and add that to the type list 
+          var callType = (Call) child;
+          var ReturnType = ((FuncType) callType.getCallee().getType()).getRet();
+          typeList.append(ReturnType);
+        }
       }
+
+      //compare the argument list to the type list
+      var callType = (FuncType) call.getCallee().getType();
+      
+      if(!callType.getArgs().equivalent(typeList)){
+        addTypeError(call, "Types do not match");
+      }
+      
+
+      //Invoke calleeType.call(argumentListType, which is going to be TypeList)
+      callType.call(new TypeList());
+
+      //Update AST node type to ↑
+      setNodeType(call, callType);
 
       return null;
     }
 
 
-    @Override
+    @Override //done
     public Void visit(DeclarationList declarationList) {
+
+      //get children
+      var children = declarationList.getChildren();
+
+      //call accept on all children
+      int i = children.size();
+      for (int j = 0; j < i; j++) {
+        children.get(j).accept(this);
+      }
       return null;
     }
 
