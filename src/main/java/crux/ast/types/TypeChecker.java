@@ -77,29 +77,30 @@ public final class TypeChecker {
       }
     }
 
-    @Override //
+    @Override //done 
     public Void visit(Assignment assignment) {
+      //get assignment children
       var child = assignment.getChildren();
 
-      var lhs = child.get(0);
-      var rhs = child.get(1);
+      //type check children
+      var lhs = child.get(0); //varAccess or ArrayAccess 
+      var rhs = child.get(1); //value
 
-      var lhsType = getType(lhs);
-      var rhsType = getType(rhs);
+      //visit children
+      lhs.accept(this);
+      rhs.accept(this);
+    
+      //get locationType from lhs
+      var locationType = ((BaseNode) assignment.getLocation()).getType();
 
-      if (lhsType.getClass() == ErrorType.class) {
-        setNodeType(assignment, lhsType);
-        return null;
-      }
+      //get valueType from rhs
+      var valueType = ((BaseNode) assignment.getValue()).getType();
 
-      if (rhsType.getClass() == ErrorType.class) {
-        setNodeType(assignment, rhsType);
-        return null;
-      }
+      //Invoke locationType.assign(valueType)
+      locationType.assign(valueType);
 
-      //not sure if this is correct
-
-
+      //update AST node type to ↑
+      setNodeType(assignment, locationType);
 
       return null;
     }
@@ -195,10 +196,23 @@ public final class TypeChecker {
 
     @Override
     public Void visit(IfElseBranch ifElseBranch) {
+
+      //Visit the condition -> now the condition node type is updated
+      ifElseBranch.getCondition().accept(this);
+
+      //Check if the condition is BoolType
+      Type conditionType = ((BaseNode) ifElseBranch.getCondition()).getType();
+      if(conditionType.getClass() != BoolType.class){
+        addTypeError(ifElseBranch, "Condition must be a boolean");
+      }
+      //Visit else and then block
+      ifElseBranch.getElseBlock().accept(this);
+      ifElseBranch.getThenBlock().accept(this);
+
       return null;
     }
 
-    @Override
+    @Override //done --example in the slides
     public Void visit(ArrayAccess access) {
       var base = access.getBase().getType();
       Node node = access.getIndex();
@@ -213,40 +227,101 @@ public final class TypeChecker {
 
     @Override
     public Void visit(LiteralBool literalBool) {
+
+      //Set node type to new BoolType / IntType
+      setNodeType(literalBool, new BoolType());
       return null;
     }
 
     @Override
     public Void visit(LiteralInt literalInt) {
+      //Set node type to new BoolType / IntType
+      setNodeType(literalInt, new IntType());
       return null;
     }
 
     @Override
     public Void visit(For forloop) {
+      //Check condition similar to IfElseBranch
+      var condition = forloop.getCond();
+      //Check if the condition is BoolType
+      Type conditionType = ((BaseNode) forloop.getCond()).getType();
+      if(conditionType.getClass() != BoolType.class){
+        addTypeError(forloop, "Condition must be a boolean");
+      }
+      //Visit children (init, increment, body)
+      forloop.getInit().accept(this);
+      forloop.getIncrement().accept(this);
+      forloop.getBody().accept(this);
+
       return null;
     }
 
     @Override
     public Void visit(OpExpr op) {
-      var left = op.getChildren().get(0);
-      var right = op.getChildren().get(1);
+      //Type check left and right (right is null if op == LOGIC_NOT)
+      var left = op.getLeft();
+      var right = op.getRight();
+      var operator = op.getOp();
+
+      left.accept(this);
+
+      if(operator != OpExpr.Operation.LOGIC_NOT){
+        right.accept(this);
+      }
+      
+      //idk how to type check this???
+      //Call corresponding method depending on operator
+      if(operator == OpExpr.Operation.ADD || operator == OpExpr.Operation.SUB || operator == OpExpr.Operation.MULT || operator == OpExpr.Operation.DIV){
+        setNodeType(op, new IntType());
+      } else if(operator == OpExpr.Operation.LOGIC_AND || operator == OpExpr.Operation.LOGIC_OR || operator == OpExpr.Operation.LOGIC_NOT){
+        setNodeType(op, new BoolType());
+      }else if (operator == OpExpr.Operation.EQ || operator == OpExpr.Operation.NE || operator == OpExpr.Operation.GE || operator == OpExpr.Operation.GT || operator == OpExpr.Operation.LE || operator == OpExpr.Operation.LT){
+        setNodeType(op, new BoolType());
+      }else {
+        addTypeError(op, "Invalid operator");
+      }
+      //Update AST node type to ↑
+      //did this in if statements above
 
       return null;
     }
 
     @Override
     public Void visit(Return ret) {
+      //Type check return value
+      var returnValue = ret.getValue();
+      returnValue.accept(this);
+
       return null;
     }
 
     @Override
     public Void visit(StatementList statementList) {
+      //Similar to DeclarationList
+      //Iterate over statements and visit
+      var children = statementList.getChildren();
+
+      //visit all children
+      for (var child : children) {
+        child.accept(this);
+      }
+
       return null;
     }
 
     @Override
     public Void visit(VariableDeclaration variableDeclaration) {
-      return null;
+      //Two possible (base) types (IntType, BoolType)
+      //Set lastStatementReturns to false
+      if(variableDeclaration.getSymbol().getType().equivalent(new IntType()) || variableDeclaration.getSymbol().getType().equivalent(new BoolType())){
+        setNodeType(variableDeclaration, variableDeclaration.getSymbol().getType());
+        return null;
+      }
+      else{
+        addTypeError(variableDeclaration, "Array size must be an integer or bool");
+        return null;
+      }
     }
   }
 }
