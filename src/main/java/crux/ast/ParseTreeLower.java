@@ -143,6 +143,7 @@ public final class ParseTreeLower {
     public Declaration visitArrayDecl(CruxParser.ArrayDeclContext ctx) {
       Position position = makePosition(ctx);
       Type type; ///might need to fix
+      Integer.parseInt(ctx.Integer().getText());
       if(ctx.type().getText().equals("int")){
         type = new ArrayType(Integer.parseInt(ctx.Integer().getText()), new IntType());
       }else if(ctx.type().getText().equals("bool")){

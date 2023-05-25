@@ -15,6 +15,45 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 class InstPair {
+  Instruction start;
+  Instruction end;
+  LocalVar value;
+
+  InstPair(Instruction start, Instruction end, LocalVar value){
+    this.start = start;
+    this.end = end;
+    this.value = value;
+  }
+
+  InstPair(Instruction start, Instruction end){
+    this.start = start;
+    this.end = end;
+    this.value = null;
+  }
+
+  InstPair(Instruction instruction, LocalVar value){
+    this.start = instruction;
+    this.end = instruction;
+    this.value = value;
+  }
+
+  InstPair(Instruction instruction){
+    this.start = instruction;
+    this.end = instruction;
+    this.value = null;
+  }
+
+  Instruction getStart(){
+    return start;
+  }
+
+  Instruction getEnd(){
+    return end;
+  }
+
+  LocalVar getValue(){
+    return value;
+  }
 }
 
 
@@ -39,6 +78,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
 
   @Override
   public InstPair visit(DeclarationList declarationList) {
+
     return null;
   }
 
@@ -48,6 +88,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(FunctionDefinition functionDefinition) {
+//    Function temp_func = new Function(null, null);
+//    mCurrentFunction.getTempVar();
+//    mCurrentLocalVarMap = new HashMap<Symbol, LocalVar>();
     return null;
   }
 

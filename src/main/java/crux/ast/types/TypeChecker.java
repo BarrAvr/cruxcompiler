@@ -77,19 +77,19 @@ public final class TypeChecker {
       }
     }
 
-    @Override //done 
+    @Override //done
     public Void visit(Assignment assignment) {
       //get assignment children
       var child = assignment.getChildren();
 
       //type check children
-      var lhs = child.get(0); //varAccess or ArrayAccess 
+      var lhs = child.get(0); //varAccess or ArrayAccess
       var rhs = child.get(1); //value
 
       //visit children
       lhs.accept(this);
       rhs.accept(this);
-    
+
       //get locationType from lhs
       var locationType = ((BaseNode) assignment.getLocation()).getType();
 
@@ -102,16 +102,18 @@ public final class TypeChecker {
       //update AST node type to ↑
       setNodeType(assignment, locationType);
 
+
       return null;
     }
 
     @Override //done
     public Void visit(Break brk) {
+
       return null;
     }
 
     @Override //done
-    public Void visit(Call call) {  
+    public Void visit(Call call) {
 
       //type check children
       var children = call.getChildren();
@@ -127,7 +129,7 @@ public final class TypeChecker {
           typeList.append(getType(child));
         }
         else{
-          //get the return type of the call and add that to the type list 
+          //get the return type of the call and add that to the type list
           var callType = (Call) child;
           var ReturnType = ((FuncType) callType.getCallee().getType()).getRet();
           typeList.append(ReturnType);
@@ -136,11 +138,11 @@ public final class TypeChecker {
 
       //compare the argument list to the type list
       var callType = (FuncType) call.getCallee().getType();
-      
+
       if(!callType.getArgs().equivalent(typeList)){
         addTypeError(call, "Types do not match");
       }
-      
+
 
       //Invoke calleeType.call(argumentListType, which is going to be TypeList)
       callType.call(new TypeList());
@@ -269,7 +271,7 @@ public final class TypeChecker {
       if(operator != OpExpr.Operation.LOGIC_NOT){
         right.accept(this);
       }
-      
+
       //idk how to type check this???
       //Call corresponding method depending on operator
       if(operator == OpExpr.Operation.ADD || operator == OpExpr.Operation.SUB || operator == OpExpr.Operation.MULT || operator == OpExpr.Operation.DIV){
