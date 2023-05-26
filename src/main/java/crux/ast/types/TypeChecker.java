@@ -59,20 +59,25 @@ public final class TypeChecker {
   private final class TypeInferenceVisitor extends NullNodeVisitor<Void> {
     @Override
     public Void visit(VarAccess vaccess) {
-
       Type type = vaccess.getSymbol().getType();
       setNodeType(vaccess, type);
+
       return null;
     }
 
     @Override //done -- not completely sure about the setNodeType for this one
     public Void visit(ArrayDeclaration arrayDeclaration) {
-      if(arrayDeclaration.getSymbol().getType().equivalent(new IntType()) || arrayDeclaration.getSymbol().getType().equivalent(new BoolType())){
-        setNodeType(arrayDeclaration, arrayDeclaration.getSymbol().getType());
+      
+      //get the base type of the array
+
+      if(((ArrayType) arrayDeclaration.getSymbol().getType()).getBase().equivalent(new IntType())){
+        return null;
+      }
+      else if(((ArrayType) arrayDeclaration.getSymbol().getType()).getBase().equivalent(new BoolType())){
         return null;
       }
       else{
-        addTypeError(arrayDeclaration, "Array size must be an integer or bool");
+        addTypeError(arrayDeclaration, "Array size must be an integer or bool type " + arrayDeclaration.getSymbol().getType().getClass());
         return null;
       }
     }
@@ -93,10 +98,11 @@ public final class TypeChecker {
       //get locationType from lhs
       var locationType = ((BaseNode) assignment.getLocation()).getType();
 
-      //get valueType from rhs
+       //get valueType from rhs
       var valueType = ((BaseNode) assignment.getValue()).getType();
 
       //Invoke locationType.assign(valueType)
+      
       locationType.assign(valueType);
 
       //update AST node type to ↑
@@ -161,37 +167,39 @@ public final class TypeChecker {
       var children = declarationList.getChildren();
 
       //call accept on all children
-      int i = children.size();
-      for (int j = 0; j < i; j++) {
-        children.get(j).accept(this);
+      //int i = children.size();
+      for (Node child : children) {
+        child.accept(this);
       }
       return null;
     }
 
     @Override
     public Void visit(FunctionDefinition functionDefinition) {
-      //check the type
+      //check the signature of main
       var symbol = functionDefinition.getSymbol();
-      
+
+      //check if the function is main
       if(symbol.getName().equals("main")){
-        if(symbol.getType().getClass() != VoidType.class){
-          addTypeError(functionDefinition, "main function must be void");
+        //check if the return type is void
+        
+        //Type type = functionDefinition.getSymbol().getType();
+        //var returnType = ((FuncType) type).getRet();
+        //if(returnType.getClass() != VoidType.class){
+        //  addTypeError(functionDefinition, "Main must have return type void");
+        //}
+
+        //check if the parameter list is empty
+        var parameterList = functionDefinition.getParameters();
+        if(!parameterList.isEmpty()){
+          addTypeError(functionDefinition, "Main must have no parameters");
         }
       }
 
-      //check the return type
-      var returnType = ((FuncType) symbol.getType()).getRet();
-      if(returnType.getClass() == ErrorType.class){
-        addTypeError(functionDefinition, "return type is not valid");
-      }
-      
-      //check the parameters
-      var parameters = ((FuncType) symbol.getType()).getArgs();
+      //visit the children
+      var children = functionDefinition.getStatements();
+      children.accept(this);
 
-      var statementList = functionDefinition.getStatements();
-
-      //check the statements
-      statementList.accept(this);
 
       return null;
     }
@@ -245,7 +253,10 @@ public final class TypeChecker {
     @Override
     public Void visit(For forloop) {
       //Check condition similar to IfElseBranch
-      var condition = forloop.getCond();
+      //visit cond first
+      forloop.getCond().accept(this);
+      //var condition = forloop.getCond();
+
       //Check if the condition is BoolType
       Type conditionType = ((BaseNode) forloop.getCond()).getType();
       if(conditionType.getClass() != BoolType.class){
@@ -316,8 +327,12 @@ public final class TypeChecker {
     public Void visit(VariableDeclaration variableDeclaration) {
       //Two possible (base) types (IntType, BoolType)
       //Set lastStatementReturns to false
-      if(variableDeclaration.getSymbol().getType().equivalent(new IntType()) || variableDeclaration.getSymbol().getType().equivalent(new BoolType())){
-        setNodeType(variableDeclaration, variableDeclaration.getSymbol().getType());
+      if(variableDeclaration.getSymbol().getType().equivalent(new IntType())){
+        setNodeType(variableDeclaration, new IntType());
+        return null;
+      }
+      else if(variableDeclaration.getSymbol().getType().equivalent(new BoolType())){
+        setNodeType(variableDeclaration, new BoolType());
         return null;
       }
       else{
