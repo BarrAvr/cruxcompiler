@@ -167,7 +167,10 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(LiteralBool literalBool) {
-    return null;
+    LocalVar destVar = mCurrentFunction.getTempVar(literalBool.getType());
+    Value source = BooleanConstant.get(mCurrentProgram, literalBool.getValue());
+    CopyInst instruction = new CopyInst(destVar, source);
+    return new InstPair(instruction);
   }
 
   /**
@@ -175,7 +178,10 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(LiteralInt literalInt) {
-    return null;
+    LocalVar destVar = mCurrentFunction.getTempVar(literalInt.getType());
+    Value source = IntegerConstant.get(mCurrentProgram, literalInt.getValue());
+    CopyInst instruction = new CopyInst(destVar, source);
+    return new InstPair(instruction);
   }
 
   /**
