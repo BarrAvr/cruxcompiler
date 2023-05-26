@@ -1,4 +1,4 @@
-// Generated from crux\pt\Crux.g4 by ANTLR 4.7.2
+// Generated from crux/pt/Crux.g4 by ANTLR 4.7.2
 package crux.pt;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

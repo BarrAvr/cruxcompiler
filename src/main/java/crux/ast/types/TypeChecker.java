@@ -69,16 +69,11 @@ public final class TypeChecker {
     public Void visit(ArrayDeclaration arrayDeclaration) {
       
       //get the base type of the array
-      var baseType = arrayDeclaration.getSymbol().getType();
 
-
-
-      if(arrayDeclaration.getSymbol().getType().getClass() == IntType.class){
-        setNodeType(arrayDeclaration, new IntType());
+      if(((ArrayType) arrayDeclaration.getSymbol().getType()).getBase().equivalent(new IntType())){
         return null;
       }
-      else if(arrayDeclaration.getSymbol().getType().getClass() == BoolType.class){
-        setNodeType(arrayDeclaration, new BoolType());
+      else if(((ArrayType) arrayDeclaration.getSymbol().getType()).getBase().equivalent(new BoolType())){
         return null;
       }
       else{
@@ -170,9 +165,9 @@ public final class TypeChecker {
       var children = declarationList.getChildren();
 
       //call accept on all children
-      int i = children.size();
-      for (int j = 0; j < i; j++) {
-        children.get(j).accept(this);
+      //int i = children.size();
+      for (Node child : children) {
+        child.accept(this);
       }
       return null;
     }
@@ -194,7 +189,7 @@ public final class TypeChecker {
 
         //check if the parameter list is empty
         var parameterList = functionDefinition.getParameters();
-        if(parameterList.isEmpty() == false){
+        if(!parameterList.isEmpty()){
           addTypeError(functionDefinition, "Main must have no parameters");
         }
       }
@@ -256,7 +251,10 @@ public final class TypeChecker {
     @Override
     public Void visit(For forloop) {
       //Check condition similar to IfElseBranch
-      var condition = forloop.getCond();
+      //visit cond first
+      forloop.getCond().accept(this);
+      //var condition = forloop.getCond();
+
       //Check if the condition is BoolType
       Type conditionType = ((BaseNode) forloop.getCond()).getType();
       if(conditionType.getClass() != BoolType.class){

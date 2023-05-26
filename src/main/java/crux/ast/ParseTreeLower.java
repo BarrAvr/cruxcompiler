@@ -150,10 +150,10 @@ public final class ParseTreeLower {
       }else{
         type = null;
       }
-      int size = Integer.parseInt(ctx.Integer().getText());
-      Type array = new ArrayType(size, type);
+      //int size = Integer.parseInt(ctx.Integer().getText());
+      //Type array = new ArrayType(size, type);
       String name = ctx.Identifier().getText();
-      Symbol symbol  = symTab.add(position, name, array);
+      Symbol symbol  = symTab.add(position, name, type);
       return new ArrayDeclaration(position, symbol);
     }
 
@@ -168,9 +168,7 @@ public final class ParseTreeLower {
       Position position = makePosition(ctx);
       
       Type type;
-      if(ctx.type() == null){
-        type = null;
-      }else if(ctx.type().getText().equals("int")){
+      if(ctx.type().getText().equals("int")){
         type = new IntType();
       }else if(ctx.type().getText().equals("bool")){
         type = new BoolType();
@@ -191,7 +189,7 @@ public final class ParseTreeLower {
       }
 
       String name = ctx.Identifier().getText();
-      Symbol symbol  = symTab.add(position, name, params);
+      Symbol symbol  = symTab.add(position, name, new FuncType(params, type));
       symTab.enter();
       ArrayList<Symbol> list = new ArrayList<Symbol>(); 
 
