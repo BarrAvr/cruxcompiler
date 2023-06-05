@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 class InstPair {
   Instruction start;
   Instruction end;
-  LocalVar value;
+  Value value;
 
-  InstPair(Instruction start, Instruction end, LocalVar value){
+  InstPair(Instruction start, Instruction end, Value value){
     this.start = start;
     this.end = end;
     this.value = value;
@@ -31,7 +31,7 @@ class InstPair {
     this.value = null;
   }
 
-  InstPair(Instruction instruction, LocalVar value){
+  InstPair(Instruction instruction, Value value){
     this.start = instruction;
     this.end = instruction;
     this.value = value;
@@ -51,9 +51,14 @@ class InstPair {
     return end;
   }
 
-  LocalVar getValue(){
+  Value getValue(){
     return value;
   }
+
+  public void setStart(Instruction start) {
+    this.start = start;
+  }
+
 }
 
 
@@ -78,6 +83,13 @@ public final class ASTLower implements NodeVisitor<InstPair> {
 
   @Override
   public InstPair visit(DeclarationList declarationList) {
+    //initialize mcurrentprogram
+    mCurrentProgram = new Program();
+
+    //visit children
+    for (var child: declarationList.getChildren()){
+      child.accept(this);
+    }
 
     return null;
   }
@@ -91,6 +103,22 @@ public final class ASTLower implements NodeVisitor<InstPair> {
 //    Function temp_func = new Function(null, null);
 //    mCurrentFunction.getTempVar();
 //    mCurrentLocalVarMap = new HashMap<Symbol, LocalVar>();
+
+    //Initialize mCurrentFunction and mCurrentLocalVarMap.
+    mCurrentFunction = new Function(functionDefinition.getSymbol().getName(), (FuncType) functionDefinition.getSymbol().getType());
+    mCurrentLocalVarMap = new HashMap<>();
+
+    //For each argument, create a temp var and map its symbol to it.
+    ArrayList<LocalVar> args = new ArrayList<>();
+    for(var param: functionDefinition.getParameters()){
+
+
+    }
+    //Set the arguments for mCurrentFunction.
+    //Add mCurrentFunction to mCurrentProgram.
+    //Visit the function body.
+    //Set the starting instruction of mCurrentFunction.
+    //Set mCurrentFunction and mCurrentLocalVarMap to null after visiting.
     return null;
   }
 
