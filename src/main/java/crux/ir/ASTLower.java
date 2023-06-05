@@ -112,19 +112,40 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     ArrayList<LocalVar> args = new ArrayList<>();
     for(var param: functionDefinition.getParameters()){
 
-
+      LocalVar tempVar = mCurrentFunction.getTempVar(param.getType());
+      mCurrentLocalVarMap.put(param, tempVar);
+      args.add(tempVar);
     }
     //Set the arguments for mCurrentFunction.
+    mCurrentFunction.setArguments(args);
     //Add mCurrentFunction to mCurrentProgram.
+    mCurrentProgram.addFunction(mCurrentFunction);
     //Visit the function body.
+    InstPair pair = functionDefinition.getStatements().accept(this);
     //Set the starting instruction of mCurrentFunction.
+    mCurrentFunction.setStart(pair.start);
     //Set mCurrentFunction and mCurrentLocalVarMap to null after visiting.
+    mCurrentFunction = null;
+    mCurrentLocalVarMap = null;
+
     return null;
   }
 
   @Override
   public InstPair visit(StatementList statementList) {
-    return null;
+    //Visit each statement and add an edge between each InstPair. Return an InstPair for the entire list.
+    //Use a NopInst to make it easier.
+
+    InstPair ret = new InstPair(new NopInst());
+    List<Node> statements = statementList.getChildren();
+
+    for(Node statement : statements){
+      var temp = statement.accept(this);
+      ret.getEnd().setNext(0, temp.getStart());
+      ret.end = temp.getEnd();
+    }
+
+    return ret;
   }
 
   /**
@@ -132,7 +153,18 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(VariableDeclaration variableDeclaration) {
-    return null;
+    //If mCurrentFunction is null, this is a global variable. Add a GlobalDecl to mCurrentProgram.
+    //Otherwise, it is a local variable. Allocate a temp var and add it to mCurrentLocalVarMap.
+    if(mCurrentFunction == null) {
+      var intCons = IntegerConstant.get(mCurrentProgram, 1);
+      var glob = new GlobalDecl(variableDeclaration.getSymbol(), intCons);
+      mCurrentProgram.addGlobalVar(glob);
+    } else {
+      var temp = mCurrentFunction.getTempVar(variableDeclaration.getType());
+      mCurrentLocalVarMap.put(variableDeclaration.getSymbol(), temp);
+    }
+    //No instructions need to be done. Return an InstPair of a NopInst if you don’t want to do null checks in visit(StatmentList).
+    return new InstPair(new NopInst());
   }
 
   /**
@@ -140,6 +172,11 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(ArrayDeclaration arrayDeclaration) {
+    //All array declarations are global. Create and add a GlobalDecl to mCurrentProgram.
+    ArrayType arr = (ArrayType) arrayDeclaration.getSymbol().getType();
+    var intCons = IntegerConstant.get(mCurrentProgram, arr.getExtent());
+    var glob = new GlobalDecl(arrayDeclaration.getSymbol(), intCons);
+    mCurrentProgram.addGlobalVar(glob);
     return null;
   }
 
