@@ -186,7 +186,19 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(VarAccess name) {
-    return null;
+    //If the symbol is in mCurrentLocalVarMap, it is a local variable/parameter. Return the LocalVar from the map (no instructions necessary).
+    //Otherwise, create a temp AddressVar and AddressAt instruction to store the address to the global variable.
+    Symbol sym = name.getSymbol();
+    if(mCurrentLocalVarMap.containsKey(sym)){
+      return new InstPair(new NopInst(), mCurrentLocalVarMap.get(sym));
+    }else{
+      var tempVar = mCurrentFunction.getTempAddressVar(name.getType());
+      var tempAt = new AddressAt(tempVar, name.getSymbol());
+      var tempLocal = mCurrentFunction.getTempVar(name.getType());
+      var tempLoad = new LoadInst(tempLocal,tempVar);
+      tempAt.setNext(0, tempLoad);
+      return new InstPair(tempAt, tempLoad, tempLocal);
+    }
   }
 
   /**
@@ -195,7 +207,19 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Assignment assignment) {
-    return null;
+    //Visit the lhs and rhs expressions.
+    var lhs = assignment.getLocation().accept(this);
+    var rhs = assignment.getValue().accept(this);
+    //If the lhs InstPair is a local var, use CopyInst.
+    if(lhs.getValue().getClass() == LocalVar.class){
+      Instruction temp = new CopyInst((LocalVar) lhs.getValue(), rhs.getValue());
+    }
+    //If the lhs InstPair is a global var, use StoreInst.
+    else{
+      Instruction temp = new StoreInst((LocalVar) rhs.getValue(), (AddressVar) lhs.getValue());
+    }
+
+    return lhs;
   }
 
   /**
