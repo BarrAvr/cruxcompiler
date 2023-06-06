@@ -210,14 +210,28 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     //Visit the lhs and rhs expressions.
     var lhs = assignment.getLocation().accept(this);
     var rhs = assignment.getValue().accept(this);
+    Instruction temp;
     //If the lhs InstPair is a local var, use CopyInst.
     if(lhs.getValue().getClass() == LocalVar.class){
-      Instruction temp = new CopyInst((LocalVar) lhs.getValue(), rhs.getValue());
+      temp = new CopyInst((LocalVar) lhs.getValue(), rhs.getValue());
     }
     //If the lhs InstPair is a global var, use StoreInst.
     else{
-      Instruction temp = new StoreInst((LocalVar) rhs.getValue(), (AddressVar) lhs.getValue());
+      if (mCurrentLocalVarMap.get(((VarAccess)assignment.getLocation()).getSymbol()) == null) {
+
+        temp = new StoreInst(((LoadInst) rhs.end).getDst(), (AddressVar) lhs.getValue());
+      }
+      else {
+        temp = new StoreInst((LocalVar) rhs.getValue(), (AddressVar) lhs.getValue());
+      }
     }
+    //add rhs add temp
+    lhs.getEnd().setNext(0, rhs.getStart());
+    lhs.end = rhs.getEnd();
+
+    InstPair ipair = new InstPair(temp, temp, null);
+    lhs.getEnd().setNext(0,ipair.getStart());
+    lhs.end = ipair.getEnd();
 
     return lhs;
   }
@@ -227,6 +241,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Call call) {
+
     return null;
   }
 
