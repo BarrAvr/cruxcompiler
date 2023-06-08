@@ -229,9 +229,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     lhs.getEnd().setNext(0, rhs.getStart());
     lhs.end = rhs.getEnd();
 
-    InstPair ipair = new InstPair(temp, temp, null);
-    lhs.getEnd().setNext(0,ipair.getStart());
-    lhs.end = ipair.getEnd();
+    InstPair iPair = new InstPair(temp, temp, null);
+    lhs.getEnd().setNext(0,iPair.getStart());
+    lhs.end = iPair.getEnd();
 
     return lhs;
   }
@@ -241,8 +241,31 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Call call) {
-
-    return null;
+    //Visit each argument to construct its CFG and add a localVar containing the argument value to the param list.
+    List<LocalVar> args = new ArrayList<>();
+    InstPair temp = null;
+    Instruction start = null;
+    Instruction end = null;
+    for(var arg: call.getArguments()){
+      temp = arg.accept(this);
+      args.add((LocalVar) temp.getValue());
+      if(start == null) {
+        start = temp.getStart();
+      }else{
+        end.setNext(0, temp.getStart());
+      }
+      end = temp.getEnd();
+    }
+    //If function is not void, create a temp var for the return value and pass that as the InstPair’s value.
+    //Construct CallInst with the function symbol.
+    var tempRet = mCurrentFunction.getTempVar(((FuncType) call.getCallee().getType()).getRet());
+    CallInst callInst = new CallInst(tempRet, call.getCallee(), args);
+    if (temp == null){
+      temp = new InstPair(start, end, null);
+      temp.getEnd().setNext(0, callInst);
+      return new InstPair(temp.getStart(), callInst, tempRet);
+    }
+    return new InstPair(callInst, callInst, callInst.getDst());
   }
 
   /**
@@ -251,10 +274,13 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(OpExpr operation) {
+
     return null;
   }
 
   private InstPair visit(Expression expression) {
+    //In the repo by mistake.
+    //You can ignore this.
     return null;
   }
 
@@ -263,6 +289,8 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(ArrayAccess access) {
+    //Visit the index.
+    //Create a temp AddressVar and AddressAt to store the address to the global variable.
     return null;
   }
 
