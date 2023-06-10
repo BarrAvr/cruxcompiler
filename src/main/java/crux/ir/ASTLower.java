@@ -2,7 +2,6 @@ package crux.ir;
 
 import crux.ast.SymbolTable.Symbol;
 import crux.ast.*;
-import crux.ast.OpExpr.Operation;
 import crux.ast.traversal.NodeVisitor;
 import crux.ast.types.*;
 import crux.ir.insts.*;
@@ -10,6 +9,10 @@ import crux.ir.insts.*;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class InstPair {
   Instruction start;
@@ -275,8 +278,77 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(OpExpr operation) {
+    List<Node> children = operation.getChildren();
+    InstPair left = children.get(0).accept(this);
+    InstPair right = children.get(1).accept(this);
+    left.getEnd().setNext(0, right.getStart());
 
-    return null;
+    LocalVar v = mCurrentFunction.getTempVar(left.getValue().getType());
+    LocalVar lhs = mCurrentFunction.getTempVar(left.getValue().getType());
+    CopyInst lhs_copy = new CopyInst(lhs, left.getValue());
+    LocalVar rhs = mCurrentFunction.getTempVar(right.getValue().getType());
+    CopyInst rhs_copy = new CopyInst(rhs, right.getValue());
+    switch(operation.getOp()) {
+      case ADD:
+      case SUB:
+      case MULT:
+      case DIV:
+        BinaryOperator b = new BinaryOperator(opToBOp(operation), v, lhs, rhs); //not sure if whether to use lhs or lhs_copygetDstVar()
+        right.getEnd().setNext(0, b);
+        return new InstPair(left.getStart(), b, v);
+      case GE:
+      case GT:
+      case LE:
+      case LT:
+      case EQ:
+      case NE:
+        CompareInst c = new CompareInst(v, opToCmpInstPrd(operation), lhs, rhs);
+        right.getEnd().setNext(0, c);
+        return new InstPair(left.getStart(), c, v);
+      case LOGIC_NOT:
+        UnaryNotInst u = new UnaryNotInst(v, lhs); //I think lhs should be used instead of rhs but unsure
+        right.getEnd().setNext(0, u);
+        return new InstPair(left.getStart(), u, v);
+      case LOGIC_OR:
+      case LOGIC_AND:
+        //"no instruction for LOGIC_AND/OR?" - 2023 Discussion 7 Slide 43
+      default:
+        return null;
+    }
+  }
+
+  private BinaryOperator.Op opToBOp(OpExpr op){
+    switch(op.getOp()) {
+      case ADD:
+        return BinaryOperator.Op.Add;
+      case SUB:
+        return BinaryOperator.Op.Sub;
+      case MULT:
+        return BinaryOperator.Op.Mul;
+      case DIV:
+        return BinaryOperator.Op.Div;
+      default:
+        return null;
+    }
+  }
+
+  private CompareInst.Predicate opToCmpInstPrd(OpExpr op){
+    switch(op.getOp()) {
+      case GE:
+        return CompareInst.Predicate.GE;
+      case GT:
+        return CompareInst.Predicate.GT;
+      case LE:
+        return CompareInst.Predicate.LE;
+      case LT:
+        return CompareInst.Predicate.LT;
+      case EQ:
+        return CompareInst.Predicate.EQ;
+      case NE:
+        return CompareInst.Predicate.NE;
+      default:
+        return null;
+    }
   }
 
   private InstPair visit(Expression expression) {
