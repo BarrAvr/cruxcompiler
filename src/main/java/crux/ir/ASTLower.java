@@ -290,8 +290,13 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   @Override
   public InstPair visit(ArrayAccess access) {
     //Visit the index.
+    var index = access.getIndex().accept(this);
     //Create a temp AddressVar and AddressAt to store the address to the global variable.
-    return null;
+    var tempAdvar = mCurrentFunction.getTempAddressVar(access.getType());
+    var tempAdat = new AddressAt(tempAdvar, access.getBase(), (LocalVar) index.getValue());
+    index.getEnd().setNext(0,tempAdat);
+
+    return new InstPair(index.getStart(), tempAdat, tempAdvar);
   }
 
   /**
@@ -321,7 +326,13 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Return ret) {
-    return null;
+    //Visit the return expression.
+    var exp = ret.getValue().accept(this);
+
+    //Pass its value into a ReturnInst.
+    var retInst = new ReturnInst((LocalVar) exp.getValue());
+    exp.getEnd().setNext(0, retInst);
+    return new InstPair(exp.getStart(), retInst);
   }
 
   /**
@@ -329,6 +340,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Break brk) {
+    //Put the current loop exit in the instPair
+    //Need to keep track of current loop (hint: a global variable could work)
+
     return null;
   }
 
