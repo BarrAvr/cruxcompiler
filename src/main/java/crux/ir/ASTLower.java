@@ -7,10 +7,7 @@ import crux.ast.traversal.NodeVisitor;
 import crux.ast.types.*;
 import crux.ir.insts.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -18,6 +15,8 @@ class InstPair {
   Instruction start;
   Instruction end;
   Value value;
+
+
 
   InstPair(Instruction start, Instruction end, Value value){
     this.start = start;
@@ -70,6 +69,8 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   private Function mCurrentFunction = null;
 
   private Map<Symbol, LocalVar> mCurrentLocalVarMap = null;
+
+  public Stack<Instruction> breakStack = new Stack<>();
 
   /**
    * A constructor to initialize member variables
@@ -342,8 +343,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   public InstPair visit(Break brk) {
     //Put the current loop exit in the instPair
     //Need to keep track of current loop (hint: a global variable could work)
+    var exitLoop = breakStack.pop();
 
-    return null;
+    return new InstPair(exitLoop, new NopInst());
   }
 
   /**
@@ -351,7 +353,22 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(IfElseBranch ifElseBranch) {
-    return null;
+    //Visit condition.
+    var temp = ifElseBranch.getCondition().accept(this);
+    //Use JumpInst.
+    JumpInst jump = new JumpInst((LocalVar) temp.getValue());
+    temp.getEnd().setNext(0, jump);
+    //Visit thenBlock and elseBlock.
+    var tempElse = ifElseBranch.getElseBlock().accept(this);
+    var tempThen = ifElseBranch.getThenBlock().accept(this);
+    jump.setNext(0, tempElse.getStart());
+    jump.setNext(1, tempThen.getStart());
+
+    //Merge the blocks into a NopInst.
+    tempThen.getEnd().setNext(0,new NopInst());
+    tempElse.getEnd().setNext(0, new NopInst());
+
+    return new InstPair(temp.getStart(), new NopInst());
   }
 
   /**
@@ -359,6 +376,32 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(For loop) {
-    return null;
+    //Visit the loop header
+    var init = loop.getInit().accept(this);
+
+    //Create a NopInst as the loop exit, and connect header to exit. Store the exit in a global variable ( since loops can be nested, outer loop exits need to be remembered in some way ) , so that break statements in the loop can find the exit.
+    NopInst exit = new NopInst();
+    breakStack.push(exit);
+
+
+    //Visit the loop body , and add edge from header to body
+    var body = loop.getBody().accept(this);
+    var cond = loop.getCond().accept(this);
+    var inc = loop.getIncrement().accept(this);
+
+    init.getEnd().setNext(0, cond.getStart());
+    JumpInst jump = new JumpInst((LocalVar) cond.getValue());
+    cond.getEnd().setNext(0, jump);
+    //Add two edges from the body, one to the loop header and one to the loop exit
+    //set jump conditions 0 = exit, 1 = loop body
+    //cond -> jump -> body or exit -> inc -> cond
+    jump.setNext(0, exit);
+    jump.setNext(1,body.getStart());
+    body.getEnd().setNext(0, inc.getStart());
+    inc.getEnd().setNext(0, cond.getStart());
+    //Remove the current loop exit
+    breakStack.pop();
+
+    return new InstPair(init.getStart(), exit);
   }
 }
