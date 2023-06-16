@@ -88,7 +88,7 @@ public final class SymbolTable {
     //initialize the global scope
     symbolScopes.add(new HashMap<String, Symbol>());
 
-    //add built in functions to the global scope
+    //add built-in functions to the global scope
     add(new Position(0), "readInt", new FuncType(new TypeList(), new IntType()));
     add(new Position(0), "readChar", new FuncType(new TypeList(), new IntType()));
     add(new Position(0), "printBool", new FuncType(TypeList.of(new BoolType()), new VoidType())); 
@@ -127,24 +127,21 @@ public final class SymbolTable {
     //add symbol to current scope. Return error if already exists.
     
     //make sure sybmol scope exists and size > 0
-    if(symbolScopes != null && symbolScopes.size() != 0){
 
-      Map<String, Symbol> currentScope = symbolScopes.get(symbolScopes.size() - 1);
+    Map<String, Symbol> currentScope = symbolScopes.get(symbolScopes.size() - 1);
 
-      //check if name already exists in current scope
-      if(currentScope.containsKey(name)){
-        err.println("DeclarationError" + pos + "Variable " + name + " already declared in this scope.");
-        encounteredError = true;
-        return new Symbol(name, "DeclarationError");
-      }
-      //in the case that we do not find an existing name in the current scope, add the new symbol to the current scope
-      else{
-        currentScope.put(name, new Symbol(name, type));
-        return new Symbol(name, type);
-      } 
+    //check if name already exists in current scope
+    if(currentScope.containsKey(name)){
+      err.println("DeclarationError" + pos + "Variable " + name + " already declared in this scope.");
+      encounteredError = true;
+      return new Symbol(name, "DeclarationError");
     }
-
-    return null;
+    //in the case that we do not find an existing name in the current scope, add the new symbol to the current scope
+    else{
+      Symbol temp = new Symbol(name, type);
+      currentScope.put(name, temp);
+      return temp;
+    }
   }
 
   /**

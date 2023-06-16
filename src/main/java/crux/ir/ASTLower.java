@@ -78,7 +78,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   /**
    * A constructor to initialize member variables
    */
-  public ASTLower() {}
+  public ASTLower() {
+    mCurrentLocalVarMap = new HashMap<Symbol, LocalVar>();
+  }
 
   public Program lower(DeclarationList ast) {
     visit(ast);
@@ -127,7 +129,8 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     //Visit the function body.
     InstPair pair = functionDefinition.getStatements().accept(this);
     //Set the starting instruction of mCurrentFunction.
-    mCurrentFunction.setStart(pair.start);
+    mCurrentFunction.setStart(pair.getStart());
+
     //Set mCurrentFunction and mCurrentLocalVarMap to null after visiting.
     mCurrentFunction = null;
     mCurrentLocalVarMap = null;
@@ -140,16 +143,17 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     //Visit each statement and add an edge between each InstPair. Return an InstPair for the entire list.
     //Use a NopInst to make it easier.
 
-    InstPair ret = new InstPair(new NopInst());
+    Instruction start = new NopInst();
+    Instruction last = start;
     List<Node> statements = statementList.getChildren();
 
     for(Node statement : statements){
       var temp = statement.accept(this);
-      ret.getEnd().setNext(0, temp.getStart());
-      ret.end = temp.getEnd();
+      last.setNext(0, temp.getStart());
+      last = temp.getEnd();
     }
 
-    return ret;
+    return new InstPair(start, last);
   }
 
   /**
@@ -164,11 +168,11 @@ public final class ASTLower implements NodeVisitor<InstPair> {
       var glob = new GlobalDecl(variableDeclaration.getSymbol(), intCons);
       mCurrentProgram.addGlobalVar(glob);
     } else {
-      var temp = mCurrentFunction.getTempVar(variableDeclaration.getType());
+      var temp = mCurrentFunction.getTempVar(variableDeclaration.getSymbol().getType());
       mCurrentLocalVarMap.put(variableDeclaration.getSymbol(), temp);
     }
     //No instructions need to be done. Return an InstPair of a NopInst if you don’t want to do null checks in visit(StatmentList).
-    return new InstPair(new NopInst());
+    return new InstPair(new NopInst(), new NopInst());
   }
 
   /**
@@ -193,12 +197,13 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     //If the symbol is in mCurrentLocalVarMap, it is a local variable/parameter. Return the LocalVar from the map (no instructions necessary).
     //Otherwise, create a temp AddressVar and AddressAt instruction to store the address to the global variable.
     Symbol sym = name.getSymbol();
+
     if(mCurrentLocalVarMap.containsKey(sym)){
-      return new InstPair(new NopInst(), mCurrentLocalVarMap.get(sym));
+      return new InstPair(new NopInst(), new NopInst(), mCurrentLocalVarMap.get(sym));
     }else{
-      var tempVar = mCurrentFunction.getTempAddressVar(name.getType());
+      var tempVar = mCurrentFunction.getTempAddressVar(name.getSymbol().getType());
       var tempAt = new AddressAt(tempVar, name.getSymbol());
-      var tempLocal = mCurrentFunction.getTempVar(name.getType());
+      var tempLocal = mCurrentFunction.getTempVar(name.getSymbol().getType());
       var tempLoad = new LoadInst(tempLocal,tempVar);
       tempAt.setNext(0, tempLoad);
       return new InstPair(tempAt, tempLoad, tempLocal);
@@ -211,7 +216,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(Assignment assignment) {
-    //Visit the lhs and rhs expressions.
+    //do not visit location Instead check if it is an ArrayAccess or global VarAccess.
     var lhs = assignment.getLocation().accept(this);
     var rhs = assignment.getValue().accept(this);
     Instruction temp;
@@ -287,11 +292,11 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     InstPair right = children.get(1).accept(this);
     left.getEnd().setNext(0, right.getStart());
 
-    LocalVar v = mCurrentFunction.getTempVar(left.getValue().getType());
+    LocalVar v = null; //mCurrentFunction.getTempVar(left.getValue().getType());
     LocalVar lhs = mCurrentFunction.getTempVar(left.getValue().getType());
-    CopyInst lhs_copy = new CopyInst(lhs, left.getValue());
+    //CopyInst lhs_copy = new CopyInst(lhs, left.getValue());
     LocalVar rhs = mCurrentFunction.getTempVar(right.getValue().getType());
-    CopyInst rhs_copy = new CopyInst(rhs, right.getValue());
+    //CopyInst rhs_copy = new CopyInst(rhs, right.getValue());
     switch(operation.getOp()) {
       case ADD:
       case SUB:
@@ -379,7 +384,12 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     var tempAdat = new AddressAt(tempAdvar, access.getBase(), (LocalVar) index.getValue());
     index.getEnd().setNext(0,tempAdat);
 
-    return new InstPair(index.getStart(), tempAdat, tempAdvar);
+    var local = mCurrentFunction.getTempVar(access.getType());
+    var loadInst = new LoadInst(local, tempAdvar);
+
+    tempAdat.setNext(0, loadInst);
+
+    return new InstPair(index.getStart(), loadInst, tempAdvar);
   }
 
   /**
