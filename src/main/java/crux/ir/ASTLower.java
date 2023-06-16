@@ -246,30 +246,34 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   @Override
   public InstPair visit(Call call) {
     //Visit each argument to construct its CFG and add a localVar containing the argument value to the param list.
-    List<LocalVar> args = new ArrayList<>();
-    InstPair temp = null;
-    Instruction start = null;
-    Instruction end = null;
+    NopInst start = new NopInst();
+    List<LocalVar> paramList = new ArrayList<>();
+    Instruction last = start;
+    LocalVar local = null;
+
     for(var arg: call.getArguments()){
-      temp = arg.accept(this);
-      args.add((LocalVar) temp.getValue());
-      if(start == null) {
-        start = temp.getStart();
-      }else{
-        end.setNext(0, temp.getStart());
+      var temp = arg.accept(this);
+      if (temp.getEnd().getClass().equals(LoadInst.class)){
+        local = ((LoadInst) temp.getEnd()).getDst();
+      }else {
+        local = ((LocalVar) temp.getValue());
       }
-      end = temp.getEnd();
+      last.setNext(0, temp.getStart());
+      last = temp.getEnd();
+      paramList.add(local);
     }
     //If function is not void, create a temp var for the return value and pass that as the InstPair’s value.
     //Construct CallInst with the function symbol.
-    var tempRet = mCurrentFunction.getTempVar(((FuncType) call.getCallee().getType()).getRet());
-    CallInst callInst = new CallInst(tempRet, call.getCallee(), args);
-    if (temp == null){
-      temp = new InstPair(start, end, null);
-      temp.getEnd().setNext(0, callInst);
-      return new InstPair(temp.getStart(), callInst, tempRet);
+    var callee = call.getCallee();
+
+    if(((FuncType) callee.getType()).getRet().getClass().equals(void.class)){
+      CallInst callInst = new CallInst(mCurrentFunction.getTempVar(((FuncType)callee.getType()).getRet()), callee, paramList);
+      last.setNext(0, callInst);
+      return new InstPair(start, callInst, mCurrentFunction.getTempVar(((FuncType)callee.getType()).getRet()));
     }
-    return new InstPair(callInst, callInst, callInst.getDst());
+    CallInst callInst = new CallInst(callee, paramList);
+    last.setNext(0, callInst);
+    return new InstPair(start, callInst);
   }
 
   /**
@@ -293,7 +297,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
       case SUB:
       case MULT:
       case DIV:
-        BinaryOperator b = new BinaryOperator(opToBOp(operation), v, lhs, rhs); //not sure if whether to use lhs or lhs_copygetDstVar()
+        v = mCurrentFunction.getTempVar(operation.getType());
+        BinaryOperator b = new BinaryOperator(opToBOp(operation), v, (LocalVar) left.getValue(), (LocalVar) right.getValue()); //not sure if whether to use lhs or lhs_copygetDstVar()
+        left.getEnd().setNext(0, right.getStart());
         right.getEnd().setNext(0, b);
         return new InstPair(left.getStart(), b, v);
       case GE:
@@ -302,11 +308,15 @@ public final class ASTLower implements NodeVisitor<InstPair> {
       case LT:
       case EQ:
       case NE:
-        CompareInst c = new CompareInst(v, opToCmpInstPrd(operation), lhs, rhs);
+        v = mCurrentFunction.getTempVar(operation.getType());
+        CompareInst c = new CompareInst(v, opToCmpInstPrd(operation), (LocalVar) left.getValue(), (LocalVar) right.getValue());
+        left.getEnd().setNext(0, right.getStart());
         right.getEnd().setNext(0, c);
         return new InstPair(left.getStart(), c, v);
       case LOGIC_NOT:
-        UnaryNotInst u = new UnaryNotInst(v, lhs); //I think lhs should be used instead of rhs but unsure
+        v = mCurrentFunction.getTempVar(operation.getType());
+        UnaryNotInst u = new UnaryNotInst(v, (LocalVar) left.getValue()); //I think lhs should be used instead of rhs but unsure
+        left.getEnd().setNext(0, right.getStart());
         right.getEnd().setNext(0, u);
         return new InstPair(left.getStart(), u, v);
       case LOGIC_OR:
@@ -380,7 +390,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     LocalVar destVar = mCurrentFunction.getTempVar(literalBool.getType());
     Value source = BooleanConstant.get(mCurrentProgram, literalBool.getValue());
     CopyInst instruction = new CopyInst(destVar, source);
-    return new InstPair(instruction);
+    return new InstPair(instruction, destVar);
   }
 
   /**
@@ -391,7 +401,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     LocalVar destVar = mCurrentFunction.getTempVar(literalInt.getType());
     Value source = IntegerConstant.get(mCurrentProgram, literalInt.getValue());
     CopyInst instruction = new CopyInst(destVar, source);
-    return new InstPair(instruction);
+    return new InstPair(instruction, destVar);
   }
 
   /**
