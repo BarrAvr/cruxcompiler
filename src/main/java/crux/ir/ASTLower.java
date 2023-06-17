@@ -217,32 +217,49 @@ public final class ASTLower implements NodeVisitor<InstPair> {
   @Override
   public InstPair visit(Assignment assignment) {
     //do not visit location Instead check if it is an ArrayAccess or global VarAccess.
-    var lhs = assignment.getLocation().accept(this);
-    var rhs = assignment.getValue().accept(this);
-    Instruction temp;
-    //If the lhs InstPair is a local var, use CopyInst.
-    if(lhs.getValue().getClass() == LocalVar.class){
-      temp = new CopyInst((LocalVar) lhs.getValue(), rhs.getValue());
-    }
-    //If the lhs InstPair is a global var, use StoreInst.
-    else{
-      if (mCurrentLocalVarMap.get(((VarAccess)assignment.getLocation()).getSymbol()) == null) {
+    var lhs = assignment.getLocation();
+    var rhs = assignment.getValue();
 
-        temp = new StoreInst(((LoadInst) rhs.end).getDst(), (AddressVar) lhs.getValue());
+    Symbol temp = null;
+    //Instead check if it is an ArrayAccess or global VarAccess.
+    if(lhs.getClass().equals(VarAccess.class)){
+      temp = ((VarAccess) lhs).getSymbol();
+      var get = mCurrentLocalVarMap.get(temp);
+      if (get == null){
+
+        var advar = mCurrentFunction.getTempAddressVar(temp.getType());
+
+        var right = rhs.accept(this);
+        AddressAt adat = new AddressAt(advar, temp);
+        StoreInst store = new StoreInst((LocalVar) right.getValue(), advar);
+        right.getEnd().setNext(0, adat);
+        adat.setNext(0, store);
+        return new InstPair(right.getStart(), store);
       }
-      else {
-        temp = new StoreInst((LocalVar) rhs.getValue(), (AddressVar) lhs.getValue());
+    }else{
+      temp = ((ArrayAccess)lhs).getBase();
+      var get = mCurrentLocalVarMap.get(temp);
+      if (get == null){
+
+        var advar = mCurrentFunction.getTempAddressVar(temp.getType());
+
+        var index = ((ArrayAccess) lhs).getIndex().accept(this);
+        var right = rhs.accept(this);
+        AddressAt adat = new AddressAt(advar, temp, (LocalVar) index.getValue());
+        index.getEnd().setNext(0, right.getStart());
+        right.getEnd().setNext(0, adat);
+        StoreInst store = new StoreInst((LocalVar) right.getValue(), advar);
+        adat.setNext(0, store);
+        return new InstPair(index.getStart(), store);
       }
     }
-    //add rhs add temp
-    lhs.getEnd().setNext(0, rhs.getStart());
-    lhs.end = rhs.getEnd();
 
-    InstPair iPair = new InstPair(temp, temp, null);
-    lhs.getEnd().setNext(0,iPair.getStart());
-    lhs.end = iPair.getEnd();
-
-    return lhs;
+    InstPair left = lhs.accept(this);
+    InstPair right = rhs.accept(this);
+    right.getEnd().setNext(0, left.getStart());
+    CopyInst copy = new CopyInst((LocalVar) left.getValue(), right.getValue());
+    left.getEnd().setNext(0, copy);
+    return new InstPair(right.getStart(), copy);
   }
 
   /**
