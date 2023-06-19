@@ -134,7 +134,21 @@ public final class CodeGen extends InstVisitor {
     }
   }
 
-  public void visit(AddressAt i) {}
+  public void visit(AddressAt i) {
+    var dst = i.getDst();
+    var base = i.getBase();
+    var off = i.getOffset();
+    var name = base.getName();
+
+    out.printCode("movq " + name + "@GOTPCREL(%rip), %r11");
+
+    if (off != null){
+      out.printCode("movq " + -8 * varMap.get(off)+"(%rbp)" + ", %r10");
+      out.printCode("imulq $8, %r10");
+      out.printCode("addq %r10, %r11");
+    }
+    out.printCode("movq %r11, -8*" + varMap.get(dst) + "(%rbp)");
+  }
 
   public void visit(BinaryOperator i) {}
 
