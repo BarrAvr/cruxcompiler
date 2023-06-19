@@ -112,10 +112,10 @@ public final class ASTLower implements NodeVisitor<InstPair> {
 
     //Initialize mCurrentFunction and mCurrentLocalVarMap.
     mCurrentFunction = new Function(functionDefinition.getSymbol().getName(), (FuncType) functionDefinition.getSymbol().getType());
-    mCurrentLocalVarMap = new HashMap<>();
+    mCurrentLocalVarMap = new HashMap<Symbol, LocalVar>();
 
     //For each argument, create a temp var and map its symbol to it.
-    ArrayList<LocalVar> args = new ArrayList<>();
+    ArrayList<LocalVar> args = new ArrayList<LocalVar>();
     for(var param: functionDefinition.getParameters()){
 
       LocalVar tempVar = mCurrentFunction.getTempVar(param.getType());
@@ -172,7 +172,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
       mCurrentLocalVarMap.put(variableDeclaration.getSymbol(), temp);
     }
     //No instructions need to be done. Return an InstPair of a NopInst if you don’t want to do null checks in visit(StatmentList).
-    return new InstPair(new NopInst(), new NopInst());
+    return new InstPair(new NopInst());
   }
 
   /**
@@ -199,7 +199,8 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     Symbol sym = name.getSymbol();
 
     if(mCurrentLocalVarMap.containsKey(sym)){
-      return new InstPair(new NopInst(), new NopInst(), mCurrentLocalVarMap.get(sym));
+      var n = new NopInst();
+      return new InstPair(n, n, mCurrentLocalVarMap.get(sym));
     }else{
       var tempVar = mCurrentFunction.getTempAddressVar(name.getSymbol().getType());
       var tempAt = new AddressAt(tempVar, name.getSymbol());
@@ -289,13 +290,14 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     var callee = call.getCallee();
 
     if(((FuncType) callee.getType()).getRet().getClass().equals(void.class)){
-      CallInst callInst = new CallInst(mCurrentFunction.getTempVar(((FuncType)callee.getType()).getRet()), callee, paramList);
+      CallInst callInst = new CallInst(callee, paramList);
       last.setNext(0, callInst);
-      return new InstPair(start, callInst, mCurrentFunction.getTempVar(((FuncType)callee.getType()).getRet()));
+      return new InstPair(start, callInst);
     }
-    CallInst callInst = new CallInst(callee, paramList);
+    LocalVar tempVal = mCurrentFunction.getTempVar(((FuncType) callee.getType()).getRet());
+    CallInst callInst = new CallInst(tempVal, callee, paramList);
     last.setNext(0, callInst);
-    return new InstPair(start, callInst);
+    return new InstPair(start, callInst, tempVal);
   }
 
   /**
@@ -304,83 +306,103 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(OpExpr operation) {
-    List<Node> children = operation.getChildren();
-    InstPair left = children.get(0).accept(this);
-    InstPair right = children.get(1).accept(this);
-    left.getEnd().setNext(0, right.getStart());
-
-    LocalVar v = null; //mCurrentFunction.getTempVar(left.getValue().getType());
-    LocalVar lhs = mCurrentFunction.getTempVar(left.getValue().getType());
-    //CopyInst lhs_copy = new CopyInst(lhs, left.getValue());
-    LocalVar rhs = mCurrentFunction.getTempVar(right.getValue().getType());
-    //CopyInst rhs_copy = new CopyInst(rhs, right.getValue());
-    switch(operation.getOp()) {
-      case ADD:
-      case SUB:
-      case MULT:
-      case DIV:
-        v = mCurrentFunction.getTempVar(operation.getType());
-        BinaryOperator b = new BinaryOperator(opToBOp(operation), v, (LocalVar) left.getValue(), (LocalVar) right.getValue()); //not sure if whether to use lhs or lhs_copygetDstVar()
-        left.getEnd().setNext(0, right.getStart());
-        right.getEnd().setNext(0, b);
-        return new InstPair(left.getStart(), b, v);
-      case GE:
-      case GT:
-      case LE:
-      case LT:
-      case EQ:
-      case NE:
-        v = mCurrentFunction.getTempVar(operation.getType());
-        CompareInst c = new CompareInst(v, opToCmpInstPrd(operation), (LocalVar) left.getValue(), (LocalVar) right.getValue());
-        left.getEnd().setNext(0, right.getStart());
-        right.getEnd().setNext(0, c);
-        return new InstPair(left.getStart(), c, v);
-      case LOGIC_NOT:
-        v = mCurrentFunction.getTempVar(operation.getType());
-        UnaryNotInst u = new UnaryNotInst(v, (LocalVar) left.getValue()); //I think lhs should be used instead of rhs but unsure
-        left.getEnd().setNext(0, right.getStart());
-        right.getEnd().setNext(0, u);
-        return new InstPair(left.getStart(), u, v);
-      case LOGIC_OR:
-      case LOGIC_AND:
-        //"no instruction for LOGIC_AND/OR?" - 2023 Discussion 7 Slide 43
-      default:
-        return null;
+    InstPair lhs;
+    InstPair rhs;
+    if(operation.getRight() != null){
+      lhs = operation.getLeft().accept(this);
+      rhs = operation.getRight().accept(this);
     }
-  }
-
-  private BinaryOperator.Op opToBOp(OpExpr op){
-    switch(op.getOp()) {
-      case ADD:
-        return BinaryOperator.Op.Add;
-      case SUB:
-        return BinaryOperator.Op.Sub;
-      case MULT:
-        return BinaryOperator.Op.Mul;
-      case DIV:
-        return BinaryOperator.Op.Div;
-      default:
-        return null;
+    else {
+      lhs = operation.getLeft().accept(this);
+      LocalVar myLocalVar = mCurrentFunction.getTempVar(operation.getType());
+      UnaryNotInst myUnaryNotInst = new UnaryNotInst(myLocalVar, (LocalVar) lhs.value);
+      lhs.end.setNext(0, myUnaryNotInst);
+      return new InstPair(lhs.start, myUnaryNotInst, myLocalVar);
     }
-  }
 
-  private CompareInst.Predicate opToCmpInstPrd(OpExpr op){
-    switch(op.getOp()) {
-      case GE:
-        return CompareInst.Predicate.GE;
-      case GT:
-        return CompareInst.Predicate.GT;
-      case LE:
-        return CompareInst.Predicate.LE;
-      case LT:
-        return CompareInst.Predicate.LT;
-      case EQ:
-        return CompareInst.Predicate.EQ;
-      case NE:
-        return CompareInst.Predicate.NE;
-      default:
-        return null;
+    CompareInst.Predicate myComparePredicate = null;
+    BinaryOperator.Op myBinaryOp = null;
+    String myBoolOp = null;
+    if(operation.getOp().toString().equals("==")){
+      myComparePredicate = CompareInst.Predicate.EQ;
+    }else if(operation.getOp().toString().equals("!=")){
+      myComparePredicate = CompareInst.Predicate.NE;
+    }else if(operation.getOp().toString().equals(">")){
+      myComparePredicate = CompareInst.Predicate.GT;
+    }else if(operation.getOp().toString().equals("<")){
+      myComparePredicate = CompareInst.Predicate.LT;
+    }else if(operation.getOp().toString().equals(">=")){
+      myComparePredicate = CompareInst.Predicate.GE;
+    }else if(operation.getOp().toString().equals("<=")){
+      myComparePredicate = CompareInst.Predicate.LE;
+    }else if(operation.getOp().toString().equals("+")){
+      myBinaryOp = BinaryOperator.Op.Add;
+    }else if(operation.getOp().toString().equals("-")){
+      myBinaryOp = BinaryOperator.Op.Sub;
+    }else if(operation.getOp().toString().equals("*")){
+      myBinaryOp = BinaryOperator.Op.Mul;
+    }else if(operation.getOp().toString().equals("/")){
+      myBinaryOp = BinaryOperator.Op.Div;
+    }else if(operation.getOp().toString().equals("&&")){
+      myBoolOp = "&&";
+    }else if(operation.getOp().toString().equals("||")){
+      myBoolOp = "||";
     }
+    if(myComparePredicate != null){
+      LocalVar myLocalVar = mCurrentFunction.getTempVar(operation.getType());
+      CompareInst myCompareInst = new CompareInst(myLocalVar, myComparePredicate,
+              (LocalVar) lhs.value,
+              (LocalVar) rhs.value);
+      lhs.end.setNext(0, rhs.start);
+      rhs.end.setNext(0, myCompareInst);
+      return new InstPair(lhs.start, myCompareInst, myLocalVar);
+    }
+    else if(myBinaryOp != null){
+      LocalVar myLocalVar = mCurrentFunction.getTempVar(operation.getType());
+      BinaryOperator myOpInst = new BinaryOperator(myBinaryOp, myLocalVar,
+              (LocalVar) lhs.value,
+              (LocalVar) rhs.value);
+      lhs.end.setNext(0, rhs.start);
+      rhs.end.setNext(0, myOpInst);
+      return new InstPair(lhs.start, myOpInst, myLocalVar);
+    }
+    else if(myBoolOp != null && (myBoolOp.equals("&&") || myBoolOp.equals("||"))){
+
+      JumpInst myJump;
+
+      NopInst myThenBranch = new NopInst();
+      if(myBoolOp.equals("&&")){
+        LocalVar myLocalVar = mCurrentFunction.getTempVar(operation.getType());
+        myJump = new JumpInst((LocalVar) lhs.value);
+        lhs.end.setNext(0, myJump);
+        CopyInst myCopyInst0 = new CopyInst(myLocalVar, lhs.value);
+        myJump.setNext(0, myCopyInst0);
+        myJump.setNext(1, rhs.start);
+        CopyInst myCopyInst1 = new CopyInst(myLocalVar, rhs.value);
+        rhs.end.setNext(0, myCopyInst1);
+        NopInst myMergeInst = new NopInst();
+        myCopyInst0.setNext(0, myMergeInst);
+        myCopyInst1.setNext(0, myMergeInst);
+        return new InstPair(lhs.start, myMergeInst, myLocalVar);
+      }
+      else{ //"||"
+        LocalVar myLocalVar = mCurrentFunction.getTempVar(operation.getType());
+        myJump = new JumpInst((LocalVar) lhs.value);
+        lhs.end.setNext(0, myJump);
+        CopyInst myCopyInst0 = new CopyInst(myLocalVar, lhs.value);
+        CopyInst myCopyInst1 = new CopyInst(myLocalVar, rhs.value);
+        myJump.setNext(0, rhs.start);
+        myJump.setNext(1, myCopyInst0);
+        NopInst myMergeInst = new NopInst();;
+        rhs.end.setNext(0, myCopyInst1);
+        myCopyInst0.setNext(0, myMergeInst);
+        myCopyInst1.setNext(0, myMergeInst);
+
+        return new InstPair(lhs.start, myMergeInst, myLocalVar);
+      }
+
+    }
+    return null;
   }
 
   private InstPair visit(Expression expression) {
@@ -406,7 +428,7 @@ public final class ASTLower implements NodeVisitor<InstPair> {
 
     tempAdat.setNext(0, loadInst);
 
-    return new InstPair(index.getStart(), loadInst, tempAdvar);
+    return new InstPair(index.getStart(), loadInst, local);
   }
 
   /**
@@ -414,10 +436,10 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(LiteralBool literalBool) {
-    LocalVar destVar = mCurrentFunction.getTempVar(literalBool.getType());
+    LocalVar destVar = mCurrentFunction.getTempVar(new BoolType());
     Value source = BooleanConstant.get(mCurrentProgram, literalBool.getValue());
     CopyInst instruction = new CopyInst(destVar, source);
-    return new InstPair(instruction, destVar);
+    return new InstPair(instruction, instruction, destVar);
   }
 
   /**
@@ -425,14 +447,14 @@ public final class ASTLower implements NodeVisitor<InstPair> {
    */
   @Override
   public InstPair visit(LiteralInt literalInt) {
-    LocalVar destVar = mCurrentFunction.getTempVar(literalInt.getType());
+    LocalVar destVar = mCurrentFunction.getTempVar(new IntType());
     Value source = IntegerConstant.get(mCurrentProgram, literalInt.getValue());
     CopyInst instruction = new CopyInst(destVar, source);
-    return new InstPair(instruction, destVar);
+    return new InstPair(instruction, instruction, destVar);
   }
 
   /**
-   * Lower a Return.
+   * Lower a Return.s
    */
   @Override
   public InstPair visit(Return ret) {
@@ -472,12 +494,12 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     var tempThen = ifElseBranch.getThenBlock().accept(this);
     jump.setNext(0, tempElse.getStart());
     jump.setNext(1, tempThen.getStart());
-
+    NopInst nop = new NopInst();
     //Merge the blocks into a NopInst.
-    tempThen.getEnd().setNext(0,new NopInst());
-    tempElse.getEnd().setNext(0, new NopInst());
+    tempThen.getEnd().setNext(0,nop);
+    tempElse.getEnd().setNext(0, nop);
 
-    return new InstPair(temp.getStart(), new NopInst());
+    return new InstPair(temp.getStart(), nop);
   }
 
   /**
@@ -509,7 +531,9 @@ public final class ASTLower implements NodeVisitor<InstPair> {
     body.getEnd().setNext(0, inc.getStart());
     inc.getEnd().setNext(0, cond.getStart());
     //Remove the current loop exit
-    breakStack.pop();
+    if(!breakStack.isEmpty()) {
+      breakStack.pop();
+    }
 
     return new InstPair(init.getStart(), exit);
   }
