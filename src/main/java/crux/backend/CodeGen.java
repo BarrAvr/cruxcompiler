@@ -94,15 +94,44 @@ public final class CodeGen extends InstVisitor {
           out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
           out.printCode("movq %r10, " + (i * -8) + "(%rbp)");
       }
+      varMap.put(arguments.get(i), i+1);
     }
-    //TODO
-    //visit(func.getStart());
-    int offset = getStackSlot(arguments.get(0));
-    int value = varMap.get(offset);
-    //step 5
-    //TODO
-    //step 6
-    //TODO
+    //step 5/step 6
+    //Generate code for function body
+    //Linearize CFG using jumps and labels
+    //Use DFS traversal
+    //Refer to Function.assignLabels(int count[])
+    Stack<Instruction> visiting = new Stack<Instruction>();
+    Stack<Instruction> visited = new Stack();
+    Instruction start = func.getStart();
+    visiting.push(start);
+
+    while(!visiting.isEmpty()){
+      Instruction current = visiting.pop();
+
+      if(labels.containsKey(current)){
+        out.printLabel(labels.get(current) + ":");
+      }
+
+      current.accept(this);
+      if(current.getNext(1) != null){
+        if(!visited.contains(current.getNext(1))) {
+          visiting.push(current.getNext(1));
+          visited.push(current.getNext(1));
+        }
+      }
+      if(current.getNext(0) != null){
+        if(!visited.contains(current.getNext(0))){
+          visiting.push(current.getNext(0));
+          visited.push(current.getNext(0));
+        }else{
+          out.printCode("jmp " + labels.get(current.getNext(0)));
+        }
+      }else{
+        out.printCode("leave");
+        out.printCode("ret");
+      }
+    }
   }
 
   public void visit(AddressAt i) {}
