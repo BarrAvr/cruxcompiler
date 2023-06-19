@@ -44,7 +44,7 @@ public final class CodeGen extends InstVisitor {
     for(Iterator<GlobalDecl> glob_it = p.getGlobals(); glob_it.hasNext();){
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
-      int size = (int) g.getNumElement().getValue(); //I need to doublecheck if this is size
+      int size = (int) g.getNumElement().getValue(); //this is size
       out.printCode(".comm" + name + ", " + size + ", 8");
     }
 
@@ -68,15 +68,35 @@ public final class CodeGen extends InstVisitor {
     //slots must be rounded up to an even number so the stack is 16 byte aligned.
     out.printCode("enter $(8 * " + numslots + "), $0");
     //step 4
-    out.printCode("movq %rdi, -8(%rbp)");
-    out.printCode("movq %rsi, -16(%rbp)");
-    out.printCode("movq %rdx, -24(%rbp)");
-    out.printCode("movq %rcx, -32(%rbp)");
-    out.printCode("movq %r8, -40(%rbp)");
-    out.printCode("movq %r9, -48(%rbp)");
+    List<LocalVar> arguments = func.getArguments();
+    for (int i = 0;i < arguments.size(); i++) {
+      switch (i) {
+        case 0:
+          out.printCode("movq %rdi, -8(%rbp)");
+          break;
+        case 1:
+          out.printCode("movq %rsi, -16(%rbp)");
+          break;
+        case 2:
+          out.printCode("movq %rdx, -24(%rbp)");
+          break;
+        case 3:
+          out.printCode("movq %rcx, -32(%rbp)");
+          break;
+        case 4:
+          out.printCode("movq %r8, -40(%rbp)");
+          break;
+        case 5:
+          out.printCode("movq %r9, -48(%rbp)");
+
+        default:
+          int overflow = (i - 7 + 2) * 8;
+          out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
+          out.printCode("movq %r10, " + (i * -8) + "(%rbp)");
+      }
+    }
     //TODO
     //visit(func.getStart());
-    List<LocalVar> arguments = func.getArguments();
     int offset = getStackSlot(arguments.get(0));
     int value = varMap.get(offset);
     //step 5
@@ -148,6 +168,7 @@ public final class CodeGen extends InstVisitor {
     Symbol callee = i.getCallee();
     List<LocalVar> params = i.getParams();
     int offset = getStackSlot(params.get(0)) * 8;
+
     out.printCode("movq -" + offset + "%rbp, %rdi");
     //step 2:
     String calleeName = callee.getName();
