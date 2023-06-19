@@ -223,5 +223,12 @@ public final class CodeGen extends InstVisitor {
     out.printCode("call " + calleeName);
   }
 
-  public void visit(UnaryNotInst i) {}
+  public void visit(UnaryNotInst i) {
+    //Just subtract the value from $1.
+    //movq $1, %r11
+    //subq %r11, VAL
+    out.printCode("movq $1, %r11");
+    out.printCode("subq -8*" + varMap.get(i.getInner()) + "(%rbp), %r11");
+
+  }
 }
