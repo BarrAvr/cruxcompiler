@@ -150,7 +150,9 @@ public final class CodeGen extends InstVisitor {
     out.printCode("movq %r11, -8*" + varMap.get(dst) + "(%rbp)");
   }
 
-  public void visit(BinaryOperator i) {}
+  public void visit(BinaryOperator i) {
+    //todo
+  }
 
 
 //I think I finished this one, need to double check tho
@@ -194,15 +196,16 @@ public final class CodeGen extends InstVisitor {
 
   //todo
   public void visit(JumpInst i) {
-    i.numNext();
-    String label = i.getPredicate().getName();
-    out.printCode("movq -16(%rbp), %r10");
+    String label = null; //todo
+    int predicate_offset = getStackSlot(i.getPredicate()) * 8;
+    out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
     out.printCode("cmp $1, %r10");
     out.printCode("je " + label);
   }
 
 
   public void visit(LoadInst i) {
+    //todo
 //    out.printCode("movq " + offset_1 + "(%rbp)" + "%r10");
 //    out.printCode("movq " + offset_2 + "(%rbp)" + "%r10");
 //    out.printCode("movq %r10" + offset_2 + "(%r11)");
