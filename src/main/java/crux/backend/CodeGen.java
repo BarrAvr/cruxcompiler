@@ -200,7 +200,12 @@ public final class CodeGen extends InstVisitor {
     out.printCode("movq %r10" + offset_2 + "(%r11)");
   }
 
-  public void visit(ReturnInst i) {}
+  public void visit(ReturnInst i) {
+    var offset = -8 *getStackSlot(i.getReturnValue());
+    out.printCode("movq " + offset + "(%rbp), %rax");
+    out.printCode("leave");
+    out.printCode("ret");
+  }
 
   public void visit(CallInst i) {
     //todo
