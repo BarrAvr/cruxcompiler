@@ -99,6 +99,9 @@ public final class CodeGen extends InstVisitor {
   }
   //todo
   public void genCode(Function func, int count[]) {
+    labels = func.assignLabels(count);
+    out.printCode(".globl " + func.getName());
+    out.printLabel(func.getName() + ":");
     out.printCode("leave");
     out.printCode("ret");
 
