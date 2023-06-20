@@ -159,28 +159,32 @@ public final class CodeGen extends InstVisitor {
 
     while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
-      visited.push(current);
-      if (current.numNext() > 0){
-        visiting.push(current.getNext(0));
-      }
-
-//      if (visited.contains(current)) {
-//        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
-//        out.printCode("jmp " + labels.get(current));
+//      visited.push(current);
+//      if (current.numNext() > 0){
+//        visiting.push(current.getNext(0));
 //      } else {
-//        if (labels.containsKey(current)) {
-//          out.printLabel(labels.get(current) + ":");
-//        } else {
-//          current.accept(this);
-//          visited.push(current);
-//          if (current.numNext() > 0) {
-//            visiting.push(current.getNext(0));
-//          } else {
+//        out.printCode("leave");
+//         out.printCode("ret");
+//      }
+
+      if (visited.contains(current)) {
+        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
+        out.printCode("jmp " + labels.get(current));
+      } else {
+        if (labels.containsKey(current)) {
+          out.printLabel(labels.get(current) + ":");
+        } else {
+          current.accept(this);
+          visited.push(current);
+          if (current.numNext() > 0) {
+            visiting.push(current.getNext(0));
+          }
+//          else {
 //            out.printCode("leave");
 //            out.printCode("ret");
 //          }
-//        }
-//      }
+        }
+      }
 
 
 //      if (labels.containsKey(current)) {
