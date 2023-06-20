@@ -159,6 +159,8 @@ public final class CodeGen extends InstVisitor {
 
     while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
+      visited.push(current);
+      visiting.push(current.getNext(0));
 
 //      if (visited.contains(current)) {
 //        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
