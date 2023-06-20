@@ -15,6 +15,8 @@ public final class CodeGen extends InstVisitor {
   private final Program p;
   private final CodePrinter out;
 
+  private HashMap<Instruction, String> labels;
+
   private HashMap<Variable, Integer> varMap = new HashMap<Variable, Integer>(); //variable or localvar?
   int varcount = 0;
 
@@ -44,8 +46,8 @@ public final class CodeGen extends InstVisitor {
     for(Iterator<GlobalDecl> glob_it = p.getGlobals(); glob_it.hasNext();){
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
-      int size = (int) g.getNumElement().getValue(); //this is size
-      out.printCode(".comm" + name + ", " + size + ", 8");
+      Integer size = (int) g.getNumElement().getValue(); //this is size
+      out.printCode(".comm" + name + ", " + size * 8 + ", 8");
     }
 
     int count[] = new int[1];
@@ -59,7 +61,7 @@ public final class CodeGen extends InstVisitor {
   //todo
   public void genCode(Function func, int count[]) {
     //step 1
-    HashMap<Instruction, String> labels = func.assignLabels(count);
+    labels = func.assignLabels(count);
     //step 2
     out.printCode(".globl " + func.getName());
     out.printLabel(func.getName() + ":");
@@ -91,12 +93,12 @@ public final class CodeGen extends InstVisitor {
           out.printCode("movq %r9, -48(%rbp)");
           break;
         default:
-          int overflow = (i - 7 + 2) * 8;
-          out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
-          out.printCode("movq %r10, " + (i * -8) + "(%rbp)");
+          int overflow = (i +1) *8;
+          out.printCode("movq" + (overflow -40) + "(%rbp), %r10");
+          out.printCode("movq %r10, " + (-1* overflow) + "(%rbp)");
       }
-      getStackSlot(arguments.get(i));
-      //varMap.put(arguments.get(i), i+1);
+      //getStackSlot(arguments.get(i));
+      varMap.put(arguments.get(i), i+1);
     }
     //step 5/step 6
     //Generate code for function body
@@ -108,30 +110,27 @@ public final class CodeGen extends InstVisitor {
     Instruction start = func.getStart();
     visiting.push(start);
 
-    while(!visiting.isEmpty()){
+    while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
 
-      if(labels.containsKey(current)){
+      if (labels.containsKey(current)) {
         out.printLabel(labels.get(current) + ":");
       }
 
       current.accept(this);
-      if(current.getNext(1) != null){
-        if(!visited.contains(current.getNext(1))) {
-          visiting.push(current.getNext(1));
-          visited.push(current.getNext(1));
-        }
-      }
-      if(current.getNext(0) != null){
-        if(!visited.contains(current.getNext(0))){
-          visiting.push(current.getNext(0));
-          visited.push(current.getNext(0));
-        }else{
-          out.printCode("jmp " + labels.get(current.getNext(0)));
-        }
-      }else{
+
+      if (current.numNext() == 0) {
         out.printCode("leave");
         out.printCode("ret");
+      }
+
+      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
+        if (!visited.contains(current.getNext(iter))) {
+          visiting.push(current.getNext(iter));
+          visited.push(current.getNext(iter));
+        } else {
+          out.printCode("jmp " + labels.get(current.getNext(iter)));
+        }
       }
     }
   }
