@@ -174,7 +174,7 @@ public final class CodeGen extends InstVisitor {
         if (labels.containsKey(current)) {
           out.printLabel(labels.get(current) + ":");
         } else {
-          //current.accept(this);
+          current.accept(this);
           visited.push(current);
           if (current.numNext() > 0) {
             visiting.push(current.getNext(0));
@@ -225,7 +225,7 @@ public final class CodeGen extends InstVisitor {
 //      out.printCode("imulq $8, %r10");
 //      out.printCode("addq %r10, %r11");
 //    }
-    out.printCode("movq -" + offset + "(%rbp)" + ", %r11");
+    out.printCode("movq -" + offset + "(%rbp), %r11");
     out.printCode("movq $8, %r10");
     out.printCode("imulq $10, %r11");
     out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
@@ -244,23 +244,23 @@ public final class CodeGen extends InstVisitor {
       case Add:
         out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
         out.printCode("addq -" + right_op_offset + "(%rbp), %r10");
-        out.printCode("movq %r10, -" + dest_offset);
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
         break;
       case Sub:
         out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
         out.printCode("subq -" + right_op_offset + "(%rbp), %r10");
-        out.printCode("movq %r10, -" + dest_offset);
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
         break;
       case Mul: //need to double-check I did with one correctly
         out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
         out.printCode("imulq -" + right_op_offset + "(%rbp), %r10");
-        out.printCode("movq %r10, -" + dest_offset);
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
         break;
       case Div:
         out.printCode("movq -" + left_op_offset + "(%rbp), %rax");
         out.printCode("cqto");
         out.printCode("idivq -" + right_op_offset + "(%rbp)");
-        out.printCode("movq %rax, -" + dest_offset);
+        out.printCode("movq %rax, -" + dest_offset + "(%rbp)");
         break;
     }
   }
@@ -326,11 +326,11 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(StoreInst i) {
-    int offset_1 = getStackSlot(i.getSrcValue());
-    int offset_2 = getStackSlot(i.getDestAddress());
-    out.printCode("movq " + offset_1 + "(%rbp)" + "%r10");
-    out.printCode("movq " + offset_2 + "(%rbp)" + "%r11");
-    out.printCode("movq %r10" + offset_2 + "(%r11)");
+    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
+    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
+    out.printCode("movq -" + offset_1 + "(%rbp), %r10");
+    out.printCode("movq -" + offset_2 + "(%rbp), %r11");
+    out.printCode("movq %r10, %r11");
   }
 
   public void visit(ReturnInst i) {
