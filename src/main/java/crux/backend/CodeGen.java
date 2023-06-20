@@ -95,7 +95,8 @@ public final class CodeGen extends InstVisitor {
           out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
           out.printCode("movq %r10, " + (i * -8) + "(%rbp)");
       }
-      varMap.put(arguments.get(i), i+1);
+      getStackSlot(arguments.get(i));
+      //varMap.put(arguments.get(i), i+1);
     }
     //step 5/step 6
     //Generate code for function body
@@ -141,14 +142,21 @@ public final class CodeGen extends InstVisitor {
     var off = i.getOffset();
     var name = base.getName();
 
-    out.printCode("movq " + name + "@GOTPCREL(%rip), %r11");
+    int offset = getStackSlot(i.getOffset()) * 8;
+    int dst_offset = getStackSlot(i.getDst()) * 8;
 
-    if (off != null){
-      out.printCode("movq " + -8 * varMap.get(off)+"(%rbp)" + ", %r10");
-      out.printCode("imulq $8, %r10");
-      out.printCode("addq %r10, %r11");
-    }
-    out.printCode("movq %r11, -8*" + varMap.get(dst) + "(%rbp)");
+//    if (off != null){
+//      out.printCode("movq " + -8 * varMap.get(off)+"(%rbp)" + ", %r10");
+//      out.printCode("imulq $8, %r10");
+//      out.printCode("addq %r10, %r11");
+//    }
+    out.printCode("movq -" + offset + "(%rbp)" + ", %r11");
+    out.printCode("movq $8, %r10");
+    out.printCode("imulq $10, %r11");
+    out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
+    out.printCode("addq %r10, %r11");
+    out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
+
   }
 
   public void visit(BinaryOperator i) {
@@ -297,11 +305,12 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(UnaryNotInst i) {
+    int val_offset = getStackSlot(i.getInner()) * 8;
     //Just subtract the value from $1.
     //movq $1, %r11
     //subq %r11, VAL
     out.printCode("movq $1, %r11");
-    out.printCode("subq -8*" + varMap.get(i.getInner()) + "(%rbp), %r11");
+    out.printCode("subq %r11, -" + val_offset + "(%rbp)");
 
   }
 }
