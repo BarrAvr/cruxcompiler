@@ -151,7 +151,34 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(BinaryOperator i) {
-    //todo
+    //todo make sure I am using the operands in the correct order
+    int left_op_offset = getStackSlot(i.getLeftOperand()) * 8;
+    int right_op_offset = getStackSlot(i.getRightOperand()) * 8;
+    int dest_offset = getStackSlot(i.getDst()) * 8;
+
+    switch (i.getOperator()){
+      case Add:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("addq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset);
+        break;
+      case Sub:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("subq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset);
+        break;
+      case Mul: //need to double check I did with one correctly
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("imulq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset);
+        break;
+      case Div:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %rax");
+        out.printCode("cqto");
+        out.printCode("idivq -" + right_op_offset + "(%rbp)");
+        out.printCode("movq %rax, -" + dest_offset);
+        break;
+    }
   }
 
 
@@ -206,9 +233,9 @@ public final class CodeGen extends InstVisitor {
 
   public void visit(LoadInst i) {
     //todo
-//    out.printCode("movq " + offset_1 + "(%rbp)" + "%r10");
-//    out.printCode("movq " + offset_2 + "(%rbp)" + "%r10");
-//    out.printCode("movq %r10" + offset_2 + "(%r11)");
+    int dest_offset = getStackSlot(i.getDst()) * 8;
+    int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
+    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
   }
 
   public void visit(NopInst i) {
