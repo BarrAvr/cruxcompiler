@@ -168,7 +168,7 @@ public final class CodeGen extends InstVisitor {
         out.printCode("subq -" + right_op_offset + "(%rbp), %r10");
         out.printCode("movq %r10, -" + dest_offset);
         break;
-      case Mul: //need to double check I did with one correctly
+      case Mul: //need to double-check I did with one correctly
         out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
         out.printCode("imulq -" + right_op_offset + "(%rbp), %r10");
         out.printCode("movq %r10, -" + dest_offset);
@@ -183,7 +183,7 @@ public final class CodeGen extends InstVisitor {
   }
 
 
-//I think I finished this one, need to double check tho
+//I think I finished this one, need to double-check tho
   public void visit(CompareInst i) {
     out.printCode("movq $0, %rax");
     out.printCode("movq $1, %r10");
@@ -223,7 +223,7 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(JumpInst i) {
-    String label = null; //todo
+    String label = ""; //todo
     int predicate_offset = getStackSlot(i.getPredicate()) * 8;
     out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
     out.printCode("cmp $1, %r10");
