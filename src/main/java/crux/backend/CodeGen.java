@@ -308,6 +308,7 @@ public final class CodeGen extends InstVisitor {
       value_str = "$" + String.valueOf(value);
     }else if (i.getSrcValue().getClass() == LocalVar.class){
       value_str = "" + i.getSrcValue();
+      value_str = "$1";
     }else{
       int value = (int) ((IntegerConstant) i.getSrcValue()).getValue();
       value_str = "$" + String.valueOf(value);
