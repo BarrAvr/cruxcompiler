@@ -89,7 +89,6 @@ public final class CodeGen extends InstVisitor {
           break;
         case 5:
           out.printCode("movq %r9, -48(%rbp)");
-          //todo do we need a break here?
           break;
         default:
           int overflow = (i - 7 + 2) * 8;
