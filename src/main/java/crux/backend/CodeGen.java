@@ -302,9 +302,19 @@ public final class CodeGen extends InstVisitor {
     int dest_offset = getStackSlot(i.getDstVar()) * 8; //fixed
 //    throw new Error("" + i.getSrcValue().toString());
 //    i.getSrcValue().getType()
-    int value = (int) ((IntegerConstant) i.getSrcValue()).getValue();
-    out.printCode("movq $" + value + ", %r10");
+    String value_str;
+    if (i.getSrcValue().getType().toString() == "bool"){
+      int value = ((BooleanConstant) i.getSrcValue()).getValue() ? 1 : 0;
+      value_str = "$" + String.valueOf(value);
+    }else if (i.getSrcValue().getClass() == LocalVar.class){
+      value_str = "" + i.getSrcValue();
+    }else{
+      int value = (int) ((IntegerConstant) i.getSrcValue()).getValue();
+      value_str = "$" + String.valueOf(value);
+    }
+//    throw new Error("" + i.getSrcValue().getType());
 //    out.printCode("movq $1, %r10");
+    out.printCode("movq " + value_str + ", %r10");
     out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
   }
 
