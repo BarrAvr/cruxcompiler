@@ -66,6 +66,7 @@ public final class CodeGen extends InstVisitor {
     //step 3 emit function prologue
     int numslots = func.getNumTempVars()+func.getNumTempAddressVars();
     //slots must be rounded up to an even number so the stack is 16 byte aligned.
+    if (numslots % 2 == 1) numslots++;
     out.printCode("enter $(8 * " + numslots + "), $0");
     //step 4
     List<LocalVar> arguments = func.getArguments();
@@ -89,6 +90,7 @@ public final class CodeGen extends InstVisitor {
         case 5:
           out.printCode("movq %r9, -48(%rbp)");
           //todo do we need a break here?
+          break;
         default:
           int overflow = (i - 7 + 2) * 8;
           out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
@@ -221,7 +223,6 @@ public final class CodeGen extends InstVisitor {
     out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
   }
 
-  //todo
   public void visit(JumpInst i) {
     String label = null; //todo
     int predicate_offset = getStackSlot(i.getPredicate()) * 8;
