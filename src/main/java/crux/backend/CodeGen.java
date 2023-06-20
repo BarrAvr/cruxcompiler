@@ -86,7 +86,6 @@ public final class CodeGen extends InstVisitor {
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
       g.getSymbol().getType();
-      //int size = (int) g.getNumElement(); //this is size
       out.printCode(".comm " + name + ", " + ((int) g.getNumElement().getValue()) + ", 8");
     }
 
@@ -100,52 +99,54 @@ public final class CodeGen extends InstVisitor {
   }
   //todo
   public void genCode(Function func, int count[]) {
-    labels = func.assignLabels(count);
-    out.printCode(".globl " + func.getName());
-    out.printLabel(func.getName() + ":");
-    out.printCode("leave");
-    out.printCode("ret");
-
-//    //step 1
 //    labels = func.assignLabels(count);
-//    //step 2
 //    out.printCode(".globl " + func.getName());
 //    out.printLabel(func.getName() + ":");
-//    //step 3 emit function prologue
-//    int numslots = func.getNumTempVars()+func.getNumTempAddressVars();
-//    //slots must be rounded up to an even number so the stack is 16 byte aligned.
-//    if (numslots % 2 == 1) numslots++;
-//    out.printCode("enter $(8 * " + numslots + "), $0");
-//    //step 4
-//    List<LocalVar> arguments = func.getArguments();
-//    for (int i = 0;i < arguments.size(); i++) {
-//      switch (i) {
-//        case 0:
-//          out.printCode("movq %rdi, -8(%rbp)");
-//          break;
-//        case 1:
-//          out.printCode("movq %rsi, -16(%rbp)");
-//          break;
-//        case 2:
-//          out.printCode("movq %rdx, -24(%rbp)");
-//          break;
-//        case 3:
-//          out.printCode("movq %rcx, -32(%rbp)");
-//          break;
-//        case 4:
-//          out.printCode("movq %r8, -40(%rbp)");
-//          break;
-//        case 5:
-//          out.printCode("movq %r9, -48(%rbp)");
-//          break;
-//        default:
-//          int overflow = (i +1) *8;
-//          out.printCode("movq" + (overflow -40) + "(%rbp), %r10");
-//          out.printCode("movq %r10, " + (-1* overflow) + "(%rbp)");
-//      }
-//      //getStackSlot(arguments.get(i));
-//      varMap.put(arguments.get(i), i+1);
-//    }
+//    out.printCode("leave");
+//    out.printCode("ret");
+
+    //step 1
+    labels = func.assignLabels(count);
+    //step 2
+    out.printCode(".globl " + func.getName());
+    out.printLabel(func.getName() + ":");
+    //step 3 emit function prologue
+    int numslots = func.getNumTempVars()+func.getNumTempAddressVars();
+    //slots must be rounded up to an even number so the stack is 16 byte aligned.
+    if (numslots % 2 == 1) numslots++;
+    out.printCode("enter $(8 * " + numslots + "), $0");
+    //step 4
+    List<LocalVar> arguments = func.getArguments();
+    for (int i = 0;i < arguments.size(); i++) {
+      switch (i) {
+        case 0:
+          out.printCode("movq %rdi, -8(%rbp)");
+          break;
+        case 1:
+          out.printCode("movq %rsi, -16(%rbp)");
+          break;
+        case 2:
+          out.printCode("movq %rdx, -24(%rbp)");
+          break;
+        case 3:
+          out.printCode("movq %rcx, -32(%rbp)");
+          break;
+        case 4:
+          out.printCode("movq %r8, -40(%rbp)");
+          break;
+        case 5:
+          out.printCode("movq %r9, -48(%rbp)");
+          break;
+        default:
+          int overflow = (i +1) *8;
+          out.printCode("movq" + (overflow -40) + "(%rbp), %r10");
+          out.printCode("movq %r10, " + (-1* overflow) + "(%rbp)");
+      }
+      //getStackSlot(arguments.get(i));
+      varMap.put(arguments.get(i), i+1);
+    }
+
+
 //    //step 5/step 6
 //    //Generate code for function body
 //    //Linearize CFG using jumps and labels
@@ -175,6 +176,8 @@ public final class CodeGen extends InstVisitor {
 //          }
 //        }
 //      }
+    out.printCode("leave");
+    out.printCode("ret");
 
 //      if (labels.containsKey(current)) {
 //        out.printLabel(labels.get(current) + ":");
@@ -186,7 +189,7 @@ public final class CodeGen extends InstVisitor {
 //        out.printCode("leave");
 //        out.printCode("ret");
 //      }
-//
+
 //      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
 //        if (!visited.contains(current.getNext(iter))) {
 //          visiting.push(current.getNext(iter));
