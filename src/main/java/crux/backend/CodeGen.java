@@ -231,38 +231,37 @@ public final class CodeGen extends InstVisitor {
     out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
     out.printCode("addq %r10, %r11");
     out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
-
   }
 
   public void visit(BinaryOperator i) {
-//    //todo make sure I am using the operands in the correct order
-//    int left_op_offset = getStackSlot(i.getLeftOperand()) * 8;
-//    int right_op_offset = getStackSlot(i.getRightOperand()) * 8;
-//    int dest_offset = getStackSlot(i.getDst()) * 8;
-//
-//    switch (i.getOperator()){
-//      case Add:
-//        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
-//        out.printCode("addq -" + right_op_offset + "(%rbp), %r10");
-//        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
-//        break;
-//      case Sub:
-//        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
-//        out.printCode("subq -" + right_op_offset + "(%rbp), %r10");
-//        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
-//        break;
-//      case Mul: //need to double-check I did with one correctly
-//        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
-//        out.printCode("imulq -" + right_op_offset + "(%rbp), %r10");
-//        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
-//        break;
-//      case Div:
-//        out.printCode("movq -" + left_op_offset + "(%rbp), %rax");
-//        out.printCode("cqto");
-//        out.printCode("idivq -" + right_op_offset + "(%rbp)");
-//        out.printCode("movq %rax, -" + dest_offset + "(%rbp)");
-//        break;
-//    }
+    //todo make sure I am using the operands in the correct order
+    int left_op_offset = getStackSlot(i.getLeftOperand()) * 8;
+    int right_op_offset = getStackSlot(i.getRightOperand()) * 8;
+    int dest_offset = getStackSlot(i.getDst()) * 8;
+
+    switch (i.getOperator()){
+      case Add:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("addq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
+        break;
+      case Sub:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("subq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
+        break;
+      case Mul: //need to double-check I did with one correctly
+        out.printCode("movq -" + left_op_offset + "(%rbp), %r10");
+        out.printCode("imulq -" + right_op_offset + "(%rbp), %r10");
+        out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
+        break;
+      case Div:
+        out.printCode("movq -" + left_op_offset + "(%rbp), %rax");
+        out.printCode("cqto");
+        out.printCode("idivq -" + right_op_offset + "(%rbp)");
+        out.printCode("movq %rax, -" + dest_offset + "(%rbp)");
+        break;
+    }
   }
 
 
