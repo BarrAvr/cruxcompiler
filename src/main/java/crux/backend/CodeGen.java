@@ -300,7 +300,7 @@ public final class CodeGen extends InstVisitor {
 
   public void visit(CopyInst i) {
     int dest_offset = getStackSlot(i.getDstVar()) * 8; //fixed
-    out.printCode("movq $" + i.getSrcValue().toString() + ", %r10");
+    out.printCode("movq " + i.getSrcValue().toString() + ", %r10");
 //    out.printCode("movq $1, %r10");
     out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
   }
