@@ -207,8 +207,8 @@ public final class CodeGen extends InstVisitor {
 //        }
 //      }
     }
-    out.printCode("leave");
-    out.printCode("ret");
+//    out.printCode("leave");
+//    out.printCode("ret");
   }
 
   public void visit(AddressAt i) {
