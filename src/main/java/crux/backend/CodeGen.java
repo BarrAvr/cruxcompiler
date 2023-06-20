@@ -174,15 +174,15 @@ public final class CodeGen extends InstVisitor {
         if (labels.containsKey(current)) {
           out.printLabel(labels.get(current) + ":");
         } else {
-          current.accept(this);
+          //current.accept(this);
           visited.push(current);
           if (current.numNext() > 0) {
             visiting.push(current.getNext(0));
           }
-//          else {
-//            out.printCode("leave");
-//            out.printCode("ret");
-//          }
+          else {
+            out.printCode("leave");
+            out.printCode("ret");
+          }
         }
       }
 
