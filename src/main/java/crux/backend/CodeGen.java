@@ -50,50 +50,50 @@ public final class CodeGen extends InstVisitor {
 //      out.printCode(".comm" + name + ", " + size * 8 + ", 8");
 //    }
 
-    out.printCode(".globl main");
-    out.printCode("main:");
-    out.printCode("enter $(8 * 6), $0");
-    out.printCode("movq $0, %r10");
-    out.printCode("movq %r10, -8(%rbp)");
-    out.printCode("movq -8(%rbp), %r10");
-    out.printCode("cmp $1, %r10");
-    out.printCode("je L1");
-    out.printCode("movq $0, %r10");
-    out.printCode("movq %r10, -16(%rbp)");
-    out.printCode("movq -16(%rbp), %rdi");
-    out.printCode("call printInt");
-    out.printCode("L2:");
-    out.printCode("movq $0, %r10");
-    out.printCode("movq %r10, -24(%rbp)");
-    out.printCode("movq $1, %r10");
-    out.printCode("movq %r10, -32(%rbp)");
-    out.printCode("movq -24(%rbp), %r10");
-    out.printCode("subq -32(%rbp), %r10");
-    out.printCode("movq %r10, -40(%rbp)");
-    out.printCode("movq -40(%rbp), %rdi");
-    out.printCode("call printInt");
-    out.printCode("leave ");
-    out.printCode("ret");
-    out.printCode("L1:");
-    out.printCode("movq $1, %r10");
-    out.printCode("movq %r10, -48(%rbp) ");
-    out.printCode("movq -48(%rbp), %rdi");
-    out.printCode("call printInt");
-    out.printCode("jmp L2");
+//    out.printCode(".globl main");
+//    out.printCode("main:");
+//    out.printCode("enter $(8 * 6), $0");
+//    out.printCode("movq $0, %r10");
+//    out.printCode("movq %r10, -8(%rbp)");
+//    out.printCode("movq -8(%rbp), %r10");
+//    out.printCode("cmp $1, %r10");
+//    out.printCode("je L1");
+//    out.printCode("movq $0, %r10");
+//    out.printCode("movq %r10, -16(%rbp)");
+//    out.printCode("movq -16(%rbp), %rdi");
+//    out.printCode("call printInt");
+//    out.printCode("L2:");
+//    out.printCode("movq $0, %r10");
+//    out.printCode("movq %r10, -24(%rbp)");
+//    out.printCode("movq $1, %r10");
+//    out.printCode("movq %r10, -32(%rbp)");
+//    out.printCode("movq -24(%rbp), %r10");
+//    out.printCode("subq -32(%rbp), %r10");
+//    out.printCode("movq %r10, -40(%rbp)");
+//    out.printCode("movq -40(%rbp), %rdi");
+//    out.printCode("call printInt");
+//    out.printCode("leave ");
+//    out.printCode("ret");
+//    out.printCode("L1:");
+//    out.printCode("movq $1, %r10");
+//    out.printCode("movq %r10, -48(%rbp) ");
+//    out.printCode("movq -48(%rbp), %rdi");
+//    out.printCode("call printInt");
+//    out.printCode("jmp L2");
 
 
-//    for(Iterator<GlobalDecl> glob_it = p.getGlobals(); glob_it.hasNext();){
-//      GlobalDecl g = glob_it.next();
-//      String name = g.getSymbol().getName();
-//      int size = (int) g.getNumElement().getValue(); //this is size
-//      out.printCode(".comm" + name + ", " + size + ", 8");
-//    }
-//
-//    int count[] = new int[1];
-//    for(Iterator<Function> func_it = p.getFunctions(); func_it.hasNext();){
-//      Function f = func_it.next();
-//      genCode(f, count);
-//    }
+    for(Iterator<GlobalDecl> glob_it = p.getGlobals(); glob_it.hasNext();){
+      GlobalDecl g = glob_it.next();
+      String name = g.getSymbol().getName();
+      int size = (int) g.getNumElement().getValue(); //this is size
+      out.printCode(".comm" + name + ", " + size * 8 + ", 8");
+    }
+
+    int count[] = new int[1];
+    for(Iterator<Function> func_it = p.getFunctions(); func_it.hasNext();){
+      Function f = func_it.next();
+      genCode(f, count);
+    }
 
     out.close();
   }
@@ -152,25 +152,42 @@ public final class CodeGen extends InstVisitor {
     while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
 
-      if (labels.containsKey(current)) {
-        out.printLabel(labels.get(current) + ":");
-      }
-
-      current.accept(this);
-
-      if (current.numNext() == 0) {
-        out.printCode("leave");
-        out.printCode("ret");
-      }
-
-      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
-        if (!visited.contains(current.getNext(iter))) {
-          visiting.push(current.getNext(iter));
-          visited.push(current.getNext(iter));
-        } else {
-          out.printCode("jmp " + labels.get(current.getNext(iter)));
+      if(visited.contains(current)) {
+        out.printCode("jmp " + labels.get(current));
+      }else{
+        if (labels.containsKey(current)) {
+          out.printLabel(labels.get(current) + ":");
+        }else{
+          current.accept(this);
+          visited.push(current);
+          if (current.numNext() > 0) {
+            visiting.push(current.getNext(0));
+          }else{
+            out.printCode("leave");
+            out.printCode("ret");
+          }
         }
       }
+
+//      if (labels.containsKey(current)) {
+//        out.printLabel(labels.get(current) + ":");
+//      }
+//
+//      current.accept(this);
+//
+//      if (current.numNext() == 0) {
+//        out.printCode("leave");
+//        out.printCode("ret");
+//      }
+//
+//      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
+//        if (!visited.contains(current.getNext(iter))) {
+//          visiting.push(current.getNext(iter));
+//          visited.push(current.getNext(iter));
+//        } else {
+//          out.printCode("jmp " + labels.get(current.getNext(iter)));
+//        }
+//      }
     }
   }
 
