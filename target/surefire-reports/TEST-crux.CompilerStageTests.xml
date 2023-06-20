@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="1.531" tests="50" errors="50" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="3.116" tests="50" errors="50" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\barra\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\barra\AppData\Local\Temp\surefire17351415948439431819\surefirebooter9153448973323210994.jar C:\Users\barra\AppData\Local\Temp\surefire17351415948439431819 2023-06-19T21-30-26_775-jvmRun1 surefire4702689358331668481tmp surefire_011243289817559940691tmp"/>
+    <property name="sun.java.command" value="C:\Users\barra\AppData\Local\Temp\surefire11067244334364002489\surefirebooter3178933642559150936.jar C:\Users\barra\AppData\Local\Temp\surefire11067244334364002489 2023-06-19T21-45-08_360-jvmRun1 surefire7829710168340790168tmp surefire_012230504635341657084tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\barra\IdeaProjects\crux\target\test-classes;C:\Users\barra\IdeaProjects\crux\target\classes;C:\Users\barra\.m2\repository\org\antlr\antlr4-runtime\4.7.2\antlr4-runtime-4.7.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\barra\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\barra\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\barra\AppData\Local\Temp\surefire17351415948439431819\surefirebooter9153448973323210994.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\barra\AppData\Local\Temp\surefire11067244334364002489\surefirebooter3178933642559150936.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.4.1+1"/>
@@ -58,81 +58,224 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.611">
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.536">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
 Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.089">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.025">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.05">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.034">
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.065">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
 Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.015">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.038">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.032">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.041">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.052">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.008">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.114">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.017">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.069">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.206">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.041">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.028">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.021">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.048">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.028">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.02">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
   <testcase name="codegen" classname="crux.CompilerStageTests" time="0.022">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.026">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.02">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.017">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.017">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.019">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.028">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.018">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.046">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.096">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.076">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.033">
     <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
 Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
@@ -146,220 +289,123 @@ Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2,
 Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.044">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.005">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.04">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.033">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.042">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.028">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.036">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.038">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.034">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.04">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.005">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.032">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.036">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.031">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.017">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.043">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.005">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.047">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.005">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.194">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.005">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.012">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.01">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.006">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.007">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.01">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.012">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.008">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.01">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.035">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.017">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
 </testsuite>
