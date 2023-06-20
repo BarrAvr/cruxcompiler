@@ -86,7 +86,7 @@ public final class CodeGen extends InstVisitor {
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
       int size = (int) g.getNumElement().getValue(); //this is size
-      out.printCode(".comm" + name + ", " + size * 8 + ", 8");
+      out.printCode(".comm" + name + ", " + size + ", 8");
     }
 
     int count[] = new int[1];
@@ -99,75 +99,78 @@ public final class CodeGen extends InstVisitor {
   }
   //todo
   public void genCode(Function func, int count[]) {
-    //step 1
-    labels = func.assignLabels(count);
-    //step 2
-    out.printCode(".globl " + func.getName());
-    out.printLabel(func.getName() + ":");
-    //step 3 emit function prologue
-    int numslots = func.getNumTempVars()+func.getNumTempAddressVars();
-    //slots must be rounded up to an even number so the stack is 16 byte aligned.
-    if (numslots % 2 == 1) numslots++;
-    out.printCode("enter $(8 * " + numslots + "), $0");
-    //step 4
-    List<LocalVar> arguments = func.getArguments();
-    for (int i = 0;i < arguments.size(); i++) {
-      switch (i) {
-        case 0:
-          out.printCode("movq %rdi, -8(%rbp)");
-          break;
-        case 1:
-          out.printCode("movq %rsi, -16(%rbp)");
-          break;
-        case 2:
-          out.printCode("movq %rdx, -24(%rbp)");
-          break;
-        case 3:
-          out.printCode("movq %rcx, -32(%rbp)");
-          break;
-        case 4:
-          out.printCode("movq %r8, -40(%rbp)");
-          break;
-        case 5:
-          out.printCode("movq %r9, -48(%rbp)");
-          break;
-        default:
-          int overflow = (i +1) *8;
-          out.printCode("movq" + (overflow -40) + "(%rbp), %r10");
-          out.printCode("movq %r10, " + (-1* overflow) + "(%rbp)");
-      }
-      //getStackSlot(arguments.get(i));
-      varMap.put(arguments.get(i), i+1);
-    }
-    //step 5/step 6
-    //Generate code for function body
-    //Linearize CFG using jumps and labels
-    //Use DFS traversal
-    //Refer to Function.assignLabels(int count[])
-    Stack<Instruction> visiting = new Stack<Instruction>();
-    Stack<Instruction> visited = new Stack();
-    Instruction start = func.getStart();
-    visiting.push(start);
+    out.printCode("leave");
+    out.printCode("ret");
 
-    while(!visiting.isEmpty()) {
-      Instruction current = visiting.pop();
-
-      if(visited.contains(current)) {
-        out.printCode("jmp " + labels.get(current));
-      }else{
-        if (labels.containsKey(current)) {
-          out.printLabel(labels.get(current) + ":");
-        }else{
-          current.accept(this);
-          visited.push(current);
-          if (current.numNext() > 0) {
-            visiting.push(current.getNext(0));
-          }else{
-            out.printCode("leave");
-            out.printCode("ret");
-          }
-        }
-      }
+//    //step 1
+//    labels = func.assignLabels(count);
+//    //step 2
+//    out.printCode(".globl " + func.getName());
+//    out.printLabel(func.getName() + ":");
+//    //step 3 emit function prologue
+//    int numslots = func.getNumTempVars()+func.getNumTempAddressVars();
+//    //slots must be rounded up to an even number so the stack is 16 byte aligned.
+//    if (numslots % 2 == 1) numslots++;
+//    out.printCode("enter $(8 * " + numslots + "), $0");
+//    //step 4
+//    List<LocalVar> arguments = func.getArguments();
+//    for (int i = 0;i < arguments.size(); i++) {
+//      switch (i) {
+//        case 0:
+//          out.printCode("movq %rdi, -8(%rbp)");
+//          break;
+//        case 1:
+//          out.printCode("movq %rsi, -16(%rbp)");
+//          break;
+//        case 2:
+//          out.printCode("movq %rdx, -24(%rbp)");
+//          break;
+//        case 3:
+//          out.printCode("movq %rcx, -32(%rbp)");
+//          break;
+//        case 4:
+//          out.printCode("movq %r8, -40(%rbp)");
+//          break;
+//        case 5:
+//          out.printCode("movq %r9, -48(%rbp)");
+//          break;
+//        default:
+//          int overflow = (i +1) *8;
+//          out.printCode("movq" + (overflow -40) + "(%rbp), %r10");
+//          out.printCode("movq %r10, " + (-1* overflow) + "(%rbp)");
+//      }
+//      //getStackSlot(arguments.get(i));
+//      varMap.put(arguments.get(i), i+1);
+//    }
+//    //step 5/step 6
+//    //Generate code for function body
+//    //Linearize CFG using jumps and labels
+//    //Use DFS traversal
+//    //Refer to Function.assignLabels(int count[])
+//    Stack<Instruction> visiting = new Stack<Instruction>();
+//    Stack<Instruction> visited = new Stack();
+//    Instruction start = func.getStart();
+//    visiting.push(start);
+//
+//    while(!visiting.isEmpty()) {
+//      Instruction current = visiting.pop();
+//
+//      if(visited.contains(current)) {
+//        out.printCode("jmp " + labels.get(current));
+//      }else{
+//        if (labels.containsKey(current)) {
+//          out.printLabel(labels.get(current) + ":");
+//        }else{
+//          current.accept(this);
+//          visited.push(current);
+//          if (current.numNext() > 0) {
+//            visiting.push(current.getNext(0));
+//          }else{
+//            out.printCode("leave");
+//            out.printCode("ret");
+//          }
+//        }
+//      }
 
 //      if (labels.containsKey(current)) {
 //        out.printLabel(labels.get(current) + ":");
@@ -188,7 +191,7 @@ public final class CodeGen extends InstVisitor {
 //          out.printCode("jmp " + labels.get(current.getNext(iter)));
 //        }
 //      }
-    }
+//    }
   }
 
   public void visit(AddressAt i) {
