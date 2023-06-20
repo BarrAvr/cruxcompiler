@@ -297,7 +297,7 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(JumpInst i) {
-    String label = ""; //todo
+    String label = labels.get(i); //todo idk if correct
     int predicate_offset = getStackSlot(i.getPredicate()) * 8;
     out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
     out.printCode("cmp $1, %r10");
