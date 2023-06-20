@@ -81,6 +81,7 @@ public final class CodeGen extends InstVisitor {
     out.printCode("call printInt");
     out.printCode("jmp L2");
 
+
 //    for(Iterator<GlobalDecl> glob_it = p.getGlobals(); glob_it.hasNext();){
 //      GlobalDecl g = glob_it.next();
 //      String name = g.getSymbol().getName();
