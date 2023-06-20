@@ -322,7 +322,7 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(NopInst i) {
-//    out.printCode("NOP");
+    out.printCode("NOP");
   }
 
   public void visit(StoreInst i) {
