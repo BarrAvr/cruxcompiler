@@ -328,10 +328,10 @@ public final class CodeGen extends InstVisitor {
 
 
   public void visit(LoadInst i) {
-//    //todo
-//    int dest_offset = getStackSlot(i.getDst()) * 8;
-//    int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
-//    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
+    //todo
+    int dest_offset = getStackSlot(i.getDst()) * 8;
+    int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
+    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
   }
 
   public void visit(NopInst i) {
@@ -339,11 +339,11 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(StoreInst i) {
-    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
-    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
-    out.printCode("movq -" + offset_2 + "(%rbp), %r10");
-    out.printCode("movq -" + offset_1 + "(%rbp), %r11");
-    out.printCode("movq %r10, %r11");
+//    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
+//    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
+//    out.printCode("movq -" + offset_2 + "(%rbp), %r10");
+//    out.printCode("movq -" + offset_1 + "(%rbp), %r11");
+//    out.printCode("movq %r10, %r11");
   }
 
   public void visit(ReturnInst i) {
