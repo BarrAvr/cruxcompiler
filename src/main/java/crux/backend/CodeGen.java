@@ -212,25 +212,25 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(AddressAt i) {
-//    var dst = i.getDst();
-//    var base = i.getBase();
-//    var off = i.getOffset();
-//    var name = base.getName();
-//
-//    int offset = getStackSlot(i.getOffset()) * 8;
-//    int dst_offset = getStackSlot(i.getDst()) * 8;
-//
-////    if (off != null){
-////      out.printCode("movq " + -8 * varMap.get(off)+"(%rbp)" + ", %r10");
-////      out.printCode("imulq $8, %r10");
-////      out.printCode("addq %r10, %r11");
-////    }
-//    out.printCode("movq -" + offset + "(%rbp), %r11");
-//    out.printCode("movq $8, %r10");
-//    out.printCode("imulq $10, %r11");
-//    out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
-//    out.printCode("addq %r10, %r11");
-//    out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
+    var dst = i.getDst();
+    var base = i.getBase();
+    var off = i.getOffset();
+    var name = base.getName();
+
+    int offset = getStackSlot(i.getOffset()) * 8;
+    int dst_offset = getStackSlot(i.getDst()) * 8;
+
+//    if (off != null){
+//      out.printCode("movq " + -8 * varMap.get(off)+"(%rbp)" + ", %r10");
+//      out.printCode("imulq $8, %r10");
+//      out.printCode("addq %r10, %r11");
+//    }
+    out.printCode("movq -" + offset + "(%rbp), %r11");
+    out.printCode("movq $8, %r10");
+    out.printCode("imulq $10, %r11");
+    out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
+    out.printCode("addq %r10, %r11");
+    out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
 
   }
 
@@ -300,9 +300,9 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(CopyInst i) {
-    int dest_offset = getStackSlot(i.getDstVar()); //fixed
-    out.printCode("movq $" + i.getSrcValue() + ", %r10");
-    out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
+//    int dest_offset = getStackSlot(i.getDstVar()); //fixed
+//    out.printCode("movq $" + i.getSrcValue() + ", %r10");
+//    out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
   }
 
   public void visit(JumpInst i) {
