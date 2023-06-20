@@ -86,7 +86,7 @@ public final class CodeGen extends InstVisitor {
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
       //int size = (int) g.getNumElement(); //this is size
-      out.printCode(".comm" + name + ", " + ((int) g.getNumElement().getValue()) + ", 8");
+      out.printCode(".comm" + name + ", " + ((int) g.getNumElement().getValue()) * 8 + ", 8");
     }
 
     int count[] = new int[1];
