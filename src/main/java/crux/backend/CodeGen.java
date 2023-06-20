@@ -88,7 +88,7 @@ public final class CodeGen extends InstVisitor {
           break;
         case 5:
           out.printCode("movq %r9, -48(%rbp)");
-
+          //todo do we need a break here?
         default:
           int overflow = (i - 7 + 2) * 8;
           out.printCode("movq" + overflow + "(%rbp)" + ", %r10");
@@ -258,17 +258,40 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(CallInst i) {
-    //todo
-    //step 1: Store parameters in designated registers or stack
     //pass arguments to callee using args registers
     //generate assembly for call instruction
-    //move retyrn value (if there is one) into return register
+    //move return value (if there is one) into return register
+
+    //step 1: Store parameters in designated registers or stack
     Symbol callee = i.getCallee();
     List<LocalVar> params = i.getParams();
-    int offset = getStackSlot(params.get(0)) * 8;
-
-    out.printCode("movq -" + offset + "%rbp, %rdi");
-    //step 2:
+    int offset = 0;
+    for (int j = 0;j < params.size(); j++) {
+      offset = getStackSlot(params.get(j)) * 8;
+      switch (j) {
+        case 0:
+          out.printCode("movq -" + offset + "(%rbp), %rdi");
+          break;
+        case 1:
+          out.printCode("movq -" + offset + "(%rbp), %rsi");
+          break;
+        case 2:
+          out.printCode("movq -" + offset + "(%rbp), %rdx");
+          break;
+        case 3:
+          out.printCode("movq -" + offset + "(%rbp), %rcx");
+          break;
+        case 4:
+          out.printCode("movq -" + offset + "(%rbp), %r8");
+          break;
+        case 5:
+          out.printCode("movq -" + offset + "(%rbp), %r9");
+          break;
+        default:
+          break;
+      }
+    }
+    //step 2: Code for call instruction
     String calleeName = callee.getName();
     out.printCode("call " + calleeName);
   }
