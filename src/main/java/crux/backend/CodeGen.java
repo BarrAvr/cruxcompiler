@@ -319,19 +319,19 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(JumpInst i) {
-    String label = labels.get(i.getNext(0)); //this one line i change
-    int predicate_offset = getStackSlot(i.getPredicate()) * 8;
-    out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
-    out.printCode("cmp $1, %r10");
-    out.printCode("je " + label);
+//    String label = labels.get(i.getNext(1)); //this one line i change
+//    int predicate_offset = getStackSlot(i.getPredicate()) * 8;
+//    out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
+//    out.printCode("cmp $1, %r10");
+//    out.printCode("je " + label);
   }
 
 
   public void visit(LoadInst i) {
-    //todo
-    int dest_offset = getStackSlot(i.getDst()) * 8;
-    int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
-    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
+//    //todo
+//    int dest_offset = getStackSlot(i.getDst()) * 8;
+//    int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
+//    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
   }
 
   public void visit(NopInst i) {
