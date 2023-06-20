@@ -147,37 +147,36 @@ public final class CodeGen extends InstVisitor {
     }
 
 
-//    //step 5/step 6
-//    //Generate code for function body
-//    //Linearize CFG using jumps and labels
-//    //Use DFS traversal
-//    //Refer to Function.assignLabels(int count[])
-//    Stack<Instruction> visiting = new Stack<Instruction>();
-//    Stack<Instruction> visited = new Stack();
-//    Instruction start = func.getStart();
-//    visiting.push(start);
-//
-//    while(!visiting.isEmpty()) {
-//      Instruction current = visiting.pop();
-//
-//      if(visited.contains(current)) {
-//        out.printCode("jmp " + labels.get(current));
-//      }else{
-//        if (labels.containsKey(current)) {
-//          out.printLabel(labels.get(current) + ":");
-//        }else{
-//          current.accept(this);
-//          visited.push(current);
-//          if (current.numNext() > 0) {
-//            visiting.push(current.getNext(0));
-//          }else{
-//            out.printCode("leave");
-//            out.printCode("ret");
-//          }
-//        }
-//      }
-    out.printCode("leave");
-    out.printCode("ret");
+    //step 5/step 6
+    //Generate code for function body
+    //Linearize CFG using jumps and labels
+    //Use DFS traversal
+    //Refer to Function.assignLabels(int count[])
+    Stack<Instruction> visiting = new Stack<Instruction>();
+    Stack<Instruction> visited = new Stack();
+    Instruction start = func.getStart();
+    visiting.push(start);
+
+    while(!visiting.isEmpty()) {
+      Instruction current = visiting.pop();
+
+      if (visited.contains(current)) {
+        out.printCode("jmp " + labels.get(current));
+      } else {
+        if (labels.containsKey(current)) {
+          out.printLabel(labels.get(current) + ":");
+        } else {
+          current.accept(this);
+          visited.push(current);
+          if (current.numNext() > 0) {
+            visiting.push(current.getNext(0));
+          } else {
+            out.printCode("leave");
+            out.printCode("ret");
+          }
+        }
+      }
+
 
 //      if (labels.containsKey(current)) {
 //        out.printLabel(labels.get(current) + ":");
@@ -198,7 +197,9 @@ public final class CodeGen extends InstVisitor {
 //          out.printCode("jmp " + labels.get(current.getNext(iter)));
 //        }
 //      }
-//    }
+    }
+    out.printCode("leave");
+    out.printCode("ret");
   }
 
   public void visit(AddressAt i) {
