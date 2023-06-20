@@ -339,18 +339,18 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(StoreInst i) {
-//    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
-//    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
-//    out.printCode("movq -" + offset_2 + "(%rbp), %r10");
-//    out.printCode("movq -" + offset_1 + "(%rbp), %r11");
-//    out.printCode("movq %r10, %r11");
+    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
+    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
+    out.printCode("movq -" + offset_2 + "(%rbp), %r10");
+    out.printCode("movq -" + offset_1 + "(%rbp), %r11");
+    out.printCode("movq %r10, %r11");
   }
 
   public void visit(ReturnInst i) {
-    var offset = 8 *getStackSlot(i.getReturnValue());
-    out.printCode("movq -" + offset + "(%rbp), %rax");
-    out.printCode("leave");
-    out.printCode("ret");
+//    var offset = 8 *getStackSlot(i.getReturnValue());
+//    out.printCode("movq -" + offset + "(%rbp), %rax");
+//    out.printCode("leave");
+//    out.printCode("ret");
   }
 
   public void visit(CallInst i) {
