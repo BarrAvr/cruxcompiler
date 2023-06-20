@@ -267,35 +267,35 @@ public final class CodeGen extends InstVisitor {
 
 //I think I finished this one, need to double-check tho
   public void visit(CompareInst i) {
-//    out.printCode("movq $0, %rax");
-//    out.printCode("movq $1, %r10");
-//    int left_operand_offset = getStackSlot(i.getLeftOperand()) * 8;
-//    int right_operand_offset = getStackSlot(i.getRightOperand()) * 8;
-//    out.printCode("movq -" + left_operand_offset +"(%rbp), %r11");
-//    out.printCode("cmp -" + right_operand_offset +"(%rbp), %r11");
-//    switch (i.getPredicate()){
-//      case LT:
-//        out.printCode("cmovl %r10, %rax");
-//        break;
-//      case EQ:
-//        out.printCode("cmove %r10, %rax");
-//        break;
-//      case GE:
-//        out.printCode("cmovge %r10, %rax");
-//        break;
-//      case GT:
-//        out.printCode("cmovg %r10, %rax");
-//        break;
-//      case LE:
-//        out.printCode("cmovle %r10, %rax");
-//        break;
-//      case NE:
-//        out.printCode("cmovne %r10, %rax");
-//        break;
-//      default:
-//    }
-//    int dest_offset = getStackSlot(i.getDst()) * 8;
-//    out.printCode("movq %rax, -" + dest_offset + "(%rbp)");
+    out.printCode("movq $0, %rax");
+    out.printCode("movq $1, %r10");
+    int left_operand_offset = getStackSlot(i.getLeftOperand()) * 8;
+    int right_operand_offset = getStackSlot(i.getRightOperand()) * 8;
+    out.printCode("movq -" + left_operand_offset +"(%rbp), %r11");
+    out.printCode("cmp -" + right_operand_offset +"(%rbp), %r11");
+    switch (i.getPredicate()){
+      case LT:
+        out.printCode("cmovl %r10, %rax");
+        break;
+      case EQ:
+        out.printCode("cmove %r10, %rax");
+        break;
+      case GE:
+        out.printCode("cmovge %r10, %rax");
+        break;
+      case GT:
+        out.printCode("cmovg %r10, %rax");
+        break;
+      case LE:
+        out.printCode("cmovle %r10, %rax");
+        break;
+      case NE:
+        out.printCode("cmovne %r10, %rax");
+        break;
+      default:
+    }
+    int dest_offset = getStackSlot(i.getDst()) * 8;
+    out.printCode("movq %rax, -" + dest_offset + "(%rbp)");
   }
 
   public void visit(CopyInst i) {
