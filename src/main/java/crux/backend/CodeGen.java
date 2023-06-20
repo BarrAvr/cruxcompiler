@@ -358,35 +358,38 @@ public final class CodeGen extends InstVisitor {
     //generate assembly for call instruction
     //move return value (if there is one) into return register
 
+
     //step 1: Store parameters in designated registers or stack
     Symbol callee = i.getCallee();
     List<LocalVar> params = i.getParams();
-//    int offset = 0;
-//    for (int j = 0;j < params.size(); j++) {
-//      offset = getStackSlot(params.get(j)) * 8;
-//      switch (j) {
-//        case 0:
-//          out.printCode("movq -" + offset + "(%rbp), %rdi");
-//          break;
-//        case 1:
-//          out.printCode("movq -" + offset + "(%rbp), %rsi");
-//          break;
-//        case 2:
-//          out.printCode("movq -" + offset + "(%rbp), %rdx");
-//          break;
-//        case 3:
-//          out.printCode("movq -" + offset + "(%rbp), %rcx");
-//          break;
-//        case 4:
-//          out.printCode("movq -" + offset + "(%rbp), %r8");
-//          break;
-//        case 5:
-//          out.printCode("movq -" + offset + "(%rbp), %r9");
-//          break;
-//        default:
-//          out.printCode("movq -" + offset + "(%rbp), "+ (j - 5) +"(%rsp)");
-//          break;
-//      }
+    for (int j = 0;j < params.size(); j++) {
+      int offset = getStackSlot(params.get(j)) * 8;
+      switch (j) {
+        case 0:
+          out.printCode("movq -" + offset + "(%rbp), %rdi");
+          break;
+        case 1:
+          out.printCode("movq -" + offset + "(%rbp), %rsi");
+          break;
+        case 2:
+          out.printCode("movq -" + offset + "(%rbp), %rdx");
+          break;
+        case 3:
+          out.printCode("movq -" + offset + "(%rbp), %rcx");
+          break;
+        case 4:
+          out.printCode("movq -" + offset + "(%rbp), %r8");
+          break;
+        case 5:
+          out.printCode("movq -" + offset + "(%rbp), %r9");
+          break;
+        default:
+          out.printCode("movq -" + offset + "(%rbp), "+ 8 * (j - 5) +"(%rsp)");
+          break;
+      }
+    }
+//    if(params.size() > 0){
+//      out.printCode("movq %rax, -8()");
 //    }
     //step 2: Code for call instruction
     String calleeName = callee.getName();
