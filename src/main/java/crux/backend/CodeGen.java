@@ -160,26 +160,6 @@ public final class CodeGen extends InstVisitor {
     while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
 
-//      if (visited.contains(current)) {
-//        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
-//        out.printCode("jmp " + labels.get(current));
-//      } else {
-//        if (labels.containsKey(current)) {
-//          out.printLabel(labels.get(current) + ":");
-//        } else {
-//          current.accept(this);
-//          visited.push(current);
-//          if (current.numNext() > 0) {
-//            visiting.push(current.getNext(0));
-//          }
-//          else {
-//            out.printCode("leave");
-//            out.printCode("ret");
-//          }
-//        }
-//      }
-
-
       if (labels.containsKey(current)) {
         out.printLabel(labels.get(current) + ":");
       }
@@ -200,6 +180,25 @@ public final class CodeGen extends InstVisitor {
         }
       }
     }
+
+//    if (visited.contains(current)) {
+//        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
+//        out.printCode("jmp " + labels.get(current));
+//      } else {
+//        if (labels.containsKey(current)) {
+//          out.printLabel(labels.get(current) + ":");
+//        } else {
+//          current.accept(this);
+//          visited.push(current);
+//          if (current.numNext() > 0) {
+//            visiting.push(current.getNext(0));
+//          }
+//          else {
+//            out.printCode("leave");
+//            out.printCode("ret");
+//          }
+//        }
+//      }
 //    out.printCode("leave");
 //    out.printCode("ret");
   }
@@ -312,11 +311,11 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(JumpInst i) {
-//    String label = labels.get(i.getNext(1)); //this one line i change
-//    int predicate_offset = getStackSlot(i.getPredicate()) * 8;
-//    out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
-//    out.printCode("cmp $1, %r10");
-//    out.printCode("je " + label);
+    String label = labels.get(i.getNext(1)); //this one line i change
+    int predicate_offset = getStackSlot(i.getPredicate()) * 8;
+    out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
+    out.printCode("cmp $1, %r10");
+    out.printCode("je " + label);
   }
 
 

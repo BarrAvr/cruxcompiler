@@ -1,343 +1,404 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="3.176" tests="50" errors="47" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="crux.CompilerStageTests" time="1.836" tests="50" errors="50" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/home/nrcorrea/crux/target/test-classes:/home/nrcorrea/crux/target/classes:/home/nrcorrea/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar:/home/nrcorrea/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/home/nrcorrea/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/nrcorrea/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/nrcorrea/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/home/nrcorrea/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/home/nrcorrea/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\barra\IdeaProjects\crux1\target\test-classes;C:\Users\barra\IdeaProjects\crux1\target\classes;C:\Users\barra\.m2\repository\org\antlr\antlr4-runtime\4.7.2\antlr4-runtime-4.7.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\barra\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\barra\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="os.name" value="Linux"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="os.name" value="Windows 10"/>
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="/pkg/openjdk/17.0.2/lib"/>
-    <property name="sun.java.command" value="/home/nrcorrea/crux/target/surefire/surefirebooter14602868812602086803.jar /home/nrcorrea/crux/target/surefire 2023-06-20T02-45-29_076-jvmRun1 surefire6163335519104292236tmp surefire_017564136517226760870tmp"/>
+    <property name="sun.boot.library.path" value="C:\Users\barra\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\barra\AppData\Local\Temp\surefire15019523462133338854\surefirebooter6470862470402755377.jar C:\Users\barra\AppData\Local\Temp\surefire15019523462133338854 2023-06-20T19-44-33_341-jvmRun1 surefire8507067162872345304tmp surefire_0534805631785946429tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/home/nrcorrea/crux/target/test-classes:/home/nrcorrea/crux/target/classes:/home/nrcorrea/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar:/home/nrcorrea/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/home/nrcorrea/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/nrcorrea/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/nrcorrea/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/home/nrcorrea/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/home/nrcorrea/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:"/>
+    <property name="surefire.test.class.path" value="C:\Users\barra\IdeaProjects\crux1\target\test-classes;C:\Users\barra\IdeaProjects\crux1\target\classes;C:\Users\barra\.m2\repository\org\antlr\antlr4-runtime\4.7.2\antlr4-runtime-4.7.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\barra\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\barra\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\barra\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\barra\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/home/nrcorrea"/>
+    <property name="user.home" value="C:\Users\barra"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2022-01-18"/>
-    <property name="java.home" value="/pkg/openjdk/17.0.2"/>
-    <property name="file.separator" value="/"/>
-    <property name="basedir" value="/home/nrcorrea/crux"/>
+    <property name="java.version.date" value="2022-08-12"/>
+    <property name="java.home" value="C:\Users\barra\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\barra\IdeaProjects\crux1"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/nrcorrea/crux/target/surefire/surefirebooter14602868812602086803.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\barra\AppData\Local\Temp\surefire15019523462133338854\surefirebooter6470862470402755377.jar"/>
+    <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="17.0.2+8-86"/>
-    <property name="user.name" value="nrcorrea"/>
-    <property name="path.separator" value=":"/>
-    <property name="os.version" value="5.15.0-69-generic"/>
+    <property name="java.runtime.version" value="17.0.4.1+1"/>
+    <property name="user.name" value="barra"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="file.encoding" value="Cp1252"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="/home/nrcorrea/.m2/repository"/>
-    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="java.version" value="17.0.2"/>
-    <property name="user.dir" value="/home/nrcorrea/crux"/>
+    <property name="java.vendor.version" value="Temurin-17.0.4.1+1"/>
+    <property name="localRepository" value="C:\Users\barra\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\barra\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.3"/>
+    <property name="java.version" value="17.0.4.1"/>
+    <property name="user.dir" value="C:\Users\barra\IdeaProjects\crux1"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/pkg/openjdk/17.0.2/lib:/pkg/swi-prolog/7.6.0/lib/swipl-7.6.0-rc1/lib/x86_64-linux:/pkg/maven/3.6.3/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\barra\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\barra\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\Users\barra\AppData\Local\Microsoft\WindowsApps;;C:\Users\barra\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\barra\.dotnet\tools;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="17.0.2+8-86"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.4.1+1"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.12"/>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.072">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.145">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.049">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.088">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.054">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.081"/>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.063">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.039">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.048">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.036">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.051">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.051">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.057">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.049">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.047">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.086">
-    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: CodeGen for program crux/stages/codegen/test13.crx differs from expected output. ==> expected: <int?7> but was: <int?0>
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:297)
-]]></failure>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.056">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.04">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.055">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.074">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.041">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.052">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.048">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.043">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.057">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.06">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.053">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.044">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.045">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.05">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.057">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.073">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.101">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.082">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.066">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.056">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.111">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.077">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.04">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.112">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.048">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
-]]></error>
-  </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.065">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
-	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
   <testcase name="codegen" classname="crux.CompilerStageTests" time="0.075">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.059">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.021">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.086">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.02">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.044">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.031">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.041">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.036">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.086">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.047">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.046">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.042">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.038">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.042">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.027">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.045">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
 ]]></error>
   </testcase>
-  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.05">
-    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.Error: Assembling and linking failed
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.03">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
 	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
-Caused by: java.lang.Error: Assembling and linking failed
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.035">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.027">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.027">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.02">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.019">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.026">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.024">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.066">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.009">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.023">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.025">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.03">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.053">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.StackOverflowError
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.StackOverflowError
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.029">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.026">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.012">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.026">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.043">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.037">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.053">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.028">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.008">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.031">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.io.IOException: Cannot run program "gcc": CreateProcess error=2, The system cannot find the file specified
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.008">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+]]></error>
+  </testcase>
+  <testcase name="codegen" classname="crux.CompilerStageTests" time="0.026">
+    <error type="java.util.concurrent.ExecutionException"><![CDATA[java.util.concurrent.ExecutionException: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
+	at crux.CompilerStageTests.lambda$codegen$9(CompilerStageTests.java:290)
+Caused by: java.lang.ClassCastException: class crux.ir.LocalVar cannot be cast to class crux.ir.BooleanConstant (crux.ir.LocalVar and crux.ir.BooleanConstant are in unnamed module of loader 'app')
 ]]></error>
   </testcase>
 </testsuite>
