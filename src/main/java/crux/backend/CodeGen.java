@@ -169,7 +169,9 @@ public final class CodeGen extends InstVisitor {
         current.accept(this);
         visited.push(current);
         if (current.numNext() > 0) {
-          visiting.push(current.getNext(1));
+          if(current.numNext() > 1){
+            visiting.push(current.getNext(1));
+          }
           visiting.push(current.getNext(0));
         }
         else {
