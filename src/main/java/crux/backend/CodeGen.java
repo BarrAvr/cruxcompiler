@@ -331,10 +331,10 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(StoreInst i) {
-    int offset_1 = getStackSlot(i.getSrcValue()) * 8;
-    int offset_2 = getStackSlot(i.getDestAddress()) * 8;
-    out.printCode("movq -" + offset_2 + "(%rbp), %r10");
-    out.printCode("movq -" + offset_1 + "(%rbp), %r11");
+    int src_offset = getStackSlot(i.getSrcValue()) * 8;
+    int dest_offset = getStackSlot(i.getDestAddress()) * 8;
+    out.printCode("movq -" + src_offset + "(%rbp), %r10");
+    out.printCode("movq -" + dest_offset + "(%rbp), %r11");
     out.printCode("movq %r10, 0(%r11)");
   }
 
@@ -380,9 +380,9 @@ public final class CodeGen extends InstVisitor {
           break;
       }
     }
-//    if(params.size() > 6){
-//      out.printCode("addq " + 8 * (params.size() - 6) +" %rsp");
-//    }
+    if(params.size() > 6){
+      out.printCode("addq $" + 8 * (params.size() - 6) +" %rsp");
+    }
     //step 2: Code for call instruction
     String calleeName = callee.getName();
     out.printCode("call " + calleeName);
