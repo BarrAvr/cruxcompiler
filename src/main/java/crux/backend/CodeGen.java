@@ -355,8 +355,8 @@ public final class CodeGen extends InstVisitor {
     Symbol callee = i.getCallee();
     List<LocalVar> params = i.getParams();
     for (int j = 0;j < params.size(); j++) {
-      //int offset = getStackSlot(params.get(j)) * 8;
-      int offset = 8 * (7-j) + 16;
+      int offset = getStackSlot(params.get(j)) * 8;
+//      int offset = 8 * (7-j) + 16;
       switch (j) {
         case 0:
           out.printCode("movq -" + offset + "(%rbp), %rdi");
