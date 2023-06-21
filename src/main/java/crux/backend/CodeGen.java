@@ -331,7 +331,7 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(NopInst i) {
-//    out.printCode("NOP");
+    out.printCode("NOP");
     //do nothing
   }
 
