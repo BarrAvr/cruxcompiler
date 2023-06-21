@@ -354,35 +354,34 @@ public final class CodeGen extends InstVisitor {
     //step 1: Store parameters in designated registers or stack
     Symbol callee = i.getCallee();
     List<LocalVar> params = i.getParams();
-    out.printCode("movq -8(%rbp), %rdi");
-//    for (int j = 0;j < params.size(); j++) {
-//      int offset = getStackSlot(params.get(j)) * 8;
-//      switch (j) {
-//        case 0:
-//          out.printCode("movq -" + offset + "(%rbp), %rdi");
-//          break;
-//        case 1:
-//          out.printCode("movq -" + offset + "(%rbp), %rsi");
-//          break;
-//        case 2:
-//          out.printCode("movq -" + offset + "(%rbp), %rdx");
-//          break;
-//        case 3:
-//          out.printCode("movq -" + offset + "(%rbp), %rcx");
-//          break;
-//        case 4:
-//          out.printCode("movq -" + offset + "(%rbp), %r8");
-//          break;
-//        case 5:
-//          out.printCode("movq -" + offset + "(%rbp), %r9");
-//          break;
-//        default:
-//          out.printCode("movq -" + offset + "(%rbp), "+ 8 * (j - 5) +"(%rsp)");
-//          break;
-//      }
-//    }
-//    if(params.size() > 0){
-//      out.printCode("movq %rax, -8()");
+    for (int j = 0;j < params.size(); j++) {
+      //int offset = getStackSlot(params.get(j)) * 8;
+      int offset = 8 * (7-j) + 16;
+      switch (j) {
+        case 0:
+          out.printCode("movq -" + offset + "(%rbp), %rdi");
+          break;
+        case 1:
+          out.printCode("movq -" + offset + "(%rbp), %rsi");
+          break;
+        case 2:
+          out.printCode("movq -" + offset + "(%rbp), %rdx");
+          break;
+        case 3:
+          out.printCode("movq -" + offset + "(%rbp), %rcx");
+          break;
+        case 4:
+          out.printCode("movq -" + offset + "(%rbp), %r8");
+          break;
+        case 5:
+          out.printCode("movq -" + offset + "(%rbp), %r9");
+          break;
+        default:
+          break;
+      }
+    }
+//    if(params.size() > 6){
+//      out.printCode("addq " + 8 * (params.size() - 6) +" %rsp");
 //    }
     //step 2: Code for call instruction
     String calleeName = callee.getName();
