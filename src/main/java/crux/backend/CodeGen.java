@@ -161,7 +161,7 @@ public final class CodeGen extends InstVisitor {
       Instruction current = visiting.pop();
 
       if (visited.contains(current)) {
-        out.printCode("jmp " + labels.get(current.getNext(0)));
+        out.printCode("jmp " + labels.get(current));
       } else {
         if (labels.containsKey(current)) {
           out.printLabel(labels.get(current) + ":");
