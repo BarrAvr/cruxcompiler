@@ -322,7 +322,9 @@ public final class CodeGen extends InstVisitor {
     //todo
     int dest_offset = getStackSlot(i.getDst()) * 8;
     int src_adr_offset = getStackSlot(i.getSrcAddress()) * 8;
-    out.printCode("movq -" + src_adr_offset + "(%rbp), -" + dest_offset + "(%rbp)");
+    out.printCode("movq -" + src_adr_offset + "(%rbp), %r10");
+    out.printCode("movq 0(%r10), %r10");
+    out.printCode("movq %r10, -" + dest_offset + "(%rbp)");
   }
 
   public void visit(NopInst i) {
