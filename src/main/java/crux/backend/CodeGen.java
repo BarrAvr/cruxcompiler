@@ -391,6 +391,10 @@ public final class CodeGen extends InstVisitor {
     //step 2: Code for call instruction
     String calleeName = callee.getName();
     out.printCode("call " + calleeName);
+    if(i.getDst() != null){
+      int dst = getStackSlot(i.getDst());
+      out.printCode("movq %rax, " + dst + "(%rbp)");
+    }
   }
 
   public void visit(UnaryNotInst i) {
