@@ -313,7 +313,7 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(JumpInst i) {
-    String label = labels.get(i.getNext(0)); //this one line i change
+    String label = labels.get(i.getNext(1)); //this one line i change
     int predicate_offset = getStackSlot(i.getPredicate()) * 8;
     out.printCode("movq -" + predicate_offset + "(%rbp), %r10");
     out.printCode("cmp $1, %r10");
