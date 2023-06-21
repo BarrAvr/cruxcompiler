@@ -86,7 +86,7 @@ public final class CodeGen extends InstVisitor {
       GlobalDecl g = glob_it.next();
       String name = g.getSymbol().getName();
       g.getSymbol().getType();
-      out.printCode(".comm " + name + ", " + ((int) g.getNumElement().getValue()) + ", 8");
+      out.printCode(".comm " + name + ", " + ((int) g.getNumElement().getValue() * 8) + ", 8");
     }
 
     int count[] = new int[1];
@@ -325,7 +325,8 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(NopInst i) {
-    out.printCode("NOP");
+//    out.printCode("NOP");
+    //do nothing
   }
 
   public void visit(StoreInst i) {
