@@ -159,53 +159,46 @@ public final class CodeGen extends InstVisitor {
 
     while(!visiting.isEmpty()) {
       Instruction current = visiting.pop();
-//      visited.push(current);
-//      if (current.numNext() > 0){
-//        visiting.push(current.getNext(0));
+
+//      if (visited.contains(current)) {
+//        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
+//        out.printCode("jmp " + labels.get(current));
 //      } else {
-//        out.printCode("leave");
-//         out.printCode("ret");
-//      }
-
-      if (visited.contains(current)) {
-        //todo don't think this is correct since I don't think we record a visited instruction w/ a label
-        out.printCode("jmp " + labels.get(current));
-      } else {
-        if (labels.containsKey(current)) {
-          out.printLabel(labels.get(current) + ":");
-        } else {
-          current.accept(this);
-          visited.push(current);
-          if (current.numNext() > 0) {
-            visiting.push(current.getNext(0));
-          }
-          else {
-            out.printCode("leave");
-            out.printCode("ret");
-          }
-        }
-      }
-
-
-//      if (labels.containsKey(current)) {
-//        out.printLabel(labels.get(current) + ":");
-//      }
-//
-//      current.accept(this);
-//
-//      if (current.numNext() == 0) {
-//        out.printCode("leave");
-//        out.printCode("ret");
-//      }
-
-//      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
-//        if (!visited.contains(current.getNext(iter))) {
-//          visiting.push(current.getNext(iter));
-//          visited.push(current.getNext(iter));
+//        if (labels.containsKey(current)) {
+//          out.printLabel(labels.get(current) + ":");
 //        } else {
-//          out.printCode("jmp " + labels.get(current.getNext(iter)));
+//          current.accept(this);
+//          visited.push(current);
+//          if (current.numNext() > 0) {
+//            visiting.push(current.getNext(0));
+//          }
+//          else {
+//            out.printCode("leave");
+//            out.printCode("ret");
+//          }
 //        }
 //      }
+
+
+      if (labels.containsKey(current)) {
+        out.printLabel(labels.get(current) + ":");
+      }
+
+      current.accept(this);
+
+      if (current.numNext() == 0) {
+        out.printCode("leave");
+        out.printCode("ret");
+      }
+
+      for (var iter = current.numNext() - 1; iter >= 0; --iter) {
+        if (!visited.contains(current.getNext(iter))) {
+          visiting.push(current.getNext(iter));
+          visited.push(current.getNext(iter));
+        } else {
+          out.printCode("jmp " + labels.get(current.getNext(iter)));
+        }
+      }
     }
 //    out.printCode("leave");
 //    out.printCode("ret");
@@ -347,10 +340,10 @@ public final class CodeGen extends InstVisitor {
   }
 
   public void visit(ReturnInst i) {
-//    var offset = 8 *getStackSlot(i.getReturnValue());
-//    out.printCode("movq -" + offset + "(%rbp), %rax");
-//    out.printCode("leave");
-//    out.printCode("ret");
+    var offset = 8 *getStackSlot(i.getReturnValue());
+    out.printCode("movq -" + offset + "(%rbp), %rax");
+    out.printCode("leave");
+    out.printCode("ret");
   }
 
   public void visit(CallInst i) {
