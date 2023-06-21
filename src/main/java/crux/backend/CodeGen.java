@@ -153,7 +153,7 @@ public final class CodeGen extends InstVisitor {
     //Use DFS traversal
     //Refer to Function.assignLabels(int count[])
     Stack<Instruction> visiting = new Stack<Instruction>();
-    Stack<Instruction> visited = new Stack();
+    Stack<Instruction> visited = new Stack<Instruction>();
     Instruction start = func.getStart();
     visiting.push(start);
 
@@ -214,7 +214,7 @@ public final class CodeGen extends InstVisitor {
     int dst_offset = getStackSlot(i.getDst()) * 8;
 
     out.printCode("movq " + name + "@GOTPCREL(%rip), %r11");
-    if (off != null){
+    if (i.getOffset() != null){
       out.printCode("movq -" + offset + "(%rbp), %r11");
       out.printCode("movq $8, %r10");
       out.printCode("imulq $10, %r11");
