@@ -213,14 +213,17 @@ public final class CodeGen extends InstVisitor {
     int offset = getStackSlot(i.getOffset()) * 8;
     int dst_offset = getStackSlot(i.getDst()) * 8;
 
-    out.printCode("movq " + name + "@GOTPCREL(%rip), %r11");
     if (i.getOffset() != null){
       out.printCode("movq -" + offset + "(%rbp), %r11");
       out.printCode("movq $8, %r10");
       out.printCode("imulq $10, %r11");
+      out.printCode("movq " + name + "@GOTPCREL(%rip), %r10");
+      out.printCode("addq %r10, %r11");
+      out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
+    }else{
+      out.printCode("movq " + name + "@GOTPCREL(%rip), %r11");
+      out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
     }
-    //out.printCode("addq %r10, %r11");
-    out.printCode("movq %r11, -" + dst_offset + "(%rbp)");
   }
 
   public void visit(BinaryOperator i) {
